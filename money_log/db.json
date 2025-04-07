@@ -1,13 +1,94 @@
 {
-  "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+  "budget": [
+    {
+      "id": 1,
+      "date": "2025-04-01",
+      "type": "income",
+      "category": "월급",
+      "detailCategory": "정기급여",
+      "amount": 2500000,
+      "memo": "4월 급여"
+    },
+    {
+      "id": 2,
+      "date": "2025-04-01",
+      "type": "expense",
+      "category": "식비",
+      "detailCategory": "점심",
+      "amount": 12000,
+      "memo": "회사 점심"
+    },
+    {
+      "id": 3,
+      "date": "2025-04-02",
+      "type": "expense",
+      "category": "교통비",
+      "detailCategory": "버스",
+      "amount": 1400,
+      "memo": "출근길 버스"
+    },
+    {
+      "id": 4,
+      "date": "2025-04-03",
+      "type": "expense",
+      "category": "유흥",
+      "detailCategory": "술자리",
+      "amount": 43000,
+      "memo": "친구들과 회식"
+    },
+    {
+      "id": 5,
+      "date": "2025-04-03",
+      "type": "income",
+      "category": "용돈",
+      "detailCategory": "부모님",
+      "amount": 50000,
+      "memo": "부모님 용돈"
+    },
+    {
+      "id": 6,
+      "date": "2025-04-04",
+      "type": "expense",
+      "category": "공과금",
+      "detailCategory": "전기세",
+      "amount": 72000,
+      "memo": "3월 전기요금"
+    }
   ],
-  "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "incomeCategory": ["월급", "용돈", "이자", "기타 수입"],
+  "expenseCategory": ["식비", "교통비", "유흥", "공과금", "쇼핑", "의료비"],
+  "periodicExpense": [
+    {
+      "id": 1,
+      "date": "2025-04-01",
+      "type": "expense",
+      "category": "공과금",
+      "amount": 30000,
+      "memo": "정기 수도요금"
+    },
+    {
+      "id": 2,
+      "date": "2025-04-05",
+      "type": "expense",
+      "category": "구독",
+      "amount": 14500,
+      "memo": "넷플릭스"
+    },
+    {
+      "id": 3,
+      "date": "2025-04-10",
+      "type": "expense",
+      "category": "통신비",
+      "amount": 35000,
+      "memo": "휴대폰 요금"
+    },
+    {
+      "id": 4,
+      "date": "2025-04-15",
+      "type": "expense",
+      "category": "보험료",
+      "amount": 55000,
+      "memo": "건강보험"
+    }
+  ]
 }

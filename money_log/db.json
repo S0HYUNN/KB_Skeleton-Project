@@ -90,5 +90,17 @@
       "amount": 55000,
       "memo": "건강보험"
     }
-  ]
+  ],
+  "summary": {
+    "monthly": {
+      "income": 3000,
+      "expense": 150,
+      "net": 2850
+    },
+    "yearly": {
+      "income": 36000,
+      "expense": 1800,
+      "net": 34200
+    }
+  }
 }

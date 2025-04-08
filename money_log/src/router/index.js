@@ -11,6 +11,10 @@ const router = createRouter({
       component: () => import('../pages/MainPage.vue'),
     },
     {
+      path: '/StartPage',
+      name: 'StartPage',
+      component: () => import('../views/StartPage.vue'),
+    },
       path: '/Money',
       name: 'money',
       component: () => import('../pages/MoneyPage.vue'),
@@ -19,6 +23,11 @@ const router = createRouter({
       path: '/LogDetail',
       name: 'LogDetail',
       component: () => import('../pages/MonthlyPage.vue'),
+    },
+    {
+      path: '/Spending',
+      name: 'spending',
+      component: () => import('../pages/SpendingPage.vue'),
     },
   ],
 });

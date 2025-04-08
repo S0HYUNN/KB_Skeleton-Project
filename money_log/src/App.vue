@@ -16,6 +16,9 @@
 
 <script setup>
 import { RouterView, RouterLink } from 'vue-router';
+import { useMoneyStore } from './stores/money';
+
+const store = useMoneyStore;
 </script>
 
 <style scoped>

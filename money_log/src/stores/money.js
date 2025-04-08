@@ -1,10 +1,8 @@
-// store/money.js
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import axios from 'axios';
 
 export const useMoneyStore = defineStore('money', () => {
-  // state
   const moneyList = ref([]);
   const isLoading = ref(false);
   const error = ref(null);
@@ -91,7 +89,7 @@ export const useMoneyStore = defineStore('money', () => {
     return grouped;
   });
 
-  // ✅ 날짜 기준 정렬 (최신이 위로)
+  // ✅ 날짜 기준 정렬 (오래된 순)
   const sortedByDate = computed(() => {
     return [...moneyList.value].sort(
       (a, b) => new Date(b.date) - new Date(a.date)

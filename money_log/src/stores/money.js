@@ -3,14 +3,19 @@ import { ref, computed } from 'vue';
 import axios from 'axios';
 
 export const useMoneyStore = defineStore('money', () => {
-  // state
   const moneyList = ref([]);
   const isLoading = ref(false);
   const error = ref(null);
 
+  // ✅ error 초기화 함수
+  const resetError = () => {
+    error.value = null;
+  };
+
   // action: 전체 가계부 항목 불러오기
   const fetchMoneyLogs = async (params = {}) => {
     isLoading.value = true;
+    resetError();
     try {
       const res = await axios.get('/api/money', { params });
       moneyList.value = res.data;
@@ -24,6 +29,7 @@ export const useMoneyStore = defineStore('money', () => {
 
   // action: 항목 추가
   const addMoneyLog = async (newItem) => {
+    resetError();
     try {
       const res = await axios.post('/api/money', newItem);
       moneyList.value.push(res.data);
@@ -34,6 +40,7 @@ export const useMoneyStore = defineStore('money', () => {
 
   // action: 항목 삭제
   const deleteMoneyLog = async (id) => {
+    resetError();
     try {
       await axios.delete(`/api/money/${id}`);
       moneyList.value = moneyList.value.filter((item) => item.id !== id);
@@ -44,11 +51,14 @@ export const useMoneyStore = defineStore('money', () => {
 
   // action: 항목 수정
   const updateMoneyLog = async (id, updatedItem) => {
+    resetError();
     try {
       const res = await axios.put(`/api/money/${id}`, updatedItem);
       const index = moneyList.value.findIndex((item) => item.id === id);
       if (index !== -1) {
         moneyList.value[index] = res.data;
+      } else {
+        console.warn(`❗수정하려는 항목(id: ${id})을 찾을 수 없습니다.`);
       }
     } catch (err) {
       error.value = '수정에 실패했어요.';

@@ -2,35 +2,35 @@
   "money": [
     {
       "id": 1,
-      "date": "2025-04-01",
+      "date": "2025-04-01T08:00:00",
       "category": "income",
       "content": "월급",
       "amount": 2500000
     },
     {
       "id": 2,
-      "date": "2025-04-01",
+      "date": "2025-04-01T12:32:00",
       "category": "expense",
       "content": "식비",
       "amount": 12000
     },
     {
       "id": 3,
-      "date": "2025-04-02",
+      "date": "2025-04-02T11:11:23",
       "category": "expense",
       "content": "교통비",
       "amount": 1400
     },
     {
       "id": 4,
-      "date": "2025-04-03",
+      "date": "2025-04-03T22:27:27",
       "category": "expense",
       "content": "유흥",
       "amount": 43000
     },
     {
       "id": 5,
-      "date": "2025-04-03",
+      "date": "2025-04-03T23:23:23",
       "category": "income",
       "content": "용돈",
       "amount": 50000,
@@ -38,7 +38,7 @@
     },
     {
       "id": 6,
-      "date": "2025-04-04",
+      "date": "2025-04-04T10:00:00",
       "category": "expense",
       "content": "공과금",
       "amount": 72000
@@ -61,28 +61,28 @@
   "periodicExpense": [
     {
       "id": 1,
-      "date": "2025-04-01",
+      "date": "2025-04-01T09:00:)0",
       "category": "expense",
       "content": "공과금",
       "amount": 30000
     },
     {
       "id": 2,
-      "date": "2025-04-05",
+      "date": "2025-04-05T14:00:00",
       "category": "expense",
       "content": "구독",
       "amount": 14500
     },
     {
       "id": 3,
-      "date": "2025-04-10",
+      "date": "2025-04-10T12:00:00",
       "category": "expense",
       "content": "통신비",
       "amount": 35000
     },
     {
       "id": 4,
-      "date": "2025-04-15",
+      "date": "2025-04-15T00:00:00",
       "category": "expense",
       "content": "보험료",
       "amount": 55000

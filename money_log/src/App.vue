@@ -15,12 +15,12 @@
 </template>
 
 <script setup>
-import { RouterView, RouterLink } from "vue-router";
+import { RouterView, RouterLink } from 'vue-router';
 </script>
 
 <style scoped>
 #app {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0 auto;
   padding: 1rem;
   max-width: 800px;
@@ -50,3 +50,9 @@ nav a.router-link-exact-active {
   text-decoration: underline;
 }
 </style>
+
+<script>
+export default {
+  name: 'App',
+};
+</script>

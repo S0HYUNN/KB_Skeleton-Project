@@ -1,19 +1,23 @@
-import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import MainPage from "../pages/MainPage.vue";
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
-      name: "MainPage",
-      component: () => import("../pages/MainPage.vue"),
+      path: '/StartPage',
+      name: 'StartPage',
+      component: () => import('../views/StartPage.vue'),
     },
     {
-      path: "/Money",
-      name: "money",
-      component: () => import("../pages/MoneyPage.vue"),
+      path: '/',
+      name: 'home',
+      component: HomeView,
+    },
+    {
+      path: '/Money',
+      name: 'money',
+      component: () => import('../pages/MoneyPage.vue'),
     },
   ],
 });

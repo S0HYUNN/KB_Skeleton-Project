@@ -9,7 +9,7 @@
     <section class="log-card">
       <div class="log-title">DAILY MONEY LOG</div>
       <div class="log-subtext">
-        언제든 돌아볼 수 있게, <span class="highlight">미니 로그</span>에
+        언제든 돌아볼 수 있게, <span class="highlight">머니 로그</span>에
         기록해요
       </div>
       <button class="add-btn">ADD</button>
@@ -90,7 +90,7 @@ const logs = [
 .money-page {
   max-width: 393px;
   margin: 0 auto;
-  padding: 24px 20px;
+  padding: 60px 20px;
   background-color: #f7f3e8;
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
@@ -103,9 +103,9 @@ const logs = [
 }
 
 .date-text {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1c4e32;
+  font-size: 20px;
+  font-weight: 1000;
+  color: #0b570e;
 }
 
 .log-card {
@@ -118,26 +118,28 @@ const logs = [
 }
 
 .log-title {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 800;
   color: #1c4e32;
   margin-bottom: 10px;
 }
 
 .log-subtext {
-  font-size: 13px;
-  color: #777;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0b570e;
   margin-bottom: 20px;
 }
 
 .highlight {
   font-weight: bold;
-  color: #ffcf21;
+  color: #fcc600;
 }
 
 .add-btn {
-  background-color: #1c4e32;
+  background-color: #0b570e;
   color: white;
+  width: 150px;
   border: none;
   border-radius: 8px;
   padding: 10px 24px;
@@ -235,10 +237,11 @@ const logs = [
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 12px 16px;
   margin-bottom: 24px;
+  height: 320px;
 }
 
 .log-entry {
-  padding: 10px 0;
+  padding: 10px 8px;
 }
 
 .row {
@@ -248,18 +251,19 @@ const logs = [
 }
 
 .top-row {
-  font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 6px;
+  color: #0b570e;
+  font-weight: 10000;
+  font-size: 18px;
+  margin-bottom: 0px;
 }
 
 .bottom-row {
-  font-size: 12px;
-  color: #888;
+  font-size: 11px;
+  color: #6a6a6a;
 }
 
 .amount.income {
-  color: #27ae60;
+  color: #4d59ff;
 }
 
 .amount.expense {
@@ -269,13 +273,13 @@ const logs = [
 .divider {
   height: 1px;
   background-color: #eee;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 .fixed-expense-box {
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  padding: 20px 16px;
+  padding: 20px 18px;
   position: relative;
   margin-top: 32px;
 }
@@ -284,13 +288,13 @@ const logs = [
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .box-title {
-  font-weight: bold;
+  font-weight: 800;
   color: #1c4e32;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .pin-icon {
@@ -310,6 +314,7 @@ const logs = [
   flex: 1 1 0;
   min-width: 0;
   padding: 10px;
+  margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;

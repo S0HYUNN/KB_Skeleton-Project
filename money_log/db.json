@@ -61,7 +61,7 @@
   "periodicExpense": [
     {
       "id": 1,
-      "date": "2025-04-01T09:00:)0",
+      "date": "2025-04-01T09:00:00",
       "category": "expense",
       "content": "공과금",
       "amount": 30000

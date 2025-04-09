@@ -18,13 +18,47 @@
 
 <script setup>
 import { ref } from 'vue';
-
+import { useRouter } from 'vue-router'; // useRouter import
+import axios from 'axios';
+const router = useRouter(); // useRouter 사용
 const logName = ref('');
-
-const startLog = () => {
+const startLog = async () => {
   if (logName.value) {
-    // 로그 시작하는 로직을 여기에 추가
-    console.log(`로그 시작: ${logName.value}`);
+    try {
+      // 사용자 ID를 localStorage에서 가져오기 (예시)
+      const userId = localStorage.getItem('userId');
+
+      // 사용자 ID가 없으면 새로운 사용자를 생성하고 ID를 저장
+      if (!userId) {
+        // 새로운 사용자 생성 (POST)
+        const createUserResponse = await axios.post(
+          'http://localhost:3000/user',
+          {
+            nickname: logName.value,
+          }
+        );
+        const newUserId = createUserResponse.data.id; // 새로 생성된 사용자 ID
+        localStorage.setItem('userId', newUserId); // localStorage에 저장
+
+        console.log('새로운 사용자 생성 성공:', createUserResponse.data);
+        router.push('/');
+        alert('로그 시작!');
+      } else {
+        // 기존 사용자 닉네임 업데이트 (PATCH)
+        const response = await axios.patch(
+          `http://localhost:3000/user/${userId}`,
+          {
+            nickname: logName.value,
+          }
+        );
+        console.log('닉네임 업데이트 성공:', response.data);
+        router.push('/');
+        alert('로그 시작!');
+      }
+    } catch (error) {
+      console.error('닉네임 저장/업데이트 실패:', error);
+      alert('닉네임 저장/업데이트에 실패했습니다.');
+    }
   } else {
     alert('로그 이름을 입력해 주세요.');
   }

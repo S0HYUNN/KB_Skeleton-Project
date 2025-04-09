@@ -2,7 +2,11 @@
   <div class="start-page">
     <div class="content-container">
       <div class="icon-container"></div>
-      <img src="@/assets/money_icon.svg" alt="Money Icon" class="money-icon" />
+      <img
+        src="@/assets/images/money_icon.svg"
+        alt="Money Icon"
+        class="money-icon"
+      />
       <h1 class="main-title">반가워요!</h1>
       <h2 class="sub-title">당신만의 Money Log를<br />시작해볼까요?</h2>
       <p class="description">
@@ -10,7 +14,7 @@
       </p>
       <div class="image-wrapper">
         <img
-          src="@/assets/money_image.png"
+          src="@/assets/images/money_image.png"
           alt="Money Image"
           class="money-image"
         />

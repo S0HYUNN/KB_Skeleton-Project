@@ -2,7 +2,7 @@
   <div class="login-page">
     <div class="content-container">
       <div class="icon-container"></div>
-      <img src="@/assets/note_icon.svg" alt="노트 아이콘" class="icon" />
+      <img src="@/assets/images/note_icon.svg" alt="노트 아이콘" class="icon" />
       <h2>나만의 머니로그, <br />어떻게 부를까요?</h2>
       <input
         type="text"

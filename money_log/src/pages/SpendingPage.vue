@@ -49,10 +49,13 @@ import { ref, computed, onMounted } from 'vue';
 import { Doughnut } from 'vue-chartjs';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useMoneyStore } from '../stores/money';
+import { storeToRefs } from 'pinia';
 
 ChartJS.register(ArcElement);
 
 const store = useMoneyStore();
+const { sortedByDate } = storeToRefs(store); //날짜별로 정렬
+const recentLogs = computed(() => sortedByDate.value.slice(0, 3)); //최근 지출 3개 선정
 
 const income = ref(0);
 const expense = ref(0);

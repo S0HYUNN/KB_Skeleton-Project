@@ -1,4 +1,7 @@
 {
+  "user": {
+    "nickname": "KBITsYOURLIFE"
+  },
   "money": [
     {
       "id": 1,
@@ -42,6 +45,27 @@
       "category": "expense",
       "content": "공과금",
       "amount": 72000
+    },
+    {
+      "date": "2025-04-01T14:34:00",
+      "category": "income",
+      "content": "주움",
+      "amount": 5000,
+      "id": 7
+    },
+    {
+      "date": "2025-04-02T14:35:00",
+      "category": "income",
+      "content": "용돈",
+      "amount": 50000,
+      "id": 8
+    },
+    {
+      "date": "2025-04-01T15:51:00",
+      "category": "expense",
+      "content": "돌려줌",
+      "amount": 5000,
+      "id": 9
     }
   ],
   "incomeCategory": [
@@ -120,24 +144,14 @@
   ],
   "summary": {
     "monthly": {
-      "income": 3000,
-      "expense": 150,
-      "net": 2850
+      "income": 1250000,
+      "expense": 382000,
+      "net": 868000
     },
     "yearly": {
       "income": 36000,
       "expense": 1800,
       "net": 34200
     }
-  },
-  "users": [
-    {
-      "id": 1,
-      "nickname": "머니"
-    },
-    {
-      "id": 2,
-      "nickname": "로그"
-    }
-  ]
-}
+  }
+

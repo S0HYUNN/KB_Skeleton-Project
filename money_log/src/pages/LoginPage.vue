@@ -53,6 +53,7 @@ const startLog = () => {
   width: 350px;
   height: 741px;
   margin: 50px 100px;
+  margin-left: 25px;
 }
 
 .icon-container {

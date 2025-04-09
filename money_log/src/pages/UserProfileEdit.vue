@@ -1,38 +1,44 @@
 <template>
-  <div class="login-page">
+  <div class="profilEdit-page">
     <div class="content-container">
       <div class="icon-container"></div>
       <img src="@/assets/images/note_icon.svg" alt="노트 아이콘" class="icon" />
-      <h2>나만의 머니로그, <br />어떻게 부를까요?</h2>
+      <h1 class="title">회원 정보 수정</h1>
+      <h2 class="subtitle">새로운 이름으로 Money Log를 <br />이어가볼까요?</h2>
       <input
         type="text"
-        v-model="logName"
-        placeholder="10글자 이내로 입력해 주세요"
+        v-model="name"
+        placeholder="10글자 이내로 입력해주세요"
         maxlength="10"
         class="input-field"
       />
-      <button @click="startLog" class="start-button">내 로그 시작!</button>
+      <button @click="save" class="save-button">저장하기</button>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script>
+import { defineComponent, ref } from 'vue';
 
-const logName = ref('');
+export default defineComponent({
+  setup() {
+    const name = ref('');
 
-const startLog = () => {
-  if (logName.value) {
-    // 로그 시작하는 로직을 여기에 추가
-    console.log(`로그 시작: ${logName.value}`);
-  } else {
-    alert('로그 이름을 입력해 주세요.');
-  }
-};
+    const save = () => {
+      // 저장 로직을 여기에 추가
+      alert(`저장된 이름: ${name.value}`);
+    };
+
+    return {
+      name,
+      save,
+    };
+  },
+});
 </script>
 
 <style scoped>
-.start-page {
+.profilEdit-page {
   max-width: 402px;
   margin: 0;
   padding: 0;
@@ -53,23 +59,28 @@ const startLog = () => {
   width: 350px;
   height: 741px;
   margin: 50px 100px;
-  margin-left: 25px;
+  margin-left: 100px;
 }
 
 .icon-container {
-  filter: drop-shadow(offset-x offset-y blur color);
   margin-top: -80px;
   width: 106px;
   height: 92px;
   margin-bottom: 20px;
 }
 
-h2 {
+.title {
   font-size: 28px;
   font-weight: 800;
   color: #0a630e;
-  margin-top: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #0a630e;
+  margin-bottom: 20px;
+  font-weight: 600;
   line-height: 1.2;
 }
 
@@ -90,7 +101,7 @@ h2 {
   color: #9b9696;
 }
 
-.start-button {
+.save-button {
   background-color: #276b2a;
   color: #f1f1e8;
   border: none;
@@ -108,7 +119,7 @@ h2 {
   margin-left: -28px;
 }
 
-.start-button:hover {
+.save-button:hover {
   background-color: #276b2a;
 }
 </style>

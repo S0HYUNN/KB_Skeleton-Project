@@ -1,10 +1,4 @@
 <<<<<<< HEAD
-@import "./base.css";
-
-/* 아이폰 16 Pro 기준 - 메인 앱 화면 */
-#app {
-  width: 402px !important;
-=======
 @import './base.css';
 /* 아이폰 16 Pro 기준 - 메인 앱 화면 */
 #app {
@@ -12,6 +6,12 @@
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
+=======
+@import "./base.css";
+
+/* 아이폰 16 Pro 기준 - 메인 앱 화면 */
+#app {
+>>>>>>> 001bf285452d56c8d2099888c5bda3018328b3ad
   width: 100%;
   max-width: 402px;
 >>>>>>> a829d76 (머지 에러 변경)
@@ -21,9 +21,13 @@
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
   overflow-y: auto;
   box-sizing: border-box;
+<<<<<<< HEAD
+=======
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+>>>>>>> 001bf285452d56c8d2099888c5bda3018328b3ad
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /* 스크롤바 안보이게 */
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -45,7 +49,7 @@ body {
   align-items: center;
   min-height: 100vh;
 =======
-  /* ��ũ�ѹ� �Ⱥ��̰� */
+  /* ��ũ�ѹ� �Ⱥ��̰� */
 =======
   /* 스크롤바 안보이게 */
 >>>>>>> cc8110b (Fix: 에러 해결)

@@ -23,7 +23,7 @@ const router = createRouter({
     {
       path: '/LogDetail',
       name: 'LogDetail',
-      component: () => import('../pages/MonthlyPage.vue'),
+      component: () => import('../pages/LogDetailPage.vue'),
     },
     {
       path: '/Spending',

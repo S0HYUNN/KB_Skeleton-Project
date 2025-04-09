@@ -159,10 +159,9 @@ const closeFixedMoneyModal = () => {
             <div class="info-right">
               <span class="entry-id">ID: {{ item.id }}</span>
               <div class="icon-inline">
-                <i class="fas fa-pen icon-btn" @click="openEditModal(item)"></i>
                 <i
-                  class="fas fa-trash icon-btn"
-                  @click="deleteItem(item.id)"
+                  class="fas fa-pen icon-btn edit-icon"
+                  @click="openEditModal(item)"
                 ></i>
               </div>
             </div>
@@ -180,20 +179,7 @@ const closeFixedMoneyModal = () => {
   >
     <div class="modal">
       <h2 class="modal-title">수정하기</h2>
-      <div class="input-row modal-row">
-        <select v-model="editingItem.day" class="modal-input">
-          <option disabled value="">Day</option>
-          <option v-for="d in 31" :key="d">{{ d }}</option>
-        </select>
-        <select v-model="editingItem.month" class="modal-input">
-          <option disabled value="">Month</option>
-          <option v-for="m in 12" :key="m">{{ m }}</option>
-        </select>
-        <select v-model="editingItem.year" class="modal-input">
-          <option disabled value="">Year</option>
-          <option>2025</option>
-        </select>
-      </div>
+
       <div class="input-row modal-row">
         <select v-model="editingItem.category" class="modal-input">
           <option disabled value="">Category</option>
@@ -212,7 +198,7 @@ const closeFixedMoneyModal = () => {
         class="modal-textarea"
         placeholder="Content"
       />
-      <div class="button-row">
+      <div class="btn-row">
         <button class="modal-submit-btn flex-7" @click="updateItem">
           수정 완료
         </button>
@@ -263,7 +249,7 @@ const closeFixedMoneyModal = () => {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  padding: 12px 20px; /* ✅ 가로 패딩 늘림 */
+  padding: 12px 20px;
   margin-bottom: 24px;
   max-height: 500px;
   overflow: hidden;
@@ -306,6 +292,7 @@ const closeFixedMoneyModal = () => {
   font-size: 11px;
   color: #6a6a6a;
   margin-top: 4px;
+  width: 100%;
 }
 
 .amount {
@@ -327,7 +314,7 @@ const closeFixedMoneyModal = () => {
   margin: 10px 0;
 }
 
-.button-row {
+.btn-row {
   display: flex;
   gap: 8px;
 }
@@ -340,10 +327,23 @@ const closeFixedMoneyModal = () => {
   flex: 3;
 }
 
+.modal-submit-btn,
 .modal-delete-btn {
   background-color: #0b570e;
   color: #fff;
   padding: 10px;
+  height: 40px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+.modal-submit-btn {
+  width: 100%;
+  background-color: #0b570e;
+  color: #fff;
+  padding: 10px;
+  margin-top: 0;
   border-radius: 6px;
   border: none;
   cursor: pointer;
@@ -375,5 +375,19 @@ const closeFixedMoneyModal = () => {
   background: none;
   width: 12px;
   height: 12px;
+}
+.log-entry {
+  position: relative;
+  padding: 3px 8px;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 1px;
+  right: -4px;
+  color: #0b570e;
+  cursor: pointer;
+  z-index: 1;
+  color: #808080;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="main-layout">
+    <BaseHeader />
     <h1 class="main-title">Spending Log</h1>
     <div class="log-card">
       <div class="chart-wrapper">
@@ -50,6 +51,7 @@ import { Doughnut } from 'vue-chartjs';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useMoneyStore } from '../stores/money';
 import { storeToRefs } from 'pinia';
+import BaseHeader from '@/components/BaseHeader.vue';
 
 ChartJS.register(ArcElement);
 

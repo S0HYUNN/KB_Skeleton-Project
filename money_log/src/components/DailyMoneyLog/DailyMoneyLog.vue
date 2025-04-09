@@ -27,7 +27,7 @@ const handleStartClick = () => {
   max-width: 362px;
   min-width: 362px;
   height: 130px;
-  margin: 32px auto 16px auto;
+  margin: 28px auto 16px auto;
   box-sizing: border-box;
 }
 

@@ -84,15 +84,13 @@ function formatNumber(num) {
   height: 18px;
 }
 
-/* ✅ 텍스트: 제목 */
 .summary-title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: #0b570e;
   text-align: center;
 }
 
-/* ✅ 수입/지출 행 */
 .amount-row {
   display: flex;
   justify-content: center;
@@ -112,7 +110,7 @@ function formatNumber(num) {
 }
 
 .total {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
   color: #0b570e;
   text-align: center;

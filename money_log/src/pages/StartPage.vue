@@ -15,7 +15,7 @@
           class="money-image"
         />
       </div>
-      <button class="next-button" @click="goToNextStep">다음으로</button>
+      <button class="next-button" @click="goToLoginPage">다음으로</button>
     </div>
   </div>
 </template>
@@ -28,12 +28,12 @@ export default defineComponent({
   setup() {
     const router = useRouter();
 
-    const goToNextStep = () => {
-      router.push('/next-page');
+    const goToLoginPage = () => {
+      router.push('/LoginPage');
     };
 
     return {
-      goToNextStep,
+      goToLoginPage,
     };
   },
 });

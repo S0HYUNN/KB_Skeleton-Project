@@ -11,9 +11,6 @@ import DailyMoneyLog from '@/components/DailyMoneyLog';
 <style scoped>
 .main-page {
   background-color: #f1f1e8;
-  width: 100%;
-  min-width: 402px;
-  max-width: 402px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

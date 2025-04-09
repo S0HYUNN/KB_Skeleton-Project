@@ -2,7 +2,7 @@
   <div class="nav-wrapper">
     <!-- 뒤로가기(왼쪽) -->
     <img
-      src="@/assets/back.png"
+      src="@/assets/images/back.png"
       alt="뒤로가기"
       class="nav-button"
       @click="goBack"
@@ -11,13 +11,13 @@
     <!-- 홈,설정(오른쪽) -->
     <div class="right-buttons">
       <img
-        src="@/assets/home.png"
+        src="@/assets/images/home.png"
         alt="홈"
         class="nav-button"
         @click="goHome"
       />
       <img
-        src="@/assets/setting.png"
+        src="@/assets/images/setting.png"
         alt="설정"
         class="nav-button"
         @click="goSettings"

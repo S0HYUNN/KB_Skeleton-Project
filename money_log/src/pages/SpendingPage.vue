@@ -25,13 +25,21 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="log-card">
-    <div class="spend-title">
-      최근 지출 Log
-      <div class="first">20일 옷쇼핑 <span class="expend">-60,000</span></div>
-      <div class="second">20일 옷쇼핑 <span class="expend">-60,000</span></div>
-      <div class="thrid">20일 옷쇼핑 <span class="income">-60,000</span></div>
+    <div class="recent-logs-card">
+      <h2 class="title">최근 지출 Log</h2>
+      <ul>
+        <li v-for="log in recentLogs" :key="log.id" class="log-item">
+          <span class="date">{{ new Date(log.date).getDate() }}일</span>
+          <span class="content">{{ log.content }}</span>
+          <span
+            class="amount"
+            :class="log.category === 'income' ? 'income' : 'expense'"
+          >
+            {{ log.category === 'income' ? '+' : '-' }}
+            {{ log.amount.toLocaleString() }}
+          </span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>

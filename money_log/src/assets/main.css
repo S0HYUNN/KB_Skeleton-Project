@@ -1,8 +1,22 @@
+<<<<<<< HEAD
 @import "./base.css";
 
 /* ì•„ì´í° 16 Pro ê¸°ì¤€ - ë©”ì¸ ì•± í™”ë©´ */
 #app {
   width: 402px !important;
+=======
+@import './base.css';
+@import './base.css';
+
+/* ¾ÆÀÌÆù 16 Pro ±âÁØ - ¸ŞÀÎ ¾Û È­¸é */
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+  width: 100%;
+  max-width: 402px;
+>>>>>>> a829d76 (ë¨¸ì§€ ì—ëŸ¬ ë³€ê²½)
   height: 874px;
   background-color: #f1f1e8;
   border-radius: 36px;
@@ -10,6 +24,7 @@
   overflow-y: auto;
   box-sizing: border-box;
 
+<<<<<<< HEAD
   /* ìŠ¤í¬ë¡¤ë°” ì•ˆë³´ì´ê²Œ */
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -30,18 +45,26 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+=======
+  /* ½ºÅ©·Ñ¹Ù ¾Èº¸ÀÌ°Ô */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+>>>>>>> a829d76 (ë¨¸ì§€ ì—ëŸ¬ ë³€ê²½)
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+#app::-webkit-scrollbar {
+  display: none;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+/* ¹Ù±ùÂÊ À¥ ¹è°æ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

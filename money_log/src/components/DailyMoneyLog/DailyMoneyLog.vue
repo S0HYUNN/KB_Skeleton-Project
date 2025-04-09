@@ -10,7 +10,11 @@
 
 <script setup>
 const handleStartClick = () => {
+<<<<<<< HEAD
   console.log("🟢 START 버튼 클릭됨");
+=======
+  console.log("START 버튼 클릭됨");
+>>>>>>> 001bf285452d56c8d2099888c5bda3018328b3ad
 };
 </script>
 
@@ -18,12 +22,21 @@ const handleStartClick = () => {
 .daily-log-card {
   background-color: white;
   border-radius: 30px;
+<<<<<<< HEAD
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   padding: 16px 20px;
   text-align: center;
   width: 354px;
   height: 128px;
   margin: 32px auto 16px auto; /* 위로 조금 띄우고 아래 여유도 줌 */
+=======
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  padding: 16px 20px;
+  text-align: center;
+  width: 330px;
+  height: 130px;
+  margin: 32px auto 16px auto;
+>>>>>>> 001bf285452d56c8d2099888c5bda3018328b3ad
   box-sizing: border-box;
 }
 

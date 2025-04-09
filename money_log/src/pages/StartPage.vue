@@ -64,6 +64,7 @@ export default defineComponent({
 }
 
 .icon-container {
+  margin-top: 8px;
   margin-bottom: -50px;
 }
 
@@ -84,7 +85,7 @@ export default defineComponent({
 }
 
 .description {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: #000000;
   margin-bottom: 15px;

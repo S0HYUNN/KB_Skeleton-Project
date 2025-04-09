@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: '/StartPage',
       name: 'StartPage',
-      component: () => import('../views/StartPage.vue'),
+      component: () => import('../pages/StartPage.vue'),
     },
     {
       path: '/Money',

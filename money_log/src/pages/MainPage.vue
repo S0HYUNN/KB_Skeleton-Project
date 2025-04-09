@@ -1,7 +1,4 @@
 <script setup>
-<<<<<<< feature/login
-import DailyMoneyLog from '@/components/DailyMoneyLog';
-=======
 import { ref, onMounted } from 'vue';
 import DailyMoneyLog from '@/components/DailyMoneyLog/DailyMoneyLog.vue';
 import CustomCalendar from '@/components/CustomCalendar.vue';
@@ -38,7 +35,6 @@ const openAddMoneyModal = () => {
 const closeAddMoneyModal = () => {
   isModalOpen.value = false;
 };
->>>>>>> local
 </script>
 
 <template>
@@ -57,3 +53,4 @@ const closeAddMoneyModal = () => {
   padding-top: 48px;
 }
 </style>
+

@@ -6,8 +6,9 @@ export const useMoneyStore = defineStore('money', () => {
   const moneyList = ref([]);
   const isLoading = ref(false);
   const error = ref(null);
+  const periodicExpenseList = ref([]); //고정 지출용 ref 추가
 
-  // ✅ error 초기화 함수
+  // error 초기화 함수
   const resetError = () => {
     error.value = null;
   };
@@ -25,6 +26,11 @@ export const useMoneyStore = defineStore('money', () => {
     } finally {
       isLoading.value = false;
     }
+  };
+  // 고정 지출 데이터 가져오기
+  const fetchPeriodicExpenses = async () => {
+    const res = await axios.get('/api/periodicExpense');
+    periodicExpenseList.value = res.data;
   };
 
   // action: 항목 추가
@@ -62,6 +68,26 @@ export const useMoneyStore = defineStore('money', () => {
       }
     } catch (err) {
       error.value = '수정에 실패했어요.';
+    }
+  };
+  // 고정 지출 추가 함수
+  const addPeriodicExpense = async (newItem) => {
+    try {
+      const res = await axios.post('/api/periodicExpense', newItem);
+      periodicExpenseList.value.push(res.data);
+    } catch (err) {
+      console.error('❌ 고정 지출 추가 실패:', err);
+    }
+  };
+  // 고정 지출 삭제 함수
+  const deletePeriodicExpense = async (id) => {
+    try {
+      await axios.delete(`/api/periodicExpense/${id}`);
+      periodicExpenseList.value = periodicExpenseList.value.filter(
+        (item) => item.id !== id
+      );
+    } catch (err) {
+      console.error('❌ 고정 지출 삭제 실패:', err);
     }
   };
 
@@ -112,6 +138,7 @@ export const useMoneyStore = defineStore('money', () => {
     isLoading,
     error,
     fetchMoneyLogs,
+    fetchPeriodicExpenses,
     addMoneyLog,
     deleteMoneyLog,
     updateMoneyLog,
@@ -119,5 +146,8 @@ export const useMoneyStore = defineStore('money', () => {
     getMonthlySummary,
     groupByDate,
     sortedByDate,
+    periodicExpenseList,
+    addPeriodicExpense,
+    deletePeriodicExpense,
   };
 });

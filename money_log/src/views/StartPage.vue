@@ -34,7 +34,7 @@ export default {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: #f5f5dc;
+  background-color: #f1f1e8;
 }
 
 .content-container {

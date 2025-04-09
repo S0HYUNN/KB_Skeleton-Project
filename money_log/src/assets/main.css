@@ -1,7 +1,5 @@
 @import './base.css';
-@import './base.css';
-
-/* ¾ÆÀÌÆù 16 Pro ±âÁØ - ¸ŞÀÎ ¾Û È­¸é */
+/* ì•„ì´í° 16 Pro ê¸°ì¤€ - ë©”ì¸ ì•± í™”ë©´ */
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -16,7 +14,7 @@
   overflow-y: auto;
   box-sizing: border-box;
 
-  /* ½ºÅ©·Ñ¹Ù ¾Èº¸ÀÌ°Ô */
+  /* ìŠ¤í¬ë¡¤ë°” ì•ˆë³´ì´ê²Œ */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -25,7 +23,7 @@
   display: none;
 }
 
-/* ¹Ù±ùÂÊ À¥ ¹è°æ */
+/* ë°”ê¹¥ìª½ ì›¹ ë°°ê²½ */
 html,
 body {
   margin: 0;
@@ -38,15 +36,16 @@ body {
   min-height: 100vh;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
   }
 }

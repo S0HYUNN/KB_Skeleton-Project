@@ -1,24 +1,9 @@
 <template>
-  <div id="app">
-    <header>
-      <h1>💸 My Money Log</h1>
-      <nav>
-        <RouterLink to="/">홈</RouterLink>
-        <RouterLink to="/Money">머니로그</RouterLink>
-      </nav>
-    </header>
-
-    <main>
-      <RouterView />
-    </main>
-  </div>
+  <RouterView />
 </template>
 
 <script setup>
 import { RouterView, RouterLink } from 'vue-router';
-import { useMoneyStore } from './stores/money';
-
-const store = useMoneyStore;
 </script>
 
 <style scoped>
@@ -53,9 +38,3 @@ nav a.router-link-exact-active {
   text-decoration: underline;
 }
 </style>
-
-<script>
-export default {
-  name: 'App',
-};
-</script>

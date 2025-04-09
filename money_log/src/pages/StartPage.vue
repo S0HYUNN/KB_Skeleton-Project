@@ -60,7 +60,7 @@ export default defineComponent({
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 350px;
   height: 741px;
-  margin: 0 auto;
+  margin: 50px 100px;
 }
 
 .icon-container {

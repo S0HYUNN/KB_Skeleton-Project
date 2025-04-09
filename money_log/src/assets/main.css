@@ -6,9 +6,7 @@
   width: 402px !important;
 =======
 @import './base.css';
-@import './base.css';
-
-/* ¾ÆÀÌÆù 16 Pro ±âÁØ - ¸ŞÀÎ ¾Û È­¸é */
+/* ì•„ì´í° 16 Pro ê¸°ì¤€ - ë©”ì¸ ì•± í™”ë©´ */
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -24,6 +22,7 @@
   overflow-y: auto;
   box-sizing: border-box;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   /* ìŠ¤í¬ë¡¤ë°” ì•ˆë³´ì´ê²Œ */
   scrollbar-width: none;
@@ -47,6 +46,9 @@ body {
   min-height: 100vh;
 =======
   /* ½ºÅ©·Ñ¹Ù ¾Èº¸ÀÌ°Ô */
+=======
+  /* ìŠ¤í¬ë¡¤ë°” ì•ˆë³´ì´ê²Œ */
+>>>>>>> cc8110b (Fix: ì—ëŸ¬ í•´ê²°)
   scrollbar-width: none;
   -ms-overflow-style: none;
 >>>>>>> a829d76 (ë¨¸ì§€ ì—ëŸ¬ ë³€ê²½)
@@ -56,7 +58,7 @@ body {
   display: none;
 }
 
-/* ¹Ù±ùÂÊ À¥ ¹è°æ */
+/* ë°”ê¹¥ìª½ ì›¹ ë°°ê²½ */
 html,
 body {
   margin: 0;
@@ -68,3 +70,20 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+<<<<<<< HEAD
+=======
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+>>>>>>> cc8110b (Fix: ì—ëŸ¬ í•´ê²°)

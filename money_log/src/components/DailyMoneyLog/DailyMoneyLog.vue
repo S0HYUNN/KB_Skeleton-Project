@@ -10,7 +10,11 @@
 
 <script setup>
 const handleStartClick = () => {
+<<<<<<< HEAD
   console.log("START 버튼 클릭됨");
+=======
+  console.log("🟢 START 버튼 클릭됨");
+>>>>>>> cc8110b (Fix: 에러 해결)
 };
 </script>
 
@@ -18,6 +22,7 @@ const handleStartClick = () => {
 .daily-log-card {
   background-color: white;
   border-radius: 30px;
+<<<<<<< HEAD
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   padding: 16px 20px;
   text-align: center;
@@ -26,6 +31,14 @@ const handleStartClick = () => {
   min-width: 362px;
   height: 130px;
   margin: 32px auto 16px auto;
+=======
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 16px 20px;
+  text-align: center;
+  width: 354px;
+  height: 128px;
+  margin: 32px auto 16px auto; /* 위로 조금 띄우고 아래 여유도 줌 */
+>>>>>>> cc8110b (Fix: 에러 해결)
   box-sizing: border-box;
 }
 
@@ -63,4 +76,8 @@ const handleStartClick = () => {
 .start-button:hover {
   background-color: #094821;
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> cc8110b (Fix: 에러 해결)

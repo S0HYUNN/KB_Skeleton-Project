@@ -42,55 +42,6 @@
       "category": "expense",
       "content": "공과금",
       "amount": 72000
-    },
-    {
-      "date": "2025-04-01T11:11:00",
-      "category": "income",
-      "content": "주움",
-      "amount": 5000,
-      "id": 7
-    },
-    {
-      "date": "2025-04-01T11:12:00",
-      "category": "expense",
-      "content": "돌려줌",
-      "amount": 5000,
-      "id": 8
-    },
-    {
-      "date": "2025-04-01T11:13:00",
-      "category": "expense",
-      "content": "쇼핑",
-      "amount": 60000,
-      "id": 9
-    },
-    {
-      "date": "2025-04-01T11:18:00",
-      "category": "income",
-      "content": "용돈",
-      "amount": 50000,
-      "id": 10
-    },
-    {
-      "date": "2025-04-01T13:27:00",
-      "category": "income",
-      "content": "용돈",
-      "amount": 50000,
-      "id": 11
-    },
-    {
-      "date": "2025-04-02T13:28:00",
-      "category": "income",
-      "content": "월급",
-      "amount": 5000000,
-      "id": 12
-    },
-    {
-      "date": "2025-04-01T13:33:00",
-      "category": "expense",
-      "content": "점심",
-      "amount": 12000,
-      "id": 13
     }
   ],
   "incomeCategory": [

@@ -4,6 +4,9 @@ import { useMoneyStore } from '../stores/money';
 
 const moneyStore = useMoneyStore();
 
+const editingItem = ref(null);
+const isEditModalOpen = ref(false);
+
 // 1️⃣ 페이지 처음 로드될 때 데이터 불러오기
 onMounted(async () => {
   await moneyStore.fetchMoneyLogs();
@@ -22,6 +25,29 @@ const filteredLogs = computed(() => {
 const formatTime = (dateString) => {
   const date = new Date(dateString);
   return date.toTimeString().slice(0, 5); // "08:00" 형식
+};
+
+const openEditModal = (item) => {
+  editingItem.value = { ...item };
+  isEditModalOpen.value = true;
+};
+
+const closeEditModal = () => {
+  isEditModalOpen.value = false;
+};
+
+const updateItem = async () => {
+  await moneyStore.updateMoneyLog(editingItem.value.id, editingItem.value);
+  await moneyStore.fetchMoneyLogs();
+  closeEditModal();
+};
+
+const deleteItem = async (id) => {
+  const confirmed = window.confirm('정말 삭제하시겠습니까?');
+  if (confirmed) {
+    await moneyStore.deleteMoneyLog(id);
+    await moneyStore.fetchMoneyLogs();
+  }
 };
 </script>
 
@@ -63,6 +89,36 @@ const formatTime = (dateString) => {
           <div v-if="index !== filteredLogs.length - 1" class="divider"></div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- 수정 모달 -->
+  <div
+    v-if="isEditModalOpen"
+    class="modal-overlay"
+    @click.self="closeEditModal"
+  >
+    <div class="modal">
+      <h2 class="modal-title">수정하기</h2>
+
+      <input
+        v-model="editingItem.content"
+        class="modal-input"
+        placeholder="Content"
+      />
+      <input
+        v-model.number="editingItem.amount"
+        class="modal-input"
+        placeholder="Amount"
+      />
+
+      <select v-model="editingItem.category" class="modal-input">
+        <option disabled value="">카테고리 선택</option>
+        <option value="income">수입</option>
+        <option value="expense">지출</option>
+      </select>
+
+      <button class="modal-submit-btn" @click="updateItem">수정 완료</button>
     </div>
   </div>
 </template>

@@ -9,8 +9,10 @@
 </template>
 
 <script setup>
+const emit = defineEmits(["start"]);
+
 const handleStartClick = () => {
-  console.log("START 버튼 클릭됨");
+  emit("start");
 };
 </script>
 

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useMoneyStore } from '../stores/money';
+import '../assets/modal.css';
 
 const props = defineProps({
   show: Boolean,
@@ -116,84 +117,4 @@ const submitModal = async () => {
   </div>
 </template>
 
-<style scoped>
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal {
-  background-color: white;
-  border-radius: 16px;
-  padding: 24px 20px;
-  width: 90%;
-  max-width: 300px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
-  animation: fadeIn 0.2s ease-in-out;
-}
-
-.modal-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 16px;
-  color: #1c4e32;
-  margin-bottom: 16px;
-}
-
-.modal-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  gap: 6px;
-}
-
-.modal-input {
-  flex: 1;
-  padding: 8px;
-  font-size: 13px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.modal-textarea {
-  width: 100%;
-  height: 60px;
-  resize: none;
-  font-size: 13px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 8px;
-  margin-bottom: 14px;
-}
-
-.modal-submit-btn {
-  width: 100%;
-  background-color: #0b570e;
-  color: #fff;
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-</style>
+<style scoped></style>

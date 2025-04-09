@@ -42,6 +42,27 @@
       "category": "expense",
       "content": "공과금",
       "amount": 72000
+    },
+    {
+      "date": "2025-04-01T14:34:00",
+      "category": "income",
+      "content": "주움",
+      "amount": 5000,
+      "id": 7
+    },
+    {
+      "date": "2025-04-02T14:35:00",
+      "category": "income",
+      "content": "용돈",
+      "amount": 50000,
+      "id": 8
+    },
+    {
+      "date": "2025-04-01T14:35:00",
+      "category": "expense",
+      "content": "돌려줌",
+      "amount": 5000,
+      "id": 9
     }
   ],
   "incomeCategory": [

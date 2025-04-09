@@ -2,33 +2,35 @@
 import { ref, onMounted, computed } from 'vue';
 import { useMoneyStore } from '../stores/money';
 
+import VectorUp from '@/assets/images/Vector_up.png';
+import VectorDown from '@/assets/images/Vector_down.png';
+
 const moneyStore = useMoneyStore();
 
 const editingItem = ref(null);
 const isEditModalOpen = ref(false);
 
-// 1️⃣ 페이지 처음 로드될 때 데이터 불러오기
-onMounted(async () => {
-  await moneyStore.fetchMoneyLogs();
-  console.log('📦 불러온 moneyList:', moneyStore.moneyList.value);
-  //   moneyStore.fetchMoneyLogs();
-});
+// ✅ 정렬 기준 상태 및 정렬 방향
+const sortType = ref('time');
+const sortOrder = ref('desc');
 
-// ✅ 2. 4월 1일 항목만 시간 오름차순 정렬
-const filteredLogs = computed(() => {
-  return moneyStore.moneyList
-    .filter((item) => item.date.includes('2025-04-01'))
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-});
+const toggleSortOrder = () => {
+  sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc';
+};
 
-// ✅ 시간만 잘라서 표시 (예: 08:00)
-const formatTime = (dateString) => {
-  const date = new Date(dateString);
-  return date.toTimeString().slice(0, 5); // "08:00" 형식
+const setSort = (type) => {
+  sortType.value = type;
 };
 
 const openEditModal = (item) => {
-  editingItem.value = { ...item };
+  const [datePart] = item.date.split('T');
+  const [year, month, day] = datePart.split('-');
+  editingItem.value = {
+    ...item,
+    year,
+    month,
+    day,
+  };
   isEditModalOpen.value = true;
 };
 
@@ -37,7 +39,15 @@ const closeEditModal = () => {
 };
 
 const updateItem = async () => {
-  await moneyStore.updateMoneyLog(editingItem.value.id, editingItem.value);
+  const { year, month, day, ...rest } = editingItem.value;
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2, '0');
+  const mm = String(now.getMinutes()).padStart(2, '0');
+  const date = `${year}-${String(month).padStart(2, '0')}-${String(
+    day
+  ).padStart(2, '0')}T${hh}:${mm}:00`;
+  const updatedItem = { ...rest, date };
+  await moneyStore.updateMoneyLog(editingItem.value.id, updatedItem);
   await moneyStore.fetchMoneyLogs();
   closeEditModal();
 };
@@ -47,20 +57,77 @@ const deleteItem = async (id) => {
   if (confirmed) {
     await moneyStore.deleteMoneyLog(id);
     await moneyStore.fetchMoneyLogs();
+    closeEditModal();
   }
+};
+
+onMounted(async () => {
+  await moneyStore.fetchMoneyLogs();
+});
+
+const filteredLogs = computed(() => {
+  const filtered = moneyStore.moneyList.filter((item) =>
+    item.date.includes('2025-04-01')
+  );
+
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortType.value === 'amount') {
+      return sortOrder.value === 'asc'
+        ? a.amount - b.amount
+        : b.amount - a.amount;
+    } else if (sortType.value === 'category') {
+      return sortOrder.value === 'asc'
+        ? a.category.localeCompare(b.category)
+        : b.category.localeCompare(a.category);
+    } else {
+      return sortOrder.value === 'asc'
+        ? new Date(a.date) - new Date(b.date)
+        : new Date(b.date) - new Date(a.date);
+    }
+  });
+
+  return sorted;
+});
+
+const formatTime = (dateString) => {
+  const date = new Date(dateString);
+  return date.toTimeString().slice(0, 5);
 };
 </script>
 
 <template>
   <div class="card-container">
-    <!-- 정렬 탭 -->
     <section class="sort-tabs">
-      <button class="sort-btn active">시간 순</button>
-      <button class="sort-btn">금액 순</button>
-      <button class="sort-btn">지출/수입 순</button>
+      <button class="sort-icon-btn" @click="toggleSortOrder">
+        <img
+          :src="sortOrder === 'asc' ? VectorUp : VectorDown"
+          alt="정렬 방향"
+          class="sort-icon-img"
+        />
+      </button>
+      <button
+        class="sort-btn"
+        :class="{ active: sortType === 'time' }"
+        @click="setSort('time')"
+      >
+        시간 순
+      </button>
+      <button
+        class="sort-btn"
+        :class="{ active: sortType === 'amount' }"
+        @click="setSort('amount')"
+      >
+        금액 순
+      </button>
+      <button
+        class="sort-btn"
+        :class="{ active: sortType === 'category' }"
+        @click="setSort('category')"
+      >
+        지출/수입 순
+      </button>
     </section>
 
-    <!-- 로그 리스트 -->
     <div class="log-card-list">
       <div class="log-scroll-area">
         <div
@@ -80,19 +147,23 @@ const deleteItem = async (id) => {
           </div>
           <div class="row bottom-row">
             <span class="time">{{ formatTime(item.date) }}</span>
-
             <div class="info-right">
               <span class="entry-id">ID: {{ item.id }}</span>
+              <div class="icon-inline">
+                <i class="fas fa-pen icon-btn" @click="openEditModal(item)"></i>
+                <i
+                  class="fas fa-trash icon-btn"
+                  @click="deleteItem(item.id)"
+                ></i>
+              </div>
             </div>
           </div>
-
           <div v-if="index !== filteredLogs.length - 1" class="divider"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 수정 모달 -->
   <div
     v-if="isEditModalOpen"
     class="modal-overlay"
@@ -100,25 +171,49 @@ const deleteItem = async (id) => {
   >
     <div class="modal">
       <h2 class="modal-title">수정하기</h2>
-
-      <input
+      <div class="input-row modal-row">
+        <select v-model="editingItem.day" class="modal-input">
+          <option disabled value="">Day</option>
+          <option v-for="d in 31" :key="d">{{ d }}</option>
+        </select>
+        <select v-model="editingItem.month" class="modal-input">
+          <option disabled value="">Month</option>
+          <option v-for="m in 12" :key="m">{{ m }}</option>
+        </select>
+        <select v-model="editingItem.year" class="modal-input">
+          <option disabled value="">Year</option>
+          <option>2025</option>
+        </select>
+      </div>
+      <div class="input-row modal-row">
+        <select v-model="editingItem.category" class="modal-input">
+          <option disabled value="">Category</option>
+          <option value="income">수입</option>
+          <option value="expense">지출</option>
+        </select>
+        <input
+          v-model="editingItem.amount"
+          type="number"
+          class="modal-input"
+          placeholder="Amount"
+        />
+      </div>
+      <textarea
         v-model="editingItem.content"
-        class="modal-input"
+        class="modal-textarea"
         placeholder="Content"
       />
-      <input
-        v-model.number="editingItem.amount"
-        class="modal-input"
-        placeholder="Amount"
-      />
-
-      <select v-model="editingItem.category" class="modal-input">
-        <option disabled value="">카테고리 선택</option>
-        <option value="income">수입</option>
-        <option value="expense">지출</option>
-      </select>
-
-      <button class="modal-submit-btn" @click="updateItem">수정 완료</button>
+      <div class="button-row">
+        <button class="modal-submit-btn flex-7" @click="updateItem">
+          수정 완료
+        </button>
+        <button
+          class="modal-delete-btn flex-3"
+          @click="deleteItem(editingItem.id)"
+        >
+          삭제
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -221,5 +316,135 @@ const deleteItem = async (id) => {
   height: 1px;
   background-color: #eee;
   margin: 10px 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 16px;
+  padding: 24px 20px;
+  width: 90%;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #1c4e32;
+  margin-bottom: 16px;
+}
+
+.modal-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 6px;
+}
+
+.modal-input {
+  flex: 1;
+  padding: 8px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.modal-textarea {
+  width: 100%;
+  height: 60px;
+  resize: none;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 14px;
+}
+
+.modal-submit-btn {
+  width: 100%;
+  background-color: #0b570e;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.button-row {
+  display: flex;
+  gap: 8px;
+}
+
+.flex-7 {
+  flex: 7;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.modal-submit-btn,
+.modal-delete-btn {
+  background-color: #0b570e;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.modal-delete-btn {
+  background-color: #fff;
+  color: #0b570e;
+  border: 1px solid #0b570e;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.modal-delete-btn:hover {
+  background-color: #eaf7ed;
+}
+.sort-icon-btn {
+  border: none;
+  background-color: #f1f1e8;
+}
+.sort-icon-img {
+  border: none;
+  outline: none;
+  background: none;
+  width: 12px;
+  height: 12px;
 }
 </style>

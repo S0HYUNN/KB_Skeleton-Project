@@ -1,73 +1,119 @@
 <template>
   <div class="filters">
+    <div class="sort-btn">
+      <span @click="toggleSortOrder" class="sort-icon">
+        <img
+          :src="sortOrder === 'asc' ? vectorUp : vectorDown"
+          alt="정렬 아이콘"
+          class="sort-icon-img"
+        />
+      </span>
+    </div>
     <div class="filter-item">
-      <span class="filter-icon">⇅</span>
       <select v-model="selectedOption">
         <option>전체</option>
         <option>수입</option>
         <option>지출</option>
-        <!-- 추가적인 옵션들 넣기 -->
       </select>
     </div>
     <div class="filter-item">
       <select v-model="selectedPeriod">
-        <option>전체</option>
+        <option>1주일</option>
         <option>1개월</option>
-        <!-- 기간 옵션 -->
       </select>
     </div>
-    <div class="filter-item">
+    <div class="filter-item search-wrapper">
       <input
         type="text"
         v-model="searchQuery"
         placeholder="검색"
         class="search-input"
       />
+      <img src="@/assets/images/MagnifyingGlass.svg" class="search-icon" />
+      <!-- 또는 FontAwesome, 이미지도 가능 -->
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import vectorUp from '@/assets/images/vector_up.png';
+import vectorDown from '@/assets/images/vector_down.png';
 
 const selectedOption = ref('전체');
-const selectedPeriod = ref('전체');
+const selectedPeriod = ref('1주일');
 const searchQuery = ref('');
+const sortOrder = ref('desc'); // 'asc'는 오름차순, 'desc'는 내림차순
+
+// 정렬 방향을 토글하는 함수
+const toggleSortOrder = () => {
+  sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc';
+};
 </script>
 
 <style scoped>
 .filters {
   display: flex;
-  gap: 8px; /* 필터 간 간격을 조금 좁힘 */
-  margin-bottom: 12px;
+  margin-top: 12px;
   align-items: center;
+  justify-content: flex-start;
 }
-
+.sort-btn {
+  color: #888;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 0.25rem;
+}
 .filter-item {
-  border: 1px solid #ccc;
-  border-radius: 12px; /* 더 둥글게 설정 */
-  padding: 4px 6px; /* 더 작게 설정 */
-  font-size: 12px; /* 폰트 크기 축소 */
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px; /* 더 둥글게 설정 */
+  background-color: #fff;
+  margin-right: 0.25rem;
 }
 
-.filter-icon {
-  border: 1px solid #ccc;
-  border-radius: 12px; /* 더 둥글게 설정 */
-  padding: 4px 6px; /* 더 작게 설정 */
-  font-size: 16px; /* 아이콘 크기 조정 */
+.sort-icon {
+  font-size: 14px;
+  color: #4caf50;
+  cursor: pointer;
 }
 
 select,
 .search-input {
-  border: 1px solid #ccc;
-  border-radius: 12px; /* 더 둥글게 설정 */
-  padding: 6px 10px; /* 더 작은 패딩 */
-  font-size: 12px; /* 폰트 크기 축소 */
+  border: none;
+  background-color: transparent;
+  font-size: 10px; /* 폰트 크기 조정 */
   color: #333;
-  background-color: #fff;
+  padding: auto 3px;
+  outline: none;
 }
 
 .search-input {
-  width: 120px; /* 검색창을 더 좁게 설정 */
+  width: 120px;
+  padding-right: 8px; /* 아이콘과의 간격을 설정할 수 있습니다. */
+}
+
+select:focus,
+.search-input:focus {
+  border: none;
+  box-shadow: 0 0 0 2px #4caf50;
+}
+.sort-icon-img {
+  width: 14px;
+  height: 10px;
+  object-fit: contain;
+  background-color: white;
+}
+.search-wrapper {
+  display: flex;
+  align-items: center; /* 수평 정렬 */
+  margin-left: auto; /* 오른쪽으로 밀어내기 */
+}
+
+.search-icon {
+  width: 16px; /* 아이콘 크기 조정 */
+  height: 16px; /* 아이콘 크기 조정 */
+  object-fit: contain;
 }
 </style>

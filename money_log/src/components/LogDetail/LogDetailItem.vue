@@ -16,9 +16,7 @@
       <!-- 시간 -->
       <span class="log-time">{{ formattedTime }}</span>
     </div>
-    <div class="log-balance">
-      <span>잔액: {{ formattedBalance }}</span>
-    </div>
+
     <hr />
   </div>
 </template>
@@ -74,13 +72,12 @@ const formattedBalance = computed(() => {
 <style scoped>
 /* 박스 제거 */
 .log-item {
-  padding: 12px;
+  padding: 6px;
   border: none;
   background: none;
   box-shadow: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .log-header {
@@ -90,29 +87,31 @@ const formattedBalance = computed(() => {
 
 .log-date-category {
   display: flex;
-  flex-direction: column;
+
   justify-content: flex-start;
   align-items: flex-start;
 }
 
 .log-date {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color: #2e7d32;
 }
 
 .log-category {
+  margin-left: 0.5rem;
   font-size: 14px;
-  color: #888;
+  font-weight: bold;
+  color: #0b570e;
 }
 
 .log-amount {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .log-amount.income {
-  color: #2e7d32; /* 수입은 초록색 */
+  color: #4d59ff; /* 수입은 초록색 */
 }
 
 .log-amount.expense {
@@ -122,12 +121,12 @@ const formattedBalance = computed(() => {
 .log-footer {
   display: flex;
   justify-content: flex-start; /* 시간은 왼쪽에 배치 */
-  font-size: 14px;
   color: #888;
+  margin-left: 1.9rem;
 }
 
 .log-time {
-  font-size: 14px;
+  font-size: 10px;
   color: #888;
 }
 
@@ -138,7 +137,7 @@ const formattedBalance = computed(() => {
 }
 
 hr {
-  margin-top: 8px;
+  margin-top: 7px;
   border: 1px solid #ddd;
   opacity: 0.5;
 }

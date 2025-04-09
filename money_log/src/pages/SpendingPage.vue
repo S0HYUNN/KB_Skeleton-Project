@@ -23,6 +23,13 @@
       </div>
     </div>
     <div class="log-card">
+      <button class="detail-button">
+        <img
+          @click="goDetail"
+          src="@/assets/images/detail.png"
+          alt="디테일로그로"
+        />
+      </button>
       <div class="spend-title">
         <div class="recent-logs-card">
           <h2 class="title">최근 지출 Log</h2>
@@ -52,6 +59,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useMoneyStore } from '../stores/money';
 import { storeToRefs } from 'pinia';
 import BaseHeader from '@/components/BaseHeader.vue';
+import { useRouter } from 'vue-router';
 
 ChartJS.register(ArcElement);
 
@@ -100,12 +108,18 @@ const chartOptions = {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = Doughnut;
+
+const router = useRouter();
+
+const goDetail = () => {
+  router.push('/LogDetail');
+};
 </script>
 <style scoped>
 .main-layout {
   padding: 20px;
   background-color: #f1f1e8;
-  width: 18rem;
+  margin: 0 auto;
 }
 
 .main-title {
@@ -133,6 +147,7 @@ const DoughnutChart = Doughnut;
   margin-bottom: 24px;
   flex: 1;
   justify-content: center;
+  position: relative;
 }
 
 .spend-title > div {
@@ -185,6 +200,31 @@ const DoughnutChart = Doughnut;
   width: 100%;
   font-family: 'Pretendard', sans-serif;
   background-color: #f1f1e8;
+}
+
+.detail-button {
+  position: absolute;
+  top: -11px;
+  right: -11px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: none;
+}
+
+.detail-button.hover {
+  transform: scale(1.1);
+}
+
+.detail-button img {
+  width: 22px;
+  height: 22px;
 }
 
 .spend-title > div {

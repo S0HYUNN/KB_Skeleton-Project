@@ -2,15 +2,18 @@
   <div class="daily-log-card">
     <p class="log-title">DAILY MONEY LOG</p>
     <p class="log-subtext">
-      오늘도 <span class="highlight">머니 로그</span> 완료?
+      언제든 돌아볼 수 있게, <span class="highlight">머니 로그</span> 에
+      기록해요
     </p>
-    <button class="start-button" @click="handleStartClick">START</button>
+    <button class="start-button" @click="handleStartClick">ADD</button>
   </div>
 </template>
 
 <script setup>
+const emit = defineEmits(['start']);
+
 const handleStartClick = () => {
-  console.log('🟢 START 버튼 클릭됨');
+  emit('start');
 };
 </script>
 
@@ -23,7 +26,7 @@ const handleStartClick = () => {
   text-align: center;
   width: 354px;
   height: 128px;
-  margin: 32px auto 16px auto; /* 위로 조금 띄우고 아래 여유도 줌 */
+  margin: 32px auto 16px auto;
   box-sizing: border-box;
 }
 

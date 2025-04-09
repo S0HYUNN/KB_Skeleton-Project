@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import MainPage from '../pages/MainPage.vue';
+import NotFound from '@/pages/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,7 @@ const router = createRouter({
       name: 'spending',
       component: () => import('../pages/SpendingPage.vue'),
     },
+    { path: '/:paths(.*)*', component: NotFound },
   ],
 });
 

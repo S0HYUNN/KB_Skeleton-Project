@@ -7,13 +7,21 @@
 
         <!-- 도넛 차트와 중앙 텍스트 -->
         <div class="chart-center-box">
-          <div class="center-text">순이익<br /></div>
+          <DoughnutChart :data="chartData" :options="chartOptions" />
+          <div class="center-text">
+            순이익<br />
+            <strong>{{ net.toLocaleString() }}원</strong>
+          </div>
         </div>
 
         <!-- 오른쪽 텍스트 -->
         <div class="bottom-text">
-          <div class="income-text"></div>
-          <div class="expense-text"></div>
+          <div class="income-text">
+            총 수입: {{ income.toLocaleString() }}원
+          </div>
+          <div class="expense-text">
+            총 지출: {{ expense.toLocaleString() }}원
+          </div>
         </div>
       </div>
     </div>
@@ -54,6 +62,28 @@ onMounted(async () => {
   expense.value = summary.expense;
   net.value = summary.net;
 });
+
+const chartData = computed(() => ({
+  datasets: [
+    {
+      label: '이번 달 요약',
+      data: [income.value, expense.value],
+      backgroundColor: ['#4D59FF', '#FF8548'],
+      borderColor: ['#4D59FF', '#FF8548'],
+      borderWidth: 1,
+    },
+  ],
+}));
+
+// 차트 옵션
+const chartOptions = {
+  responsive: true,
+  cutout: '65%',
+};
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+const DoughnutChart = Doughnut;
 </script>
 <style scoped>
 .main-layout {

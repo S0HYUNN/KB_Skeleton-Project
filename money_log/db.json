@@ -87,6 +87,48 @@
       "category": "expense",
       "content": "dinner2",
       "amount": 20000
+    },
+    {
+      "date": "2025-04-09T21:52:00",
+      "category": "income",
+      "content": "용돈",
+      "amount": 50000,
+      "id": "yZclm-e"
+    },
+    {
+      "date": "2025-04-09T21:59:00",
+      "category": "expense",
+      "content": "쇼핑",
+      "amount": 200000,
+      "id": "zMO7Ox0"
+    },
+    {
+      "date": "2025-04-09T22:54:00",
+      "category": "income",
+      "content": "sdf",
+      "amount": 1234,
+      "id": "z0aU5Ch"
+    },
+    {
+      "date": "2025-04-09T22:58:00",
+      "category": "expense",
+      "content": "ㄴㅇㄹ",
+      "amount": 12435,
+      "id": "NDUIvh8"
+    },
+    {
+      "date": "2025-04-10T00:49:00",
+      "category": "expense",
+      "content": "ㄴㅇㄹ",
+      "amount": 123356,
+      "id": "I976KD3"
+    },
+    {
+      "date": "2025-04-01T00:52:00",
+      "category": "income",
+      "content": "222",
+      "amount": 1222222,
+      "id": "LAIrCoO"
     }
   ],
   "incomeCategory": [
@@ -156,11 +198,32 @@
       "amount": 35000
     },
     {
-      "id": "4",
-      "date": "2025-04-15T00:00:00",
+      "date": "2025-04-13T09:00:00",
+      "content": "티빙",
       "category": "expense",
-      "content": "보험료",
-      "amount": 55000
+      "amount": 4000,
+      "id": "8GBUQ9m"
+    },
+    {
+      "date": "2025-04-23T00:00:00",
+      "content": "등록금",
+      "category": "expense",
+      "amount": 5000000,
+      "id": "doxugt6"
+    },
+    {
+      "date": "2025-04-25T00:00:00",
+      "content": "보험",
+      "category": "expense",
+      "amount": 5000000,
+      "id": "12"
+    },
+    {
+      "date": "2025-03-25T00:00:00",
+      "content": "보험",
+      "category": "expense",
+      "amount": 5000000,
+      "id": "13"
     }
   ],
   "summary": {

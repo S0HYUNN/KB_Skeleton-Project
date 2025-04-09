@@ -47,7 +47,7 @@
       <hr />
       <div
         class="fixed-money-item"
-        v-for="(item, index) in fixedMoneyList"
+        v-for="(item, index) in filteredFixedMoneyList"
         :key="index.id"
       >
         <span class="fixed-name">{{ item.content }}</span>
@@ -69,6 +69,19 @@ import '../assets/modal.css';
 const moneyStore = useMoneyStore();
 
 const fixedMoneyList = computed(() => moneyStore.periodicExpenseList);
+
+const filteredFixedMoneyList = computed(() => {
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
+
+  return moneyStore.periodicExpenseList.filter((item) => {
+    const itemDate = new Date(item.date);
+    const itemYear = itemDate.getFullYear();
+    const itemMonth = String(itemDate.getMonth() + 1).padStart(2, '0');
+    return itemYear === currentYear && itemMonth === currentMonth;
+  });
+});
 
 const fixedDate = ref('');
 const fixedContent = ref('');
@@ -107,10 +120,8 @@ const handleAddFixed = async () => {
 const deleteItem = async (id) => {
   const confirmed = window.confirm('정말 삭제하시겠습니까?');
   if (confirmed) {
-    console.log('🗑 삭제할 ID:', id);
     await moneyStore.deletePeriodicExpense(id);
     await moneyStore.fetchPeriodicExpenses();
-    console.log('✅ 삭제 후 리스트 새로고침');
   }
 };
 
@@ -124,6 +135,7 @@ onMounted(async () => {
   font-family: 'Font Awesome 5 Free' !important;
   font-weight: 900 !important;
 }
+
 .period-money-box {
   position: relative;
   background-color: #fff;
@@ -146,6 +158,7 @@ onMounted(async () => {
   color: #1c4e32;
   font-size: 17px;
 }
+
 .pin-wrapper {
   position: absolute;
   top: -14px;
@@ -160,6 +173,7 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
 }
+
 .pin-icon {
   width: 20px;
   height: 20px;
@@ -229,25 +243,5 @@ onMounted(async () => {
   cursor: pointer;
   font-size: 15px;
   margin-left: 15px;
-}
-.top-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-.content {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.amount {
-  flex: 0 0 90px; /* ✅ 고정 너비 */
-  text-align: right;
-  font-weight: bold;
-  font-size: 14px;
 }
 </style>

@@ -198,7 +198,7 @@ const closeFixedMoneyModal = () => {
         class="modal-textarea"
         placeholder="Content"
       />
-      <div class="btn-row">
+      <div class="button-row">
         <button class="modal-submit-btn flex-7" @click="updateItem">
           수정 완료
         </button>
@@ -249,7 +249,7 @@ const closeFixedMoneyModal = () => {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  padding: 12px 20px;
+  padding: 12px 20px; /* ✅ 가로 패딩 늘림 */
   margin-bottom: 24px;
   max-height: 500px;
   overflow: hidden;
@@ -292,7 +292,6 @@ const closeFixedMoneyModal = () => {
   font-size: 11px;
   color: #6a6a6a;
   margin-top: 4px;
-  width: 100%;
 }
 
 .amount {
@@ -314,7 +313,7 @@ const closeFixedMoneyModal = () => {
   margin: 10px 0;
 }
 
-.btn-row {
+.button-row {
   display: flex;
   gap: 8px;
 }

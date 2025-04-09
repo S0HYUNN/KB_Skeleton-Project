@@ -20,9 +20,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import "v-calendar/style.css";
+import { ref } from 'vue';
+import 'v-calendar/style.css';
 
 const router = useRouter();
 
@@ -31,26 +30,26 @@ const currentDate = ref(new Date());
 const calendarAttrs = ref([
   {
     dates: { repeat: { weekdays: [2, 3, 4, 5, 6, 7] } },
-    content: { style: { color: "#0B570E" } },
+    content: { style: { color: '#0B570E' } },
   },
   {
     dates: { repeat: { weekdays: [1] } },
-    content: { style: { color: "#FF5748" } },
+    content: { style: { color: '#FF5748' } },
   },
   {
     dates: new Date(),
     highlight: {
       style: {
-        backgroundColor: "rgba(11, 87, 14, 0.3)",
-        borderRadius: "60%",
-        transform: "scale(1.2)",
+        backgroundColor: 'rgba(11, 87, 14, 0.3)',
+        borderRadius: '60%',
+        transform: 'scale(1.2)',
       },
     },
   },
 ]);
 
 const goToMoneyPage = () => {
-  router.push("/money");
+  router.push('/money');
 };
 </script>
 
@@ -105,7 +104,7 @@ const goToMoneyPage = () => {
   color: #0b570e;
   font-size: 20px;
   font-weight: 600;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   text-align: center;
 }
 
@@ -122,7 +121,7 @@ const goToMoneyPage = () => {
 }
 
 :deep(.vc-weekdays)::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -132,7 +131,7 @@ const goToMoneyPage = () => {
 }
 
 :deep(.vc-weekdays)::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;

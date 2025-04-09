@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import DailyMoneyLog2 from '@/components/DailyMoneyLog/DailyMoneyLog2.vue';
 import MoneyList from '../components/MoneyList.vue';
 import AddMoney from '@/pages/AddMoney.vue';
+import PeriodMoney from './PeriodMoney.vue';
 
 const isModalOpen = ref(false);
 const openModal = () => (isModalOpen.value = true);
@@ -15,6 +16,7 @@ const closeModal = () => (isModalOpen.value = false);
 
     <MoneyList />
     <AddMoney :show="isModalOpen" @close="closeModal" />
+    <PeriodMoney />
   </div>
 </template>
 

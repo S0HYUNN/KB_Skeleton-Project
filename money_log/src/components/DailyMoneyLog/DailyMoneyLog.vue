@@ -9,8 +9,10 @@
 </template>
 
 <script setup>
+const emit = defineEmits(["start"]);
+
 const handleStartClick = () => {
-  console.log('🟢 START 버튼 클릭됨');
+  emit("start");
 };
 </script>
 
@@ -18,12 +20,14 @@ const handleStartClick = () => {
 .daily-log-card {
   background-color: white;
   border-radius: 30px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   padding: 16px 20px;
   text-align: center;
-  width: 354px;
-  height: 128px;
-  margin: 32px auto 16px auto; /* 위로 조금 띄우고 아래 여유도 줌 */
+  width: 362px;
+  max-width: 362px;
+  min-width: 362px;
+  height: 130px;
+  margin: 28px auto 16px auto;
   box-sizing: border-box;
 }
 

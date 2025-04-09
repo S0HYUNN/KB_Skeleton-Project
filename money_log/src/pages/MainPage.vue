@@ -7,7 +7,7 @@ import MonthlySummary from '@/components/MonthlySummary.vue';
 import AddMoney from '@/pages/AddMoney.vue';
 import axios from 'axios';
 
-const nickname = ref('');
+const nickname = ref('Nickname');
 const isModalOpen = ref(false);
 const isSettingsOpen = ref(false);
 const router = useRouter(); // ✅ 라우터 인스턴스 생성
@@ -27,6 +27,7 @@ onMounted(async () => {
     // API 호출하여 닉네임 가져오기
     const response = await axios.get(`http://localhost:3000/user/${userId}`);
     nickname.value = response.data.nickname;
+    localStorage.setItem('nickname', response.data.nickname);
   } catch (error) {
     console.error('닉네임 가져오기 실패:', error);
     nickname.value = 'Guest'; // 에러 발생 시 기본값 설정

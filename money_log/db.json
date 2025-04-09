@@ -18,7 +18,7 @@
     },
     {
       "id": "c675",
-      "nickname": "세연"
+      "nickname": "둥"
     }
   ],
   "money": [
@@ -70,21 +70,21 @@
       "category": "income",
       "content": "주움",
       "amount": 5000,
-      "id": 7
+      "id": "7"
     },
     {
       "date": "2025-04-02T14:35:00",
       "category": "income",
       "content": "용돈",
       "amount": 50000,
-      "id": 8
+      "id": "8"
     },
     {
       "date": "2025-04-01T15:51:00",
       "category": "expense",
       "content": "돌려줌",
       "amount": 5000,
-      "id": 9
+      "id": "9"
     }
   ],
   "incomeCategory": [

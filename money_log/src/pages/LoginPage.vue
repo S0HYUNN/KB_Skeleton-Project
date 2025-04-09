@@ -45,13 +45,15 @@ const startLog = async () => {
         alert('로그 시작!');
       } else {
         // 기존 사용자 닉네임 업데이트 (PATCH)
-        const response = await axios.patch(
-          `http://localhost:3000/user/${userId}`,
-          {
-            nickname: logName.value,
-          }
-        );
-        console.log('닉네임 업데이트 성공:', response.data);
+        if (userId) {
+          const response = await axios.patch(
+            `http://localhost:3000/user/${userId}`,
+            {
+              nickname: logName.value,
+            }
+          );
+          console.log('닉네임 업데이트 성공:', response.data);
+        }
         router.push('/');
         alert('로그 시작!');
       }

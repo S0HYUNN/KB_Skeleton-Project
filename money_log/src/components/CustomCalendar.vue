@@ -157,4 +157,12 @@ const goToMoneyPage = () => {
   justify-content: center;
   align-items: center;
 }
+
+:deep(.vc-title-wrapper),
+:deep(.vc-arrows),
+:deep(.vc-title),
+:deep(.vc-arrow) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
 </style>

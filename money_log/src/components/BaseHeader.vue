@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
@@ -36,7 +36,7 @@ const goBack = () => {
 };
 
 const goHome = () => {
-  router.push('/');
+  router.push("/");
 };
 
 const goSettings = () => {

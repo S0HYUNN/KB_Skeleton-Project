@@ -27,7 +27,7 @@
 </template>
 
 <style scoped>
-.spend-page {
+.main-layout {
   padding: 20px;
   background-color: #f1f1e8;
   width: 18rem;
@@ -41,37 +41,11 @@
   margin-left: 30px;
 }
 
-.circle-card {
-  width: 250px;
-  border-radius: 16px;
-  padding: 16px;
-  text-align: center;
-}
-
 .circle-header {
   font-size: 18px;
   font-weight: bold;
   color: #228b22; /* 진한 초록 */
   margin-bottom: 10px;
-}
-
-.income-text {
-  font-family: Bold;
-  left: -15px;
-  color: #4169e1; /* 로얄 블루 */
-}
-
-.spend-text {
-  right: -14px;
-  color: #ff4c4c;
-}
-
-.center-text {
-  position: relative;
-  z-index: 2;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1.4;
 }
 
 .log-card {
@@ -87,10 +61,6 @@
   justify-content: center;
 }
 
-.spend-title {
-  color: #2e7d32;
-}
-
 .spend-title > div {
   background-color: #f5f5f5;
   border-top: solid 1px black;
@@ -100,10 +70,45 @@
   margin-top: 10px;
 }
 
-.expend {
+.expense-text {
   color: #ff5748;
 }
-.income {
+.income-text {
   color: #5864ff;
+}
+
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto;
+  gap: 1.2rem;
+}
+
+.chart-center-box {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  aspect-ratio: 1 / 1;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.bottom-text {
+  width: 130px;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 </style>

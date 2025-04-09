@@ -41,17 +41,6 @@
   margin-left: 30px;
 }
 
-.circle {
-  width: 116px;
-  height: 113px;
-  background-color: #eee;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
 .circle-card {
   width: 250px;
   border-radius: 16px;
@@ -66,23 +55,6 @@
   margin-bottom: 10px;
 }
 
-.circle-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.income-text,
-.spend-text {
-  position: absolute;
-  top: 5%;
-  transform: translateY(-50%);
-  font-size: 13px;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
 .income-text {
   font-family: Bold;
   left: -15px;
@@ -92,32 +64,6 @@
 .spend-text {
   right: -14px;
   color: #ff4c4c;
-}
-
-.income-text span,
-.spend-text span {
-  font-size: 14px;
-}
-
-.donut-chart {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: conic-gradient(#4169e1 70%, #ff7f50 30%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.donut-chart::before {
-  content: '';
-  width: 90px;
-  height: 90px;
-  background-color: #f8f8f8;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
 }
 
 .center-text {

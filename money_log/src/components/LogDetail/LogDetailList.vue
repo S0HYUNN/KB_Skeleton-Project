@@ -1,27 +1,30 @@
 <template>
   <div class="log-list">
-    <!-- 항목 목록 영역 -->
     <div class="log-group">
-      <!-- 필터 영역 (고정) -->
+      <!-- 필터 영역 -->
       <div class="filter-area">
-        <LogDetailFilter></LogDetailFilter>
+        <LogDetailFilter @filterUpdated="applyFilter" />
       </div>
       <hr />
 
       <!-- 항목 목록 -->
       <div class="log-items">
         <div v-if="isLoading">로딩 중...</div>
-        <div v-if="!isLoading && moneyList.length === 0">항목 없음</div>
+        <div v-if="!isLoading && filteredMoneyList.length === 0">항목 없음</div>
 
         <!-- 항목들을 나열 -->
-        <LogDetailItem v-for="log in moneyList" :key="log.id" :log="log" />
+        <LogDetailItem
+          v-for="log in filteredMoneyList"
+          :key="log.id"
+          :log="log"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useMoneyStore } from '@/stores/money.js';
 import LogDetailItem from './LogDetailItem.vue';
 import LogDetailFilter from './LogDetailFilter.vue';
@@ -30,8 +33,62 @@ const store = useMoneyStore();
 const isLoading = computed(() => store.isLoading);
 const moneyList = computed(() => store.sortedByDate);
 
-onMounted(() => {
-  store.fetchMoneyLogs();
+const filterCriteria = ref({
+  category: 'all',
+  period: 'allmonth',
+  searchQuery: '',
+  sortOrder: 'desc',
+});
+
+// 필터 조건에 맞게 돈 목록을 필터링 및 정렬하는 computed 속성
+const filteredMoneyList = computed(() => {
+  let filtered = [...moneyList.value]; // store.moneyList를 복사하여 사용
+
+  // 카테고리 필터링
+  if (filterCriteria.value.category !== 'all') {
+    filtered = filtered.filter(
+      (item) => item.category === filterCriteria.value.category
+    );
+  }
+
+  // 기간 필터링 (선택한 월에 맞춰 필터링)
+  if (
+    filterCriteria.value.period !== 'setting' &&
+    filterCriteria.value.period !== 'allmonth'
+  ) {
+    filtered = filtered.filter((item) => {
+      const itemDate = new Date(item.date);
+      const selectedMonth = new Date(`${filterCriteria.value.period}-01`);
+      return itemDate.getMonth() === selectedMonth.getMonth();
+    });
+  }
+  // 검색 필터링 (제목에 검색어가 포함된 항목만 필터링)
+  if (filterCriteria.value.searchQuery) {
+    filtered = filtered.filter((item) =>
+      item.content
+        .toLowerCase()
+        .includes(filterCriteria.value.searchQuery.toLowerCase())
+    );
+  }
+
+  // 정렬
+  if (filterCriteria.value.sortOrder === 'asc') {
+    filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+  } else {
+    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+
+  return filtered;
+});
+
+// 필터 업데이트 처리
+const applyFilter = (newFilter) => {
+  filterCriteria.value = newFilter;
+};
+
+onMounted(async () => {
+  await store.fetchMoneyLogs();
+  console.log('Money logs fetched:', store.moneyList);
 });
 </script>
 

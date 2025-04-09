@@ -1,11 +1,12 @@
+<!-- LogDetailItem.vue -->
 <template>
   <div class="log-item" :class="log.category">
     <div class="log-header">
       <div class="log-date-category">
         <!-- 날짜 -->
         <span class="log-date">{{ formattedDate }}</span>
-        <!-- 카테고리 -->
-        <span class="log-category">{{ formattedCategory }}</span>
+        <!-- 콘텐츠 (content) -->
+        <span class="log-content">{{ formattedContent }}</span>
       </div>
       <!-- 금액을 오른쪽에 배치 -->
       <span :class="log.category" class="log-amount">{{
@@ -62,7 +63,8 @@ const formattedTime = computed(() => {
 const formattedCategory = computed(() =>
   props.log.category === 'income' ? '수입' : '지출'
 );
-
+// 콘텐츠 (content)
+const formattedContent = computed(() => props.log.content);
 // 잔액 포맷팅
 const formattedBalance = computed(() => {
   return new Intl.NumberFormat('ko-KR').format(props.balance);
@@ -98,7 +100,7 @@ const formattedBalance = computed(() => {
   color: #2e7d32;
 }
 
-.log-category {
+.log-content {
   margin-left: 0.5rem;
   font-size: 14px;
   font-weight: bold;

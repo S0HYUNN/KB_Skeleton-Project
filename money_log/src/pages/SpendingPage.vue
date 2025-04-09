@@ -3,7 +3,7 @@
     <h1>Spending Log</h1>
     <div class="log-card">
       <div class="chart-wrapper">
-        <div class="circle-header">이번 달 요약</div>
+        <div class="circle-header">{{ months }}월달 요약</div>
 
         <!-- 도넛 차트와 중앙 텍스트 -->
         <div class="chart-center-box">
@@ -49,6 +49,7 @@ const store = useMoneyStore();
 const income = ref(0);
 const expense = ref(0);
 const net = ref(0);
+const months = ref(0);
 
 onMounted(async () => {
   await store.fetchMoneyLogs(); //데이터 불러오기
@@ -61,6 +62,8 @@ onMounted(async () => {
   income.value = summary.income;
   expense.value = summary.expense;
   net.value = summary.net;
+
+  months.value = month;
 });
 
 const chartData = computed(() => ({

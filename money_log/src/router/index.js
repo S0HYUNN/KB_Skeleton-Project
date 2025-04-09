@@ -16,6 +16,11 @@ const router = createRouter({
       component: () => import('../pages/StartPage.vue'),
     },
     {
+      path: '/LoginPage',
+      name: 'LoginPage',
+      component: () => import('../pages/LoginPage.vue'),
+    },
+    {
       path: '/Money',
       name: 'money',
       component: () => import('../pages/MoneyPage.vue'),

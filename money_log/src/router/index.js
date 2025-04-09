@@ -22,6 +22,11 @@ const router = createRouter({
       component: () => import('../pages/LoginPage.vue'),
     },
     {
+      path: '/UserProfileEdit',
+      name: 'UserProfileEdit',
+      component: () => import('../pages/UserProfileEdit.vue'),
+    },
+    {
       path: '/Money',
       name: 'money',
       component: () => import('../pages/MoneyPage.vue'),

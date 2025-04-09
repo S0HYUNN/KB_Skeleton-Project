@@ -2,8 +2,7 @@
 
 /* 아이폰 16 Pro 기준 - 메인 앱 화면 */
 #app {
-  width: 100%;
-  max-width: 402px;
+  width: 402px !important;
   height: 874px;
   background-color: #f1f1e8;
   border-radius: 36px;

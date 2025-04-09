@@ -1,4 +1,7 @@
 {
+  "user": {
+    "nickname": "KBITsYOURLIFE"
+  },
   "money": [
     {
       "id": 1,
@@ -90,9 +93,9 @@
   ],
   "summary": {
     "monthly": {
-      "income": 3000,
-      "expense": 150,
-      "net": 2850
+      "income": 1250000,
+      "expense": 382000,
+      "net": 868000
     },
     "yearly": {
       "income": 36000,

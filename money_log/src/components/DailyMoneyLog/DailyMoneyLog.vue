@@ -21,7 +21,9 @@ const handleStartClick = () => {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   padding: 16px 20px;
   text-align: center;
-  width: 330px;
+  width: 362px;
+  max-width: 362px;
+  min-width: 362px;
   height: 130px;
   margin: 32px auto 16px auto;
   box-sizing: border-box;

@@ -1,5 +1,5 @@
 <script setup>
-import DailyMoneyLog from "@/components/DailyMoneyLog";
+import DailyMoneyLog from '@/components/DailyMoneyLog';
 </script>
 
 <template>

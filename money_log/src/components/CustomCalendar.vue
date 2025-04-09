@@ -1,5 +1,11 @@
 <template>
   <div class="calendar-wrapper">
+<<<<<<< HEAD
+=======
+    <div class="calendar-icon" @click="goToMoneyPage">
+      <img src="@/assets/images/Calendar.svg" alt="Calendar Icon" />
+    </div>
+>>>>>>> main
     <VCalendar
       v-model="currentDate"
       is-expanded
@@ -18,8 +24,16 @@
 
 <script setup>
 import { ref } from "vue";
+<<<<<<< HEAD
 import "v-calendar/style.css";
 
+=======
+import { useRouter } from "vue-router";
+import "v-calendar/style.css";
+
+const router = useRouter();
+
+>>>>>>> main
 const currentDate = ref(new Date());
 
 const calendarAttrs = ref([
@@ -42,10 +56,21 @@ const calendarAttrs = ref([
     },
   },
 ]);
+<<<<<<< HEAD
+=======
+
+const goToMoneyPage = () => {
+  router.push("/money");
+};
+>>>>>>> main
 </script>
 
 <style scoped>
 .calendar-wrapper {
+<<<<<<< HEAD
+=======
+  position: relative;
+>>>>>>> main
   background-color: white;
   border-radius: 30px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
@@ -59,6 +84,30 @@ const calendarAttrs = ref([
   margin-top: -8px;
 }
 
+<<<<<<< HEAD
+=======
+.calendar-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.calendar-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+>>>>>>> main
 .v-calendar-core {
   width: 100%;
   height: 100%;
@@ -113,7 +162,10 @@ const calendarAttrs = ref([
   row-gap: 10px !important;
   column-gap: 8px !important;
   padding: 0 6px !important;
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
   margin-top: 12px;
 }
 

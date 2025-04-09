@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="summary-wrapper" v-if="summary">
     <div class="summary-title">이번 달 누적 수입/지출 요약</div>
 
@@ -9,14 +10,41 @@
 
     <div class="total">
       TOTAL : {{ summary.net >= 0 ? "+" : "" }}{{ formatNumber(summary.net) }}
+=======
+  <div class="summary-container">
+    <div class="summary-icon" @click="goToMoneyPage">
+      <img :src="spendingIcon" alt="Spending Icon" />
+    </div>
+    <div class="summary-wrapper" v-if="summary">
+      <div class="summary-title">이번 달 누적 수입/지출 요약</div>
+      <div class="amount-row">
+        <span class="income">💰 +{{ formatNumber(summary.income) }} 원</span>
+        <span class="spending">🧾 -{{ formatNumber(summary.expense) }} 원</span>
+      </div>
+      <div class="total">
+        TOTAL : {{ summary.net >= 0 ? "+" : "" }}{{ formatNumber(summary.net) }}
+      </div>
+>>>>>>> main
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
+<<<<<<< HEAD
 
 const summary = ref(null);
+=======
+import { useRouter } from "vue-router";
+import spendingIcon from "@/assets/images/Spending.svg";
+
+const summary = ref(null);
+const router = useRouter();
+
+const goToMoneyPage = () => {
+  router.push("/Spending");
+};
+>>>>>>> main
 
 onMounted(async () => {
   try {
@@ -35,13 +63,25 @@ function formatNumber(num) {
 </script>
 
 <style scoped>
+<<<<<<< HEAD
+=======
+.summary-container {
+  position: relative;
+  width: 100%;
+  max-width: 362px;
+}
+
+>>>>>>> main
 .summary-wrapper {
   background-color: white;
   border-radius: 30px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   padding: 16px;
+<<<<<<< HEAD
   width: 100%;
   max-width: 362px;
+=======
+>>>>>>> main
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -49,6 +89,31 @@ function formatNumber(num) {
   align-items: center;
 }
 
+<<<<<<< HEAD
+=======
+.summary-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.summary-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ✅ 텍스트: 제목 */
+>>>>>>> main
 .summary-title {
   font-size: 14px;
   font-weight: 600;
@@ -56,6 +121,10 @@ function formatNumber(num) {
   text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+/* ✅ 수입/지출 행 */
+>>>>>>> main
 .amount-row {
   display: flex;
   justify-content: center;

@@ -9,12 +9,18 @@
 </template>
 
 <script setup>
+const emit = defineEmits(["start"]);
+
 const handleStartClick = () => {
+<<<<<<< HEAD
 <<<<<<< HEAD
   console.log("🟢 START 버튼 클릭됨");
 =======
   console.log("START 버튼 클릭됨");
 >>>>>>> 001bf285452d56c8d2099888c5bda3018328b3ad
+=======
+  emit("start");
+>>>>>>> main
 };
 </script>
 
@@ -33,7 +39,9 @@ const handleStartClick = () => {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   padding: 16px 20px;
   text-align: center;
-  width: 330px;
+  width: 362px;
+  max-width: 362px;
+  min-width: 362px;
   height: 130px;
   margin: 32px auto 16px auto;
 >>>>>>> 001bf285452d56c8d2099888c5bda3018328b3ad
@@ -75,7 +83,11 @@ const handleStartClick = () => {
   background-color: #094821;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 </style>
 =======
 </style>
 >>>>>>> cc8110b (Fix: 에러 해결)
+=======
+</style>
+>>>>>>> main

@@ -42,6 +42,7 @@ export default defineComponent({
 <style scoped>
 .start-page {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:money_log/src/views/StartPage.vue
   display: flex;
   justify-content: center;
@@ -58,6 +59,8 @@ export default defineComponent({
   font-family: 'Inter', sans-serif;
 >>>>>>> a829d76 (머지 에러 변경):money_log/src/pages/StartPage.vue
 =======
+=======
+>>>>>>> main
   max-width: 402px;
   margin: 0;
   padding: 0;
@@ -67,7 +70,10 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
 >>>>>>> cc8110b (Fix: 에러 해결)
+=======
+>>>>>>> main
 }
 
 .content-container {
@@ -82,6 +88,10 @@ export default defineComponent({
 }
 
 .icon-container {
+<<<<<<< HEAD
+=======
+  margin-top: 8px;
+>>>>>>> main
   margin-bottom: -50px;
 }
 
@@ -102,7 +112,11 @@ export default defineComponent({
 }
 
 .description {
+<<<<<<< HEAD
   font-size: 12px;
+=======
+  font-size: 13px;
+>>>>>>> main
   font-weight: 500;
   color: #000000;
   margin-bottom: 15px;

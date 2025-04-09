@@ -28,6 +28,33 @@
   </div>
 </template>
 
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import { Doughnut } from 'vue-chartjs';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useMoneyStore } from '../stores/money';
+
+ChartJS.register(ArcElement);
+
+const store = useMoneyStore();
+
+const income = ref(0);
+const expense = ref(0);
+const net = ref(0);
+
+onMounted(async () => {
+  await store.fetchMoneyLogs(); //데이터 불러오기
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1; //현재 년도와 월 불러오기
+
+  const summary = store.getMonthlySummary(year, month);
+  income.value = summary.income;
+  expense.value = summary.expense;
+  net.value = summary.net;
+});
+</script>
 <style scoped>
 .main-layout {
   padding: 20px;

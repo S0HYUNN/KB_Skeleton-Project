@@ -1,7 +1,18 @@
 {
-  "user": {
-    "nickname": "KBITsYOURLIFE"
-  },
+  "user": [
+    {
+      "nickname": "dfsfd",
+      "id": "1"
+    },
+    {
+      "nickname": "dfsfd",
+      "id": "2"
+    },
+    {
+      "nickname": "dfsfd",
+      "id": "3"
+    }
+  ],
   "money": [
     {
       "id": 1,
@@ -154,4 +165,4 @@
       "net": 34200
     }
   }
-
+}

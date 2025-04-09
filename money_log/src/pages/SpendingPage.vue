@@ -1,62 +1,116 @@
 <template>
-  <div class="spend-page">
-    <h1>Spending Log</h1>
-    <div class="circle-card log-card">
-      <div class="circle-header">4월 지출</div>
-      <div class="circle-wrapper">
-        <div class="income-text">총 수입<br /><span>+1,250,000</span></div>
+  <div class="main-layout">
+    <h1 class="main-title">Spending Log</h1>
+    <div class="log-card">
+      <div class="chart-wrapper">
+        <div class="circle-header">{{ months }}월달 요약</div>
 
-        <div class="donut-chart">
-          <div class="center-text">순수익<br />+9825</div>
+        <!-- 도넛 차트와 중앙 텍스트 -->
+        <div class="chart-center-box">
+          <DoughnutChart :data="chartData" :options="chartOptions" />
+          <div class="center-text">
+            순이익<br />
+            <strong>{{ net.toLocaleString() }}원</strong>
+          </div>
         </div>
-        <div class="spend-text">총 지출<br /><span>-382,000</span></div>
+
+        <!-- 하단 텍스트 -->
+        <div class="bottom-text">
+          <div class="income">총 수입: {{ income.toLocaleString() }}원</div>
+          <div class="expense">총 지출: {{ expense.toLocaleString() }}원</div>
+        </div>
       </div>
     </div>
-
     <div class="log-card">
       <div class="spend-title">
-        최근 지출 Log
-        <div class="first">20일 옷쇼핑 <span class="expend">-60,000</span></div>
-        <div class="second">
-          20일 옷쇼핑 <span class="expend">-60,000</span>
+        <div class="recent-logs-card">
+          <h2 class="title">최근 지출 Log</h2>
+          <ul>
+            <li v-for="log in recentLogs" :key="log.id" class="log-item">
+              <span class="date">{{ new Date(log.date).getDate() }}일</span>
+              <span class="content">{{ log.content }}</span>
+              <span
+                class="amount"
+                :class="log.category === 'income' ? 'income' : 'expense'"
+              >
+                {{ log.category === 'income' ? '+' : '-' }}
+                {{ log.amount.toLocaleString() }}
+              </span>
+            </li>
+          </ul>
         </div>
-        <div class="thrid">20일 옷쇼핑 <span class="income">-60,000</span></div>
       </div>
     </div>
   </div>
 </template>
 
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import { Doughnut } from 'vue-chartjs';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useMoneyStore } from '../stores/money';
+import { storeToRefs } from 'pinia';
+
+ChartJS.register(ArcElement);
+
+const store = useMoneyStore();
+const { sortedByDate } = storeToRefs(store); //날짜별로 정렬
+const recentLogs = computed(() => sortedByDate.value.slice(0, 3)); //최근 지출 3개 선정
+
+const income = ref(0);
+const expense = ref(0);
+const net = ref(0);
+const months = ref(0);
+
+onMounted(async () => {
+  await store.fetchMoneyLogs(); //데이터 불러오기
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1; //현재 년도와 월 불러오기
+
+  const summary = store.getMonthlySummary(year, month);
+  income.value = summary.income;
+  expense.value = summary.expense;
+  net.value = summary.net;
+
+  months.value = month;
+});
+
+const chartData = computed(() => ({
+  datasets: [
+    {
+      label: '이번 달 요약',
+      data: [income.value, expense.value],
+      backgroundColor: ['#4D59FF', '#FF8548'],
+      borderColor: ['#4D59FF', '#FF8548'],
+      borderWidth: 1,
+    },
+  ],
+}));
+
+// 차트 옵션
+const chartOptions = {
+  responsive: true,
+  cutout: '65%',
+};
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+const DoughnutChart = Doughnut;
+</script>
 <style scoped>
-.spend-page {
+.main-layout {
   padding: 20px;
   background-color: #f1f1e8;
   width: 18rem;
 }
 
-.spend-page h1 {
-  margin-bottom: 20px;
-  color: #2e7d32;
-  align-items: center;
-  justify-content: center;
-  margin-left: 30px;
-}
-
-.circle {
-  width: 116px;
-  height: 113px;
-  background-color: #eee;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
-.circle-card {
-  width: 250px;
-  border-radius: 16px;
-  padding: 16px;
+.main-title {
   text-align: center;
+  margin-bottom: 10px;
+  color: #2e7d32;
+  font-weight: 600;
 }
 
 .circle-header {
@@ -64,68 +118,6 @@
   font-weight: bold;
   color: #228b22; /* 진한 초록 */
   margin-bottom: 10px;
-}
-
-.circle-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.income-text,
-.spend-text {
-  position: absolute;
-  top: 5%;
-  transform: translateY(-50%);
-  font-size: 13px;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.income-text {
-  font-family: Bold;
-  left: -15px;
-  color: #4169e1; /* 로얄 블루 */
-}
-
-.spend-text {
-  right: -14px;
-  color: #ff4c4c;
-}
-
-.income-text span,
-.spend-text span {
-  font-size: 14px;
-}
-
-.donut-chart {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: conic-gradient(#4169e1 70%, #ff7f50 30%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.donut-chart::before {
-  content: '';
-  width: 90px;
-  height: 90px;
-  background-color: #f8f8f8;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-}
-
-.center-text {
-  position: relative;
-  z-index: 2;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1.4;
 }
 
 .log-card {
@@ -141,23 +133,110 @@
   justify-content: center;
 }
 
-.spend-title {
-  color: #2e7d32;
-}
-
 .spend-title > div {
   background-color: #f5f5f5;
-  border-top: solid 1px black;
   padding: 10px;
 }
 .first {
   margin-top: 10px;
 }
 
-.expend {
+.expense {
   color: #ff5748;
 }
 .income {
   color: #5864ff;
+}
+
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto;
+  gap: 1.2rem;
+}
+
+.chart-center-box {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  aspect-ratio: 1 / 1;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #111;
+}
+
+/* -----최근 지출 log 스타일 시작 부분*/
+.recent-logs-card {
+  background-color: #ffffff;
+  padding: 12px;
+  width: 100%;
+  font-family: 'Pretendard', sans-serif;
+  background-color: #f1f1e8;
+}
+
+.spend-title > div {
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2e7d32;
+  margin-bottom: 10px;
+  text-align: left;
+  border-bottom: 1px solid #dedcdc;
+  padding-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.log-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dedcdc;
+}
+
+.log-item:last-child {
+  border-bottom: none; /* 마지막 줄에는 선 없게 */
+}
+
+.date {
+  color: #17893f;
+  font-weight: 600;
+  width: 36px;
+}
+
+.content {
+  flex: 1;
+  color: #2e7d32;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+.amount {
+  font-weight: 500;
+  min-width: 75px;
+  text-align: right;
+  font-weight: 600;
 }
 </style>

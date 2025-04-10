@@ -9,8 +9,8 @@
       "id": "2"
     },
     {
-      "id": "47e36409-6ed6-459a-bb85-53c593d41dc2",
-      "nickname": "ㅇㄴㄹㄴㅇㄹ"
+      "nickname": "dfsfd",
+      "id": "3"
     },
     {
       "id": "08042a5a-31d8-424d-96b5-2d012da71c98",
@@ -23,79 +23,76 @@
     {
       "id": "c675",
       "nickname": "둥"
+    },
+    {
+      "id": "6f74d111-0c4b-4841-9ddf-5adf677f1c3f",
+      "nickname": "hi"
+    }
   ],
   "money": [
     {
       "id": "1",
-      "date": "2025-04-01T08:00:00",
+      "date": "2025-04-01T17:33:00",
       "category": "income",
       "content": "월급",
-      "amount": 2500000
+      "amount": 20
     },
     {
       "id": "2",
       "date": "2025-04-01T12:32:00",
       "category": "expense",
       "content": "식비",
-      "amount": 12000
+      "amount": 12
     },
     {
       "id": "3",
       "date": "2025-04-02T11:11:23",
       "category": "expense",
       "content": "교통비",
-      "amount": 1400
+      "amount": 1
     },
     {
       "id": "4",
       "date": "2025-04-03T22:27:27",
       "category": "expense",
       "content": "유흥",
-      "amount": 43000
-    },
-    {
-      "id": "5",
-      "date": "2025-04-03T23:23:23",
-      "category": "income",
-      "content": "용돈",
-      "amount": 50000,
-      "memo": "부모님 용돈"
+      "amount": 43
     },
     {
       "id": "6",
-      "date": "2025-04-04T10:00:00",
+      "date": "2025-03-04T10:00:00",
       "category": "expense",
       "content": "공과금",
-      "amount": 72000
+      "amount": 7
     },
     {
       "date": "2025-04-01T14:34:00",
       "category": "income",
       "content": "주움",
-      "amount": 5000,
+      "amount": 5,
       "id": "7"
     },
     {
-      "date": "2025-04-02T14:35:00",
-      "category": "income",
-      "content": "용돈",
-      "amount": 50000,
-      "id": "8"
-    },
-    {
-      "date": "2025-04-01T15:51:00",
+      "date": "2025-03-01T15:51:00",
       "category": "expense",
       "content": "돌려줌",
-      "amount": 5000,
+      "amount": 5,
       "id": "9"
     },
     {
       "id": "3O1hg",
-      "date": "2025-04-01T10:36:00",
+      "date": "2025-03-01T10:36:00",
       "category": "expense",
       "content": "아침",
-      "amount": 12000
+      "amount": 10
     },
+    {
+      "date": "2025-04-09T15:47:00",
+      "category": "expense",
+      "content": "쇼핑",
+      "amount": 50000,
+      "id": "bWlJNAd"
+    }
   ],
   "incomeCategory": [
     {
@@ -171,13 +168,6 @@
       "amount": 4000
     },
     {
-      "date": "2025-04-23T00:00:00",
-      "content": "등록금",
-      "category": "expense",
-      "amount": 5000000,
-      "id": "doxugt6"
-    },
-    {
       "date": "2025-04-25T00:00:00",
       "content": "보험",
       "category": "expense",
@@ -192,18 +182,10 @@
       "id": "12"
     },
     {
-      "date": "2025-04-20",
-      "content": "넷플릭스",
-      "category": "expense",
-      "amount": 3400,
-      "id": "bcnDyV4"
-    },
-    {
       "date": "2025-03-11",
       "content": "넷플",
       "category": "expense",
-      "content": "보험료",
-      "amount": 55000
+      "amount": 4500,
       "id": "ag0E9bk"
     },
     {
@@ -212,6 +194,13 @@
       "category": "expense",
       "amount": 200000,
       "id": "IORwvVe"
+    },
+    {
+      "date": "2025-04-15",
+      "content": "고정",
+      "category": "expense",
+      "amount": 12,
+      "id": "lIEWm3O"
     }
   ],
   "summary": {

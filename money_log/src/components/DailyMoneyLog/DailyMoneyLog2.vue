@@ -26,7 +26,7 @@ const handleStartClick = () => {
   text-align: center;
   width: 354px;
   height: 128px;
-  margin: 32px auto 16px auto;
+  margin: 16px auto 16px auto;
   box-sizing: border-box;
 }
 

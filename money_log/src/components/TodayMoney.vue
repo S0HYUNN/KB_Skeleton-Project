@@ -41,6 +41,7 @@ const closeModal = () => {
   font-family: 'Font Awesome 5 Free' !important;
   font-weight: 900 !important;
 }
+
 .date-selector {
   display: flex;
   align-items: center;

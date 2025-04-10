@@ -224,7 +224,7 @@ const closeFixedMoneyModal = () => {
 .sort-tabs {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 16px;
 }
 
@@ -249,7 +249,7 @@ const closeFixedMoneyModal = () => {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   padding: 12px 20px;
   margin-bottom: 24px;
-  max-height: 500px;
+  max-height: 300px;
   overflow: hidden;
   display: flex;
   flex-direction: column;

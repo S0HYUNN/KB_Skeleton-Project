@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useDateStore } from '@/stores/date';
 import axios from 'axios';
 
@@ -9,6 +9,8 @@ export const useMoneyStore = defineStore('money', () => {
   const error = ref(null);
   const periodicExpenseList = ref([]);
   const dateStore = useDateStore();
+  const incomeCategory = ref([]);
+  const expenseCategory = ref([]);
 
   // error 초기화 함수
   const resetError = () => {
@@ -30,18 +32,18 @@ export const useMoneyStore = defineStore('money', () => {
   };
 
   const fetchPeriodicExpenses = async () => {
-    const currentYear = dateStore.currentDate.getFullYear(); // 현재 연도
+    const currentYear = dateStore.currentDate.getFullYear();
     const currentMonth = String(dateStore.currentDate.getMonth() + 1).padStart(
       2,
       '0'
-    ); // 현재 월
+    );
     try {
       periodicExpenseList.value = [];
       const res = await axios.get('/api/periodicExpense', {
-        params: { year: currentYear, month: currentMonth }, // 요청 시 연도, 월 파라미터 전달
+        params: { year: currentYear, month: currentMonth },
       });
       console.log('받은 고정 지출 데이터:', res.data);
-      periodicExpenseList.value = res.data; // 해당 월의 데이터로 업데이트
+      periodicExpenseList.value = res.data;
     } catch (err) {
       console.error('❌ 고정 지출 데이터 불러오기 실패:', err);
     }
@@ -82,7 +84,7 @@ export const useMoneyStore = defineStore('money', () => {
       error.value = '수정에 실패했어요.';
     }
   };
-  // 고정 지출 추가 함수
+
   const addPeriodicExpense = async (newItem) => {
     try {
       const res = await axios.post('/api/periodicExpense', newItem);
@@ -91,7 +93,6 @@ export const useMoneyStore = defineStore('money', () => {
       console.error('❌ 고정 지출 추가 실패:', err);
     }
   };
-  // 고정 지출 삭제 함수
   const deletePeriodicExpense = async (id) => {
     try {
       await axios.delete(`/api/periodicExpense/${id}`);
@@ -102,6 +103,22 @@ export const useMoneyStore = defineStore('money', () => {
       console.error('❌ 고정 지출 삭제 실패:', err);
     }
   };
+
+  const fetchCategories = async () => {
+    try {
+      const incomeRes = await axios.get('/api/incomeCategory');
+      const expenseRes = await axios.get('/api/expenseCategory');
+
+      incomeCategory.value = incomeRes.data;
+      expenseCategory.value = expenseRes.data;
+
+      console.log('수입 카테고리:', incomeCategory.value);
+      console.log('지출 카테고리:', expenseCategory.value);
+    } catch (err) {
+      console.error('카테고리 로딩 실패:', err);
+    }
+  };
+  fetchCategories;
 
   // 월별 항목 조회
   const getLogsByMonth = (year, month) => {
@@ -158,6 +175,11 @@ export const useMoneyStore = defineStore('money', () => {
     );
   });
 
+  onMounted(async () => {
+    // 카테고리 데이터를 fetch
+    await moneyStore.fetchCategories();
+  });
+
   return {
     moneyList,
     isLoading,
@@ -175,5 +197,7 @@ export const useMoneyStore = defineStore('money', () => {
     periodicExpenseList,
     addPeriodicExpense,
     deletePeriodicExpense,
+    incomeCategory,
+    expenseCategory,
   };
 });

@@ -1,12 +1,14 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useMoneyStore } from '../stores/money';
+import { useDateStore } from '@/stores/date';
 import '../assets/modal.css';
 
 import VectorUp from '@/assets/images/Vector_up.png';
 import VectorDown from '@/assets/images/Vector_down.png';
 
 const moneyStore = useMoneyStore();
+const dateStore = useDateStore();
 
 const editingItem = ref(null);
 const isEditModalOpen = ref(false);
@@ -66,27 +68,38 @@ onMounted(async () => {
 });
 
 const filteredLogs = computed(() => {
-  const filtered = moneyStore.moneyList.filter((item) =>
-    item.date.includes('2025-04-01')
-  );
+  //새로 추가한 코드
+  const selectedDate = dateStore.currentDate; //현재 선택된 날짜 값
+  const selectedYear = selectedDate.getFullYear();
+  const selectedMonth = selectedDate.getMonth() + 1;
+  const selectedDay = selectedDate.getDate();
 
-  const sorted = [...filtered].sort((a, b) => {
-    if (sortType.value === 'amount') {
-      return sortOrder.value === 'asc'
-        ? a.amount - b.amount
-        : b.amount - a.amount;
-    } else if (sortType.value === 'category') {
-      return sortOrder.value === 'asc'
-        ? a.category.localeCompare(b.category)
-        : b.category.localeCompare(a.category);
-    } else {
-      return sortOrder.value === 'asc'
-        ? new Date(a.date) - new Date(b.date)
-        : new Date(b.date) - new Date(a.date);
-    }
-  });
-
-  return sorted;
+  return moneyStore.moneyList
+    .filter((item) => {
+      const itemDate = new Date(item.date);
+      return (
+        itemDate.getFullYear() === selectedYear &&
+        itemDate.getMonth() + 1 === selectedMonth &&
+        itemDate.getDate() === selectedDay
+      ); // 년,월,일이 같은것만 필터
+    })
+    .sort((a, b) => {
+      if (sortType.value === 'amount') {
+        //금액 기준으로 정렬
+        return sortOrder.value === 'asc'
+          ? a.amount - b.amount
+          : b.amount - a.amount;
+      } else if (sortType.value === 'category') {
+        //수입/지출 기준으로 정렬
+        return sortOrder.value === 'asc'
+          ? a.category.localeCompare(b.category)
+          : b.category.localeCompare(a.category);
+      } else {
+        return sortOrder.value === 'asc' //그 외는 시간 기준 정렬
+          ? new Date(a.date) - new Date(b.date)
+          : new Date(b.date) - new Date(a.date);
+      }
+    });
 });
 
 const formatTime = (dateString) => {

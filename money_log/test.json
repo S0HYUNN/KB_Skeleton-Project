@@ -65,20 +65,6 @@
       "category": "expense",
       "content": "쇼핑",
       "amount": 34000
-    },
-    {
-      "id": "37a7",
-      "date": "2025-04-31T09:54:00",
-      "category": "expense",
-      "content": "테스트",
-      "amount": 20000
-    },
-    {
-      "id": "7b54",
-      "date": "2025-04-30T09:54:00",
-      "category": "income",
-      "content": "테스트",
-      "amount": 20000
     }
   ],
   "periodicExpense": [
@@ -88,20 +74,6 @@
       "category": "expense",
       "content": "공과금",
       "amount": 30000
-    },
-    {
-      "id": "f8fc",
-      "date": "2025-04-30",
-      "content": "테스트",
-      "category": "expense",
-      "amount": 20000
-    },
-    {
-      "id": "53b3",
-      "date": "2025-04-29",
-      "content": "테스트",
-      "category": "expense",
-      "amount": 20000
     }
   ],
   "summary": {

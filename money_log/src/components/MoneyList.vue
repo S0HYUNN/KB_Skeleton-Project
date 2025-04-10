@@ -169,7 +169,6 @@ const closeFixedMoneyModal = () => {
           <div class="row bottom-row">
             <span class="time">{{ formatTime(item.date) }}</span>
             <div class="info-right">
-              <span class="entry-id">ID: {{ item.id }}</span>
               <div class="icon-inline">
                 <i
                   class="fas fa-pen icon-btn edit-icon"
@@ -282,6 +281,7 @@ const closeFixedMoneyModal = () => {
 
 .log-entry {
   padding: 10px 8px;
+  margin-right: 10px;
 }
 
 .row {
@@ -301,14 +301,15 @@ const closeFixedMoneyModal = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 11px;
+  font-size: 10px;
   color: #6a6a6a;
   margin-top: 4px;
+  margin-left: 2px;
 }
 
 .amount {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .amount.income {
@@ -394,8 +395,8 @@ const closeFixedMoneyModal = () => {
 
 .edit-icon {
   position: absolute;
-  top: 1px;
-  right: -4px;
+  top: 12px;
+  right: -10px;
   color: #0b570e;
   cursor: pointer;
   z-index: 1;

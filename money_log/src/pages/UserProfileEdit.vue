@@ -67,7 +67,7 @@ export default defineComponent({
   margin: 0;
   padding: 0;
   background-color: #f1f1e8;
-  min-height: 100vh;
+  min-height: 100%;
   font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;

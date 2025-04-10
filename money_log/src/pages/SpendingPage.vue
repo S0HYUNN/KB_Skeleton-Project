@@ -204,10 +204,12 @@ const goDetail = () => {
   width: 100%;
   max-width: 350px;
   text-align: center;
+  margin-top: 15px;
   margin-bottom: 24px;
   flex: 1;
   justify-content: center;
   position: relative;
+  margin-left: 8px;
 }
 
 .spend-title > div {
@@ -364,5 +366,7 @@ ul {
   align-items: center;
   justify-content: center;
   gap: 30px;
+  color: #111;
+  font-size: large;
 }
 </style>

@@ -3,6 +3,10 @@
     {
       "nickname": "nick",
       "id": "1"
+    },
+    {
+      "nickname": "name",
+      "id": "2"
     }
   ],
   "money": [
@@ -99,5 +103,17 @@
       "category": "expense",
       "amount": 20000
     }
-  ]
+  ],
+  "summary": {
+    "monthly": {
+      "income": 1250000,
+      "expense": 382000,
+      "net": 868000
+    },
+    "yearly": {
+      "income": 36000,
+      "expense": 1800,
+      "net": 34200
+    }
+  }
 }

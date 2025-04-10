@@ -1,6 +1,11 @@
 <template>
   <div class="main-layout">
-    <BaseHeader />
+    <BaseHeader
+      :showBack="true"
+      :showHome="false"
+      :showSettings="true"
+      @openSettings="openSettings"
+    />
     <h1 class="main-title">Spending Log</h1>
     <div class="log-card">
       <div class="chart-wrapper">
@@ -41,7 +46,7 @@
                 class="amount"
                 :class="log.category === 'income' ? 'income' : 'expense'"
               >
-                {{ log.category === 'income' ? '+' : '-' }}
+                {{ log.category === "income" ? "+" : "-" }}
                 {{ log.amount.toLocaleString() }}
               </span>
             </li>
@@ -49,17 +54,19 @@
         </div>
       </div>
     </div>
+    <SettingPanel v-if="isSettingsOpen" @close="isSettingsOpen = false" />
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import { Doughnut } from 'vue-chartjs';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { useMoneyStore } from '../stores/money';
-import { storeToRefs } from 'pinia';
-import BaseHeader from '@/components/BaseHeader.vue';
-import { useRouter } from 'vue-router';
+import { ref, computed, onMounted } from "vue";
+import { Doughnut } from "vue-chartjs";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { useMoneyStore } from "../stores/money";
+import { storeToRefs } from "pinia";
+import BaseHeader from "@/components/BaseHeader.vue";
+import SettingPanel from "@/components/SettingPanel.vue";
+import { useRouter } from "vue-router";
 
 ChartJS.register(ArcElement);
 
@@ -71,6 +78,9 @@ const income = ref(0);
 const expense = ref(0);
 const net = ref(0);
 const months = ref(0);
+
+const isSettingsOpen = ref(false);
+const openSettings = () => (isSettingsOpen.value = true);
 
 onMounted(async () => {
   await store.fetchMoneyLogs(); //데이터 불러오기
@@ -90,10 +100,10 @@ onMounted(async () => {
 const chartData = computed(() => ({
   datasets: [
     {
-      label: '이번 달 요약',
+      label: "이번 달 요약",
       data: [income.value, expense.value],
-      backgroundColor: ['#4D59FF', '#FF8548'],
-      borderColor: ['#4D59FF', '#FF8548'],
+      backgroundColor: ["#4D59FF", "#FF8548"],
+      borderColor: ["#4D59FF", "#FF8548"],
       borderWidth: 1,
     },
   ],
@@ -102,7 +112,7 @@ const chartData = computed(() => ({
 // 차트 옵션
 const chartOptions = {
   responsive: true,
-  cutout: '65%',
+  cutout: "65%",
 };
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -112,14 +122,18 @@ const DoughnutChart = Doughnut;
 const router = useRouter();
 
 const goDetail = () => {
-  router.push('/LogDetail');
+  router.push("/LogDetail");
 };
 </script>
+
 <style scoped>
 .main-layout {
   padding: 20px;
   background-color: #f1f1e8;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
 }
 
 .main-title {
@@ -132,7 +146,7 @@ const goDetail = () => {
 .circle-header {
   font-size: 18px;
   font-weight: bold;
-  color: #228b22; /* 진한 초록 */
+  color: #228b22;
   margin-bottom: 10px;
 }
 
@@ -198,7 +212,7 @@ const goDetail = () => {
   background-color: #ffffff;
   padding: 12px;
   width: 100%;
-  font-family: 'Pretendard', sans-serif;
+  font-family: "Pretendard", sans-serif;
   background-color: #f1f1e8;
 }
 
@@ -259,7 +273,7 @@ ul {
 }
 
 .log-item:last-child {
-  border-bottom: none; /* 마지막 줄에는 선 없게 */
+  border-bottom: none;
 }
 
 .date {
@@ -280,5 +294,14 @@ ul {
   min-width: 75px;
   text-align: right;
   font-weight: 600;
+}
+
+::v-deep(.nav-wrapper) {
+  margin-top: 16px;
+}
+
+::v-deep(.right-buttons) {
+  top: 0 !important;
+  right: 20px !important;
 }
 </style>

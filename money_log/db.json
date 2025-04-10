@@ -23,6 +23,30 @@
     {
       "id": "6f74d111-0c4b-4841-9ddf-5adf677f1c3f",
       "nickname": "so"
+    },
+    {
+      "id": "47e36409-6ed6-459a-bb85-53c593d41dc2",
+      "nickname": "dd"
+    },
+    {
+      "nickname": "dfsfd",
+      "id": "2"
+    },
+    {
+      "nickname": "dfsfd",
+      "id": "3"
+    },
+    {
+      "id": "8b74",
+      "nickname": "안녕"
+    },
+    {
+      "id": "c675",
+      "nickname": "둥"
+    },
+    {
+      "id": "6f74d111-0c4b-4841-9ddf-5adf677f1c3f",
+      "nickname": "so"
     }
   ],
   "money": [
@@ -113,6 +137,78 @@
       "amount": 50000,
       "id": "bWlJNAd",
       "theme": "쇼핑"
+    },
+    {
+      "id": "10",
+      "date": "2024-12-01T10:00:00",
+      "category": "income",
+      "content": "당근",
+      "amount": 8,
+      "theme": "기타"
+    },
+    {
+      "id": "11",
+      "date": "2024-12-02T14:00:00",
+      "category": "expense",
+      "content": "친구 생일 선물",
+      "amount": 5,
+      "theme": "쇼핑"
+    },
+    {
+      "id": "12",
+      "date": "2025-03-03T11:00:00",
+      "category": "income",
+      "content": "보험",
+      "amount": 6,
+      "theme": "기타"
+    },
+    {
+      "id": "13",
+      "date": "2025-03-04T16:00:00",
+      "category": "expense",
+      "content": "딸기 구매",
+      "amount": 2,
+      "theme": "식비"
+    },
+    {
+      "id": "18",
+      "date": "2025-03-05T10:00:00",
+      "category": "expense",
+      "content": "삼겹살",
+      "amount": 3,
+      "theme": "식비"
+    },
+    {
+      "id": "14",
+      "date": "2025-04-05T09:00:00",
+      "category": "income",
+      "content": "은행 이자",
+      "amount": 10,
+      "theme": "이자"
+    },
+    {
+      "id": "15",
+      "date": "2025-04-06T18:00:00",
+      "category": "expense",
+      "content": "코인 노래방",
+      "amount": 2,
+      "theme": "유흥"
+    },
+    {
+      "id": "16",
+      "date": "2025-04-07T20:00:00",
+      "category": "expense",
+      "content": "코인 노래방",
+      "amount": 2,
+      "theme": "유흥"
+    },
+    {
+      "id": "17",
+      "date": "2025-04-08T12:00:00",
+      "category": "expense",
+      "content": "탕후루",
+      "amount": 1,
+      "theme": "식비"
     }
   ],
   "incomeCategory": [

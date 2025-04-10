@@ -1,3 +1,4 @@
+<!-- LogDetailFilter.vue -->
 <template>
   <div class="main-page">
     <h2>Detail Log</h2>

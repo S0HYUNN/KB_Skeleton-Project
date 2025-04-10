@@ -1,5 +1,22 @@
-<!-- LogDetailFilter.vue -->
 <template>
+  <div class="filters">
+    <!-- 년도 필터 -->
+    <div class="filter-item-year">
+      <select v-model="selectedYear" @change="updateFilter">
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+        <option value="2029">2029</option>
+        <option value="2030">2030</option>
+      </select>
+    </div>
+  </div>
   <div class="filters">
     <!-- 정렬 기준 설정 -->
     <div class="sort-btn">
@@ -40,6 +57,7 @@
         <option value="setting">사용자설정</option>
       </select>
     </div>
+
     <!-- 검색 필터 -->
     <div class="filter-item search-wrapper">
       <input
@@ -51,7 +69,7 @@
         @keydown.enter="handleSearch"
       />
       <img
-        src="@/assets/images/MagnifyingGlass.svg"
+        src="@/assets/images/MagnifyingGlass2.svg"
         class="search-icon"
         @click="handleSearch"
       />
@@ -67,28 +85,11 @@ import vectorDown from '@/assets/images/vector_down.png';
 const selectedOption = ref('all');
 const selectedPeriod = ref('allmonth');
 const searchQuery = ref('');
-// const selectedSort = ref('date');
+const selectedYear = ref(''); // 기본값 설정
 const sortOrder = ref('desc'); // 'asc'는 오름차순, 'desc'는 내림차순
 
-// 현재 월을 자동으로 기본값으로 설정
-// onMounted(() => {
-//   const currentMonth = new Date().getMonth(); // 0부터 11까지의 월
-//   const months = [
-//     'january',
-//     'february',
-//     'march',
-//     'april',
-//     'may',
-//     'june',
-//     'july',
-//     'august',
-//     'september',
-//     'october',
-//     'november',
-//     'december',
-//   ];
-//   selectedPeriod.value = months[currentMonth]; // 현재 월을 기본값으로 설정
-// });
+// 년도 목록 설정 (현재 년도 기준 ±5년)
+const years = ref([]);
 
 // filterUpdated 이벤트 정의
 const emit = defineEmits();
@@ -98,39 +99,47 @@ const updateFilter = () => {
   emit('filterUpdated', {
     category: selectedOption.value,
     period: selectedPeriod.value,
+    year: selectedYear.value,
     searchQuery: searchQuery.value,
     sortOrder: sortOrder.value,
-    // sort: selectedSort.value,
   });
 };
+
 // 정렬 방향을 토글하는 함수
 const toggleSortOrder = () => {
   sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc';
   updateFilter(); // 정렬 방향 변경 시에도 필터 업데이트
 };
+
 // 검색 처리 함수
 const handleSearch = () => {
   updateFilter(); // 검색어가 입력되었을 때 필터 업데이트
 };
+onMounted(() => {
+  const currentYear = new Date().getFullYear(); // 현재 년도
+  selectedYear.value = currentYear; // 기본값을 현재 연도로 설정
+});
 </script>
+
 <style scoped>
 .filters {
   display: flex;
-  margin-top: 12px;
   align-items: center;
   justify-content: flex-start;
 }
+
 .sort-btn {
   color: #888;
   font-weight: 500;
   cursor: pointer;
   margin-right: 0.25rem;
 }
+
 .filter-item {
   display: flex;
   align-items: center;
   border: 1px solid #e0e0e0;
-  border-radius: 5px; /* 더 둥글게 설정 */
+  border-radius: 5px;
   background-color: #fff;
   margin-right: 0.25rem;
 }
@@ -161,21 +170,35 @@ select:focus,
   border: none;
   box-shadow: 0 0 0 2px #4caf50;
 }
+
 .sort-icon-img {
   width: 14px;
   height: 10px;
   object-fit: contain;
   background-color: white;
 }
+
 .search-wrapper {
   display: flex;
-  align-items: center; /* 수평 정렬 */
+  align-items: center;
   margin-left: auto; /* 오른쪽으로 밀어내기 */
 }
 
 .search-icon {
-  width: 16px; /* 아이콘 크기 조정 */
-  height: 16px; /* 아이콘 크기 조정 */
+  width: 16px;
+  height: 16px;
   object-fit: contain;
+}
+
+.filter-item-year {
+  margin-bottom: 5px;
+  margin-left: 0;
+}
+
+.filter-item-year select {
+  font-size: 20px;
+  height: 40px;
+  color: #2e7d32;
+  font-weight: 900;
 }
 </style>

@@ -19,6 +19,11 @@
           :log="log"
         />
       </div>
+      <img
+        src="@/assets/images/plus_button.svg"
+        class="plus-icon"
+        @click="handleSearch"
+      />
     </div>
   </div>
 </template>
@@ -36,6 +41,7 @@ const moneyList = computed(() => store.sortedByDate);
 const filterCriteria = ref({
   category: 'all',
   period: 'allmonth',
+  year: '',
   searchQuery: '',
   sortOrder: 'desc',
 });
@@ -70,6 +76,12 @@ const filteredMoneyList = computed(() => {
         .includes(filterCriteria.value.searchQuery.toLowerCase())
     );
   }
+  // 년도 필터링
+
+  filtered = filtered.filter((item) => {
+    const itemYear = new Date(item.date).getFullYear();
+    return itemYear === parseInt(filterCriteria.value.year);
+  });
 
   // 정렬
   if (filterCriteria.value.sortOrder === 'asc') {
@@ -87,6 +99,8 @@ const applyFilter = (newFilter) => {
 };
 
 onMounted(async () => {
+  const currentYear = new Date().getFullYear(); // 현재 년도
+  filterCriteria.value.year = currentYear; // 기본값을 현재 연도로 설정
   await store.fetchMoneyLogs();
   console.log('Money logs fetched:', store.moneyList);
 });
@@ -122,5 +136,8 @@ hr {
   margin-top: 0.25rem;
   border: 1px solid #ddd;
   opacity: 0.5;
+}
+.plus-icon {
+  margin-right: -16rem;
 }
 </style>

@@ -43,7 +43,7 @@ export default defineComponent({
           localStorage.setItem('nickname', name.value);
 
           // ✅ 3. 메인 페이지로 이동
-          router.push('/');
+          router.push('/MainPage');
         } else {
           alert('닉네임 수정 실패');
         }

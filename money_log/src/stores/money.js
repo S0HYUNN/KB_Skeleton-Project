@@ -32,7 +32,6 @@ export const useMoneyStore = defineStore('money', () => {
     try {
       const res = await axios.get('/api/periodicExpense');
       console.log('받은 데이터:', res.data);
-      periodicExpenseList.value = res.data;
     } catch (err) {
       console.error('❌ 고정 지출 데이터 불러오기 실패:', err);
     }

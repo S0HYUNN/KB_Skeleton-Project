@@ -52,13 +52,13 @@ const openSettings = () => {
 
 ::v-deep(.nav-wrapper img[alt="뒤로가기"]) {
   position: absolute;
-  top: -8px;
+  top: -25px;
   left: 20px;
 }
 
 ::v-deep(.right-buttons) {
   position: absolute;
-  top: -10px !important;
+  top: -25px !important;
   right: 25px !important;
   display: flex;
   gap: 12px;

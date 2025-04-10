@@ -1,36 +1,38 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router'; // ✅ 추가
-import DailyMoneyLog from '@/components/DailyMoneyLog/DailyMoneyLog.vue';
-import CustomCalendar from '@/components/CustomCalendar.vue';
-import MonthlySummary from '@/components/MonthlySummary.vue';
-import AddMoney from '@/pages/AddMoney.vue';
-import axios from 'axios';
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import DailyMoneyLog from "@/components/DailyMoneyLog/DailyMoneyLog.vue";
+import CustomCalendar from "@/components/CustomCalendar.vue";
+import MonthlySummary from "@/components/MonthlySummary.vue";
+import AddMoney from "@/pages/AddMoney.vue";
+import BaseHeader from "@/components/BaseHeader.vue";
+import SettingPanel from "@/components/SettingPanel.vue";
+import axios from "axios";
 
-const nickname = ref('Nickname');
+const nickname = ref("Nickname");
 const isModalOpen = ref(false);
 const isSettingsOpen = ref(false);
-const router = useRouter(); // ✅ 라우터 인스턴스 생성
+const router = useRouter();
 
 onMounted(async () => {
   try {
     // localStorage에서 userId 가져오기
-    const userId = localStorage.getItem('userId');
+    const userId = localStorage.getItem("userId");
 
     // userId가 없으면 Guest로 설정하고 API 호출 건너뛰기
     if (!userId) {
-      console.log('사용자 ID가 없습니다. Guest로 설정합니다.');
-      nickname.value = 'Guest';
+      console.log("사용자 ID가 없습니다. Guest로 설정합니다.");
+      nickname.value = "Guest";
       return;
     }
 
     // API 호출하여 닉네임 가져오기
     const response = await axios.get(`http://localhost:3000/user/${userId}`);
     nickname.value = response.data.nickname;
-    localStorage.setItem('nickname', response.data.nickname);
+    localStorage.setItem("nickname", response.data.nickname);
   } catch (error) {
-    console.error('닉네임 가져오기 실패:', error);
-    nickname.value = 'Guest'; // 에러 발생 시 기본값 설정
+    console.error("닉네임 가져오기 실패:", error);
+    nickname.value = "Guest"; // 에러 발생 시 기본값 설정
   }
 });
 
@@ -48,42 +50,34 @@ const closeSettings = () => {
   isSettingsOpen.value = false;
 };
 
-// ✅ 프로필 설정 페이지 이동
 const goToProfileEdit = () => {
-  router.push('/UserProfileEdit');
+  router.push("/UserProfileEdit");
 };
 </script>
 
 <template>
   <div class="main-page">
+    <BaseHeader
+      :showBack="false"
+      :showHome="false"
+      :showSettings="true"
+      @openSettings="
+        () => {
+          console.log('열기!');
+          openSettings();
+        }
+      "
+    />
+
     <div class="nickname-header">
       <div class="nickname-title">{{ nickname }}'s Log</div>
-      <img
-        src="@/assets/images/setting.png"
-        alt="설정"
-        class="settings-icon"
-        @click="openSettings"
-      />
     </div>
 
     <DailyMoneyLog @start="openAddMoneyModal" />
     <CustomCalendar />
     <MonthlySummary />
     <AddMoney :show="isModalOpen" @close="closeAddMoneyModal" />
-    <div
-      v-if="isSettingsOpen"
-      class="settings-overlay"
-      @click.self="closeSettings"
-    >
-      <div class="settings-panel">
-        <h2 class="settings-title">Setting Log</h2>
-        <div class="setting-item" @click="goToProfileEdit">
-          <span class="icon">⚙️</span>
-          <span class="label">프로필 설정</span>
-          <span class="arrow">&gt;</span>
-        </div>
-      </div>
-    </div>
+    <SettingPanel v-if="isSettingsOpen" @close="isSettingsOpen = false" />
   </div>
 </template>
 
@@ -110,11 +104,12 @@ const goToProfileEdit = () => {
 }
 
 .nickname-title {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: bold;
   color: #0b570e;
   text-align: center;
-  margin-top: 15px;
+  margin-top: -40px;
+  margin-bottom: 4px;
 }
 
 .settings-icon {

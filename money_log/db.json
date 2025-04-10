@@ -13,10 +13,6 @@
       "id": "3"
     },
     {
-      "id": "08042a5a-31d8-424d-96b5-2d012da71c98",
-      "nickname": "en"
-    },
-    {
       "id": "8b74",
       "nickname": "안녕"
     },
@@ -35,35 +31,49 @@
       "date": "2025-04-01T17:33:00",
       "category": "income",
       "content": "월급",
-      "amount": 20
+      "amount": 2500000,
+      "theme": "월급"
     },
     {
       "id": "2",
       "date": "2025-04-01T12:32:00",
       "category": "expense",
-      "content": "식비",
-      "amount": 12
+      "content": "점심",
+      "amount": 12000,
+      "theme": "식비"
+
     },
     {
       "id": "3",
       "date": "2025-04-02T11:11:23",
       "category": "expense",
-      "content": "교통비",
-      "amount": 1
+      "content": "버스카드 충전",
+      "amount": 1400,
+      "theme": "교통비"
     },
     {
       "id": "4",
       "date": "2025-04-03T22:27:27",
       "category": "expense",
-      "content": "유흥",
-      "amount": 43
+      "content": "술",
+      "amount": 43000,
+      "theme": "유흥"
+    },
+    {
+      "id": "5",
+      "date": "2025-04-03T23:23:23",
+      "category": "income",
+      "content": "용돈",
+      "amount": 50000,
+      "theme": "용돈"
     },
     {
       "id": "6",
       "date": "2025-03-04T10:00:00",
       "category": "expense",
       "content": "공과금",
-      "amount": 7
+      "amount": 72000,
+      "theme": "공과금"
     },
     {
       "date": "2025-04-01T14:34:00",
@@ -72,27 +82,23 @@
       "amount": 5,
       "id": "7"
     },
+
     {
-      "date": "2025-03-01T15:51:00",
+      "date": "2025-04-02T14:35:00",
+      "category": "income",
+      "content": "용돈",
+      "amount": 50000,
+      "id": "8",
+      "theme": "용돈"
+    },
+    {
+      "date": "2025-04-01T15:51:00",
       "category": "expense",
       "content": "돌려줌",
-      "amount": 5,
-      "id": "9"
+      "amount": 5000,
+      "id": "9",
+      "theme": "기타"
     },
-    {
-      "id": "3O1hg",
-      "date": "2025-03-01T10:36:00",
-      "category": "expense",
-      "content": "아침",
-      "amount": 10
-    },
-    {
-      "date": "2025-04-09T15:47:00",
-      "category": "expense",
-      "content": "쇼핑",
-      "amount": 50000,
-      "id": "bWlJNAd"
-    }
   ],
   "incomeCategory": [
     {
@@ -109,7 +115,7 @@
     },
     {
       "id": "4",
-      "name": "기타 수입"
+      "name": "기타"
     }
   ],
   "expenseCategory": [
@@ -136,6 +142,14 @@
     {
       "id": "6",
       "name": "의료비"
+    },
+    {
+      "id": "7",
+      "name": "기타"
+    },
+    {
+      "id": "8",
+      "name": "구독"
     }
   ],
   "periodicExpense": [
@@ -144,49 +158,66 @@
       "date": "2025-04-01T09:00:00",
       "category": "expense",
       "content": "공과금",
-      "amount": 30000
+      "amount": 30000,
+      "theme": "공과금"
     },
     {
       "id": "2",
       "date": "2025-04-05T14:00:00",
       "category": "expense",
       "content": "구독",
-      "amount": 14500
+      "amount": 14500,
+      "theme": "구독"
     },
     {
       "id": "3",
       "date": "2025-04-10T12:00:00",
       "category": "expense",
       "content": "통신비",
-      "amount": 35000
+      "amount": 35000,
+      "theme": "공과금"
     },
     {
+      "date": "2025-04-13T09:00:00",
       "content": "티빙",
-      "id": "4",
-      "date": "2025-04-15T00:00:00",
       "category": "expense",
-      "amount": 4000
+      "amount": 4000,
+      "id": "8GBUQ9m",
+      "theme": "구독"
     },
     {
       "date": "2025-04-25T00:00:00",
       "content": "보험",
       "category": "expense",
       "amount": 5000000,
-      "id": "12"
+      "id": "12",
+      "theme": "공과금"
     },
     {
       "date": "2025-03-25T00:00:00",
       "content": "보험",
       "category": "expense",
       "amount": 5000000,
-      "id": "12"
+      "id": "12",
+      "theme": "공과금"
+    },
+    {
+
+      "date": "2025-04-20",
+      "content": "넷플릭스",
+      "category": "expense",
+      "amount": 3400,
+      "id": "bcnDyV4",
+      "theme": "구독"
     },
     {
       "date": "2025-03-11",
       "content": "넷플",
       "category": "expense",
       "amount": 4500,
-      "id": "ag0E9bk"
+      "id": "ag0E9bk",
+      "theme": "구독"
+
     },
     {
       "date": "2025-03-27",
@@ -194,13 +225,6 @@
       "category": "expense",
       "amount": 200000,
       "id": "IORwvVe"
-    },
-    {
-      "date": "2025-04-15",
-      "content": "고정",
-      "category": "expense",
-      "amount": 12,
-      "id": "lIEWm3O"
     }
   ],
   "summary": {

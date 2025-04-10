@@ -5,8 +5,8 @@
       "id": "1"
     },
     {
-      "nickname": "dfsfd",
-      "id": "2"
+      "id": "47e36409-6ed6-459a-bb85-53c593d41dc2",
+      "nickname": "안뇽"
     },
     {
       "nickname": "dfsfd",
@@ -32,7 +32,7 @@
   "money": [
     {
       "id": "1",
-      "date": "2025-04-01T17:33:00",
+      "date": "2025-04-01T08:00:00",
       "category": "income",
       "content": "월급",
       "amount": 2500000,
@@ -72,7 +72,7 @@
     },
     {
       "id": "6",
-      "date": "2025-03-04T10:00:00",
+      "date": "2025-04-04T10:00:00",
       "category": "expense",
       "content": "공과금",
       "amount": 72000,
@@ -83,23 +83,14 @@
       "category": "income",
       "content": "주움",
       "amount": 5000,
-      "id": "7",
-      "theme": "기타"
-    },
-    {
-      "date": "2025-03-01T15:51:00",
-      "category": "expense",
-      "content": "돌려줌",
-      "amount": 5,
-      "id": "8"
+      "id": "7"
     },
     {
       "date": "2025-04-02T14:35:00",
       "category": "income",
       "content": "용돈",
       "amount": 50000,
-      "id": "8",
-      "theme": "용돈"
+      "id": "8"
     },
     {
       "date": "2025-04-01T15:51:00",
@@ -110,20 +101,11 @@
       "theme": "기타"
     },
     {
-      "id": "3O1hg",
       "date": "2025-04-01T10:36:00",
       "category": "expense",
       "content": "아침",
       "amount": 12000,
-      "theme": "식비"
-    },
-    {
-      "date": "2025-04-09T15:47:00",
-      "category": "expense",
-      "content": "쇼핑",
-      "amount": 50000,
-      "id": "bWlJNAd",
-      "theme": "쇼핑"
+      "id": "10"
     }
   ],
   "incomeCategory": [
@@ -141,7 +123,7 @@
     },
     {
       "id": "4",
-      "name": "기타"
+      "name": "기타 수입"
     }
   ],
   "expenseCategory": [
@@ -247,16 +229,7 @@
       "content": "적금",
       "category": "expense",
       "amount": 4500,
-      "id": "ag0E9bk",
-      "theme": "구독"
-    },
-    {
-      "date": "2025-03-27",
-      "content": "적금",
-      "category": "expense",
-      "amount": 200000,
-      "id": "IORwvVe",
-      "theme": "기타"
+      "id": "ag0E9bk"
     }
   ],
   "summary": {

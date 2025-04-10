@@ -1,8 +1,12 @@
 {
   "user": [
     {
-      "id": "생성된 UUID",
-      "nickname": "사용자 닉네임"
+      "nickname": "dfsfd",
+      "id": "1"
+    },
+    {
+      "nickname": "dfsfd",
+      "id": "2"
     },
     {
       "id": "47e36409-6ed6-459a-bb85-53c593d41dc2",
@@ -19,7 +23,6 @@
     {
       "id": "c675",
       "nickname": "둥"
-    }
   ],
   "money": [
     {
@@ -87,26 +90,12 @@
       "id": "9"
     },
     {
-      "id": "c962",
-      "date": "2025-04-25T13:55:00",
-      "category": "income",
-      "content": "",
-      "amount": 33333
+      "id": "3O1hg",
+      "date": "2025-04-01T10:36:00",
+      "category": "expense",
+      "content": "아침",
+      "amount": 12000
     },
-    {
-      "id": "e039",
-      "date": "2025-04-13T14:14:00",
-      "category": "income",
-      "content": "",
-      "amount": 3343434
-    },
-    {
-      "date": "2025-12-02T10:07:00",
-      "category": "income",
-      "content": "예은 테스트 ",
-      "amount": 12000,
-      "id": "10"
-    }
   ],
   "incomeCategory": [
     {
@@ -216,6 +205,13 @@
       "content": "보험료",
       "amount": 55000
       "id": "ag0E9bk"
+    },
+    {
+      "date": "2025-03-27",
+      "content": "적금",
+      "category": "expense",
+      "amount": 200000,
+      "id": "IORwvVe"
     }
   ],
   "summary": {

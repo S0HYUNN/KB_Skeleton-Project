@@ -1,0 +1,119 @@
+{
+  "user": [
+    {
+      "nickname": "nick",
+      "id": "1"
+    },
+    {
+      "nickname": "name",
+      "id": "2"
+    }
+  ],
+  "money": [
+    {
+      "id": "1",
+      "date": "2024-12-10T13:00:00",
+      "category": "income",
+      "content": "월급",
+      "amount": 2500000
+    },
+    {
+      "id": "2",
+      "date": "2024-12-11T12:30:00",
+      "category": "expense",
+      "content": "식비",
+      "amount": 12000
+    },
+    {
+      "id": "3",
+      "date": "2025-03-11T12:30:00",
+      "category": "income",
+      "content": "월급",
+      "amount": 2500000
+    },
+    {
+      "id": "4",
+      "date": "2025-03-12T12:30:00",
+      "category": "expense",
+      "content": "식비",
+      "amount": 12000
+    },
+    {
+      "id": "5",
+      "date": "2025-03-12T18:30:00",
+      "category": "expense",
+      "content": "인터넷 쇼핑",
+      "amount": 48000
+    },
+    {
+      "id": "6",
+      "date": "2025-04-20T10:30:00",
+      "category": "income",
+      "content": "복권 당첨",
+      "amount": 50000
+    },
+    {
+      "id": "7",
+      "date": "2025-04-20T10:30:00",
+      "category": "expense",
+      "content": "구독",
+      "amount": 13000
+    },
+    {
+      "id": "8",
+      "date": "2025-04-22T14:30:00",
+      "category": "expense",
+      "content": "쇼핑",
+      "amount": 34000
+    },
+    {
+      "id": "37a7",
+      "date": "2025-04-31T09:54:00",
+      "category": "expense",
+      "content": "테스트",
+      "amount": 20000
+    },
+    {
+      "id": "7b54",
+      "date": "2025-04-30T09:54:00",
+      "category": "income",
+      "content": "테스트",
+      "amount": 20000
+    }
+  ],
+  "periodicExpense": [
+    {
+      "id": "1",
+      "date": "2025-04-01T09:00:00",
+      "category": "expense",
+      "content": "공과금",
+      "amount": 30000
+    },
+    {
+      "id": "f8fc",
+      "date": "2025-04-30",
+      "content": "테스트",
+      "category": "expense",
+      "amount": 20000
+    },
+    {
+      "id": "53b3",
+      "date": "2025-04-29",
+      "content": "테스트",
+      "category": "expense",
+      "amount": 20000
+    }
+  ],
+  "summary": {
+    "monthly": {
+      "income": 1250000,
+      "expense": 382000,
+      "net": 868000
+    },
+    "yearly": {
+      "income": 36000,
+      "expense": 1800,
+      "net": 34200
+    }
+  }
+}

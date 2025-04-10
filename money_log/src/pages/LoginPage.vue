@@ -17,31 +17,31 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const router = useRouter();
-const logName = ref("");
+const logName = ref('');
 
 onMounted(() => {
-  const storedUserId = localStorage.getItem("userId");
+  const storedUserId = localStorage.getItem('userId');
   if (!storedUserId) {
     const newUserId = uuidv4();
-    localStorage.setItem("userId", newUserId);
-    console.log("새로운 userId 생성:", newUserId);
+    localStorage.setItem('userId', newUserId);
+    console.log('새로운 userId 생성:', newUserId);
   }
 });
 
 const startLog = async () => {
   if (logName.value) {
     try {
-      const userId = localStorage.getItem("userId");
+      const userId = localStorage.getItem('userId');
 
       if (!userId) {
-        console.error("userId가 localStorage에 없습니다.");
-        alert("오류가 발생했습니다. 다시 시도해주세요.");
+        console.error('userId가 localStorage에 없습니다.');
+        alert('오류가 발생했습니다. 다시 시도해주세요.');
         return;
       }
 
@@ -58,18 +58,18 @@ const startLog = async () => {
 
         // 만약 사용자 ID가 없으면 새로운 사용자를 POST 합니다.
         if (userCheckResponse.status === 404) {
-          console.log("GET 404: 사용자를 찾을 수 없음");
+          console.log('GET 404: 사용자를 찾을 수 없음');
           // 새로운 사용자 생성 (POST)
           const createUserResponse = await axios.post(
-            "http://localhost:3000/user",
+            'http://localhost:3000/user',
             {
               id: userId, // UUID를 id로 사용
               nickname: logName.value,
             }
           );
-          console.log("새로운 사용자 생성 성공:", createUserResponse.data);
-          router.push("/MainPage");
-          alert("로그 시작!");
+          console.log('새로운 사용자 생성 성공:', createUserResponse.data);
+          router.push('/MainPage');
+          alert('로그 시작!');
         } else if (userCheckResponse.status === 200) {
           // 기존 사용자 닉네임 업데이트 (PATCH)
           const response = await axios.patch(
@@ -78,26 +78,26 @@ const startLog = async () => {
               nickname: logName.value,
             }
           );
-          console.log("닉네임 업데이트 성공:", response.data);
-          router.push("/MainPage");
-          alert("로그 시작!");
+          console.log('닉네임 업데이트 성공:', response.data);
+          router.push('/MainPage');
+          alert('로그 시작!');
         } else {
-          console.error("GET 요청 실패:", userCheckResponse.status);
-          alert("오류가 발생했습니다. 다시 시도해주세요.");
+          console.error('GET 요청 실패:', userCheckResponse.status);
+          alert('오류가 발생했습니다. 다시 시도해주세요.');
         }
       } catch (getError) {
-        console.error("GET 요청 실패:", getError);
+        console.error('GET 요청 실패:', getError);
         if (getError.response) {
-          console.error("GET 요청 실패 응답:", getError.response); // 응답 내용 출력
+          console.error('GET 요청 실패 응답:', getError.response); // 응답 내용 출력
         }
-        alert("오류가 발생했습니다. 다시 시도해주세요.");
+        alert('오류가 발생했습니다. 다시 시도해주세요.');
       }
     } catch (error) {
-      console.error("전체 오류:", error); // 전체 오류 출력
-      alert("닉네임 저장/업데이트에 실패했습니다.");
+      console.error('전체 오류:', error); // 전체 오류 출력
+      alert('닉네임 저장/업데이트에 실패했습니다.');
     }
   } else {
-    alert("로그 이름을 입력해 주세요.");
+    alert('로그 이름을 입력해 주세요.');
   }
 };
 </script>
@@ -109,7 +109,7 @@ const startLog = async () => {
   padding: 0;
   background-color: #f1f1e8;
   min-height: 100vh;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,7 +171,7 @@ h2 {
   padding: 10px 20px;
   cursor: pointer;
   font-size: 26px;
-  margin-top: 290px;
+  margin-top: 300px;
   display: flex;
   justify-content: center;
   align-items: center;

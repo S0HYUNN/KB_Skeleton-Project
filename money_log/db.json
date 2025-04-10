@@ -1,16 +1,32 @@
 {
   "user": [
     {
-      "id": "생성된 UUID",
-      "nickname": "사용자 닉네임"
+      "nickname": "dfsfd",
+      "id": "1"
+    },
+    {
+      "nickname": "dfsfd",
+      "id": "2"
+    },
+    {
+      "nickname": "dfsfd",
+      "id": "3"
+    },
+    {
+      "id": "8b74",
+      "nickname": "안녕"
+    },
+    {
+      "id": "c675",
+      "nickname": "둥"
+    },
+    {
+      "id": "6f74d111-0c4b-4841-9ddf-5adf677f1c3f",
+      "nickname": "so"
     },
     {
       "id": "47e36409-6ed6-459a-bb85-53c593d41dc2",
-      "nickname": "안뇽"
-    },
-    {
-      "id": "08042a5a-31d8-424d-96b5-2d012da71c98",
-      "nickname": "en"
+      "nickname": "dd"
     }
   ],
   "money": [
@@ -19,28 +35,32 @@
       "date": "2025-04-01T08:00:00",
       "category": "income",
       "content": "월급",
-      "amount": 2500000
+      "amount": 2500000,
+      "theme": "월급"
     },
     {
       "id": "2",
       "date": "2025-04-01T12:32:00",
       "category": "expense",
-      "content": "식비",
-      "amount": 12000
+      "content": "점심",
+      "amount": 12000,
+      "theme": "식비"
     },
     {
       "id": "3",
       "date": "2025-04-02T11:11:23",
       "category": "expense",
-      "content": "교통비",
-      "amount": 1400
+      "content": "버스카드 충전",
+      "amount": 1400,
+      "theme": "교통비"
     },
     {
       "id": "4",
       "date": "2025-04-03T22:27:27",
       "category": "expense",
-      "content": "유흥",
-      "amount": 43000
+      "content": "술",
+      "amount": 43000,
+      "theme": "유흥"
     },
     {
       "id": "5",
@@ -48,56 +68,127 @@
       "category": "income",
       "content": "용돈",
       "amount": 50000,
-      "memo": "부모님 용돈"
+      "theme": "용돈"
     },
     {
       "id": "6",
       "date": "2025-04-04T10:00:00",
       "category": "expense",
       "content": "공과금",
-      "amount": 72000
+      "amount": 72000,
+      "theme": "공과금"
     },
     {
       "date": "2025-04-01T14:34:00",
       "category": "income",
       "content": "주움",
       "amount": 5000,
-      "id": "7"
+      "id": "7",
+      "theme": "기타"
     },
     {
       "date": "2025-04-02T14:35:00",
       "category": "income",
       "content": "용돈",
       "amount": 50000,
-      "id": "8"
+      "id": "8",
+      "theme": "용돈"
     },
     {
       "date": "2025-04-01T15:51:00",
       "category": "expense",
       "content": "돌려줌",
       "amount": 5000,
-      "id": "9"
+      "id": "9",
+      "theme": "기타"
     },
     {
-      "id": "c962",
-      "date": "2025-04-25T13:55:00",
-      "category": "income",
-      "content": "",
-      "amount": 33333
-    },
-    {
-      "id": "e039",
-      "date": "2025-04-13T14:14:00",
-      "category": "income",
-      "content": "",
-      "amount": 3343434
-    },
-    {
-      "date": "2025-12-02T10:07:00",
-      "category": "income",
-      "content": "예은 테스트 ",
+      "id": "3O1hg",
+      "date": "2025-04-01T10:36:00",
+      "category": "expense",
+      "content": "아침",
       "amount": 12000,
-      "id": "10"
+      "theme": "식비"
+    },
+    {
+      "date": "2025-04-09T15:47:00",
+      "category": "expense",
+      "content": "쇼핑",
+      "amount": 50000,
+      "id": "bWlJNAd",
+      "theme": "쇼핑"
+    },
+    {
+      "id": "10",
+      "date": "2024-12-01T10:00:00",
+      "category": "income",
+      "content": "당근",
+      "amount": 8,
+      "theme": "중고 거래"
+    },
+    {
+      "id": "11",
+      "date": "2024-12-02T14:00:00",
+      "category": "expense",
+      "content": "친구 생일 선물",
+      "amount": 5,
+      "theme": "문화 생활"
+    },
+    {
+      "id": "12",
+      "date": "2025-03-03T11:00:00",
+      "category": "income",
+      "content": "보험",
+      "amount": 6,
+      "theme": "보험"
+    },
+    {
+      "id": "13",
+      "date": "2025-03-04T16:00:00",
+      "category": "expense",
+      "content": "딸기 구매",
+      "amount": 2,
+      "theme": "식비"
+    },
+    {
+      "id": "18",
+      "date": "2025-03-05T10:00:00",
+      "category": "expense",
+      "content": "삼겹살",
+      "amount": 3,
+      "theme": "식비"
+    },
+    {
+      "id": "14",
+      "date": "2025-04-05T09:00:00",
+      "category": "income",
+      "content": "당근",
+      "amount": 10,
+      "theme": "중고 거래"
+    },
+    {
+      "id": "15",
+      "date": "2025-04-06T18:00:00",
+      "category": "expense",
+      "content": "코인 노래방",
+      "amount": 2,
+      "theme": "유흥"
+    },
+    {
+      "id": "16",
+      "date": "2025-04-07T20:00:00",
+      "category": "expense",
+      "content": "코인 노래방",
+      "amount": 2,
+      "theme": "유흥"
+    },
+    {
+      "id": "17",
+      "date": "2025-04-08T12:00:00",
+      "category": "expense",
+      "content": "탕후루",
+      "amount": 1,
+      "theme": "식비"
     }
   ],
   "incomeCategory": [
@@ -115,7 +206,7 @@
     },
     {
       "id": "4",
-      "name": "기타 수입"
+      "name": "기타"
     }
   ],
   "expenseCategory": [
@@ -142,6 +233,14 @@
     {
       "id": "6",
       "name": "의료비"
+    },
+    {
+      "id": "7",
+      "name": "기타"
+    },
+    {
+      "id": "8",
+      "name": "구독"
     }
   ],
   "periodicExpense": [
@@ -150,63 +249,80 @@
       "date": "2025-04-01T09:00:00",
       "category": "expense",
       "content": "공과금",
-      "amount": 30000
+      "amount": 30000,
+      "theme": "공과금"
     },
     {
       "id": "2",
       "date": "2025-04-05T14:00:00",
       "category": "expense",
       "content": "구독",
-      "amount": 14500
+      "amount": 14500,
+      "theme": "구독"
     },
     {
       "id": "3",
       "date": "2025-04-10T12:00:00",
       "category": "expense",
       "content": "통신비",
-      "amount": 35000
+      "amount": 35000,
+      "theme": "공과금"
     },
     {
       "date": "2025-04-13T09:00:00",
       "content": "티빙",
       "category": "expense",
       "amount": 4000,
-      "id": "8GBUQ9m"
+      "id": "8GBUQ9m",
+      "theme": "구독"
     },
     {
       "date": "2025-04-23T00:00:00",
       "content": "등록금",
       "category": "expense",
       "amount": 5000000,
-      "id": "doxugt6"
+      "id": "doxugt6",
+      "theme": "기타"
     },
     {
       "date": "2025-04-25T00:00:00",
       "content": "보험",
       "category": "expense",
       "amount": 5000000,
-      "id": "12"
+      "id": "12",
+      "theme": "공과금"
     },
     {
       "date": "2025-03-25T00:00:00",
       "content": "보험",
       "category": "expense",
       "amount": 5000000,
-      "id": "12"
+      "id": "12",
+      "theme": "공과금"
     },
     {
       "date": "2025-04-20",
       "content": "넷플릭스",
       "category": "expense",
       "amount": 3400,
-      "id": "bcnDyV4"
+      "id": "bcnDyV4",
+      "theme": "구독"
     },
     {
       "date": "2025-03-11",
       "content": "넷플",
       "category": "expense",
       "amount": 4500,
-      "id": "ag0E9bk"
+      "id": "ag0E9bk",
+      "theme": "구독"
+    },
+    {
+      "date": "2025-03-27",
+      "content": "적금",
+      "category": "expense",
+      "amount": 200000,
+      "id": "IORwvVe",
+      "theme": "기타"
     }
   ],
   "summary": {

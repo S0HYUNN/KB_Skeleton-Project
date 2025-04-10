@@ -1,19 +1,21 @@
-import { defineStore } from "pinia";
-import { ref, computed } from "vue";
-import axios from "axios";
+import { defineStore } from 'pinia';
+import { ref, computed } from 'vue';
+import { useDateStore } from '@/stores/date';
+import axios from 'axios';
+
 
 export const useMoneyStore = defineStore("money", () => {
   const moneyList = ref([]);
   const isLoading = ref(false);
   const error = ref(null);
-  const periodicExpenseList = ref([]); //고정 지출용 ref 추가
+  const periodicExpenseList = ref([]);
+  const dateStore = useDateStore();
 
   // error 초기화 함수
   const resetError = () => {
     error.value = null;
   };
 
-  // action: 전체 가계부 항목 불러오기
   const fetchMoneyLogs = async (params = {}) => {
     isLoading.value = true;
     resetError();
@@ -27,8 +29,23 @@ export const useMoneyStore = defineStore("money", () => {
       isLoading.value = false;
     }
   };
-  // 고정 지출 데이터 가져오기
+
   const fetchPeriodicExpenses = async () => {
+    const currentYear = dateStore.currentDate.getFullYear(); // 현재 연도
+    const currentMonth = String(dateStore.currentDate.getMonth() + 1).padStart(
+      2,
+      '0'
+    ); // 현재 월
+    try {
+      periodicExpenseList.value = [];
+      const res = await axios.get('/api/periodicExpense', {
+        params: { year: currentYear, month: currentMonth }, // 요청 시 연도, 월 파라미터 전달
+      });
+      console.log('받은 고정 지출 데이터:', res.data);
+      periodicExpenseList.value = res.data; // 해당 월의 데이터로 업데이트
+    } catch (err) {
+      console.error('❌ 고정 지출 데이터 불러오기 실패:', err);
+    }
     const res = await axios.get("/api/periodicExpense");
     periodicExpenseList.value = res.data;
   };
@@ -43,7 +60,6 @@ export const useMoneyStore = defineStore("money", () => {
     }
   };
 
-  // action: 항목 삭제
   const deleteMoneyLog = async (id) => {
     resetError();
     try {
@@ -53,8 +69,6 @@ export const useMoneyStore = defineStore("money", () => {
       error.value = "삭제 실패했어요.";
     }
   };
-
-  // action: 항목 수정
   const updateMoneyLog = async (id, updatedItem) => {
     resetError();
     try {
@@ -90,7 +104,7 @@ export const useMoneyStore = defineStore("money", () => {
     }
   };
 
-  // ✅ 월별 항목 조회
+  // 월별 항목 조회
   const getLogsByMonth = (year, month) => {
     return moneyList.value.filter((item) => {
       const date = new Date(item.date);
@@ -98,7 +112,7 @@ export const useMoneyStore = defineStore("money", () => {
     });
   };
 
-  // ✅ 월별 총합 계산
+  // 월별 총합 계산
   const getMonthlySummary = (year, month) => {
     const logs = getLogsByMonth(year, month);
 
@@ -127,18 +141,18 @@ export const useMoneyStore = defineStore("money", () => {
     };
   };
 
-  // ✅ 날짜별 그룹핑 (예: 캘린더용)
+  // 날짜별 그룹핑
   const groupByDate = computed(() => {
     const grouped = {};
     moneyList.value.forEach((item) => {
-      const date = item.date.slice(0, 10); // yyyy-mm-dd
+      const date = item.date.slice(0, 10);
       if (!grouped[date]) grouped[date] = [];
       grouped[date].push(item);
     });
     return grouped;
   });
 
-  // ✅ 날짜 기준 정렬 (최신이 위로)
+  // 날짜 기준 정렬 (최신이 위로)
   const sortedByDate = computed(() => {
     return [...moneyList.value].sort(
       (a, b) => new Date(b.date) - new Date(a.date)
@@ -149,6 +163,7 @@ export const useMoneyStore = defineStore("money", () => {
     moneyList,
     isLoading,
     error,
+    periodicExpenseList,
     fetchMoneyLogs,
     fetchPeriodicExpenses,
     addMoneyLog,

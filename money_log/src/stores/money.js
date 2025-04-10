@@ -101,16 +101,29 @@ export const useMoneyStore = defineStore("money", () => {
   // ✅ 월별 총합 계산
   const getMonthlySummary = (year, month) => {
     const logs = getLogsByMonth(year, month);
+
     const income = logs
       .filter((i) => i.category === "income")
       .reduce((sum, cur) => sum + cur.amount, 0);
+
     const expense = logs
       .filter((i) => i.category === "expense")
       .reduce((sum, cur) => sum + cur.amount, 0);
+
+    // 고정 지출 합산 추가
+    const periodicExpense = periodicExpenseList.value
+      .filter((item) => {
+        const date = new Date(item.date);
+        return date.getFullYear() === year && date.getMonth() + 1 === month;
+      })
+      .reduce((sum, cur) => sum + cur.amount, 0);
+
+    const totalExpense = expense + periodicExpense;
+
     return {
       income,
-      expense,
-      net: income - expense,
+      expense: totalExpense,
+      net: income - totalExpense,
     };
   };
 

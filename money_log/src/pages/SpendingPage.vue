@@ -9,7 +9,12 @@
     <h1 class="main-title">Spending Log</h1>
     <div class="log-card">
       <div class="chart-wrapper">
-        <div class="circle-header">{{ months }}월달 요약</div>
+        <div class="date-selector">
+          <button class="nav-button" @click="prevMonth"><</button>
+          <!--화살표 버튼-->
+          {{ months }}월 요약
+          <button class="nav-button" @click="nextMonth">></button>
+        </div>
 
         <!-- 도넛 차트와 중앙 텍스트 -->
         <div class="chart-center-box">
@@ -46,7 +51,7 @@
                 class="amount"
                 :class="log.category === 'income' ? 'income' : 'expense'"
               >
-                {{ log.category === "income" ? "+" : "-" }}
+                {{ log.category === 'income' ? '+' : '-' }}
                 {{ log.amount.toLocaleString() }}
               </span>
             </li>
@@ -59,14 +64,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
-import { Doughnut } from "vue-chartjs";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { useMoneyStore } from "../stores/money";
-import { storeToRefs } from "pinia";
-import BaseHeader from "@/components/BaseHeader.vue";
-import SettingPanel from "@/components/SettingPanel.vue";
-import { useRouter } from "vue-router";
+import { ref, computed, onMounted } from 'vue';
+import { Doughnut } from 'vue-chartjs';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useMoneyStore } from '../stores/money';
+import { storeToRefs } from 'pinia';
+import BaseHeader from '@/components/BaseHeader.vue';
+import SettingPanel from '@/components/SettingPanel.vue';
+import { useRouter } from 'vue-router';
 
 ChartJS.register(ArcElement);
 
@@ -81,6 +86,9 @@ const months = ref(0);
 
 const isSettingsOpen = ref(false);
 const openSettings = () => (isSettingsOpen.value = true);
+
+const now = new Date();
+const currentYear = ref(now.getFullYear());
 
 onMounted(async () => {
   await store.fetchMoneyLogs(); //데이터 불러오기
@@ -100,19 +108,46 @@ onMounted(async () => {
 const chartData = computed(() => ({
   datasets: [
     {
-      label: "이번 달 요약",
+      label: '이번 달 요약',
       data: [income.value, expense.value],
-      backgroundColor: ["#4D59FF", "#FF8548"],
-      borderColor: ["#4D59FF", "#FF8548"],
+      backgroundColor: ['#4D59FF', '#FF8548'],
+      borderColor: ['#4D59FF', '#FF8548'],
       borderWidth: 1,
     },
   ],
 }));
 
+const loadSummary = (year, month) => {
+  const summary = store.getMonthlySummary(year, month);
+  income.value = summary.income;
+  expense.value = summary.expense;
+  net.value = summary.net;
+};
+
+const prevMonth = () => {
+  if (months.value === 1) {
+    months.value = 12;
+    currentYear.value -= 1;
+  } else {
+    months.value -= 1;
+  }
+  loadSummary(currentYear.value, months.value);
+};
+
+const nextMonth = () => {
+  if (months.value === 12) {
+    months.value = 1;
+    currentYear.value += 1;
+  } else {
+    months.value += 1;
+  }
+  loadSummary(currentYear.value, months.value);
+};
+
 // 차트 옵션
 const chartOptions = {
   responsive: true,
-  cutout: "65%",
+  cutout: '65%',
 };
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -122,7 +157,7 @@ const DoughnutChart = Doughnut;
 const router = useRouter();
 
 const goDetail = () => {
-  router.push("/LogDetail");
+  router.push('/LogDetail');
 };
 </script>
 
@@ -212,7 +247,7 @@ const goDetail = () => {
   background-color: #ffffff;
   padding: 12px;
   width: 100%;
-  font-family: "Pretendard", sans-serif;
+  font-family: 'Pretendard', sans-serif;
   background-color: #f1f1e8;
 }
 
@@ -303,5 +338,20 @@ ul {
 ::v-deep(.right-buttons) {
   top: 0 !important;
   right: 20px !important;
+}
+
+.nav-button {
+  font-size: 25px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: gray;
+}
+
+.date-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 </style>

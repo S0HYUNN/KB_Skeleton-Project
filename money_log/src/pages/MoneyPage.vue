@@ -1,12 +1,12 @@
 <script setup>
-import { ref } from "vue";
-import DailyMoneyLog2 from "@/components/DailyMoneyLog/DailyMoneyLog2.vue";
-import MoneyList from "../components/MoneyList.vue";
-import AddMoney from "@/pages/AddMoney.vue";
-import PeriodMoney from "./PeriodMoney.vue";
-import TodayMoney from "@/components/TodayMoney.vue";
-import BaseHeader from "@/components/BaseHeader.vue";
-import SettingPanel from "@/components/SettingPanel.vue";
+import { ref } from 'vue';
+import DailyMoneyLog2 from '@/components/DailyMoneyLog/DailyMoneyLog2.vue';
+import MoneyList from '../components/MoneyList.vue';
+import AddMoney from '@/pages/AddMoney.vue';
+import PeriodMoney from './PeriodMoney.vue';
+import TodayMoney from '@/components/TodayMoney.vue';
+import BaseHeader from '@/components/BaseHeader.vue';
+import SettingPanel from '@/components/SettingPanel.vue';
 
 const isModalOpen = ref(false);
 const openModal = () => (isModalOpen.value = true);
@@ -42,7 +42,7 @@ const openSettings = () => {
   width: 100%;
   min-width: 402px;
   max-width: 402px;
-  min-height: 100vh;
+  min-height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -50,15 +50,21 @@ const openSettings = () => {
   padding-top: 48px;
 }
 
-::v-deep(.nav-wrapper img[alt="뒤로가기"]) {
+::v-deep(.nav-wrapper img[alt='뒤로가기']) {
   position: absolute;
-  top: -8px;
+  top: -25px;
   left: 20px;
+}
+
+::v-deep(.nav-wrapper) {
+  position: relative;
+  width: 100%;
+  height: 15px;
 }
 
 ::v-deep(.right-buttons) {
   position: absolute;
-  top: -10px !important;
+  top: -25px !important;
   right: 25px !important;
   display: flex;
   gap: 12px;

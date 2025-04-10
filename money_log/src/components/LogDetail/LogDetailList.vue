@@ -51,6 +51,7 @@ const filterCriteria = ref({
   year: '',
   searchQuery: '',
   sortOrder: 'desc',
+  theme: 'allTheme', // 테마 필터 추가
 });
 
 // 필터 조건에 맞게 돈 목록을 필터링 및 정렬하는 computed 속성
@@ -81,6 +82,12 @@ const filteredMoneyList = computed(() => {
       item.content
         .toLowerCase()
         .includes(filterCriteria.value.searchQuery.toLowerCase())
+    );
+  }
+  // 테마 필터링
+  if (filterCriteria.value.theme !== 'allTheme') {
+    filtered = filtered.filter(
+      (item) => item.theme === filterCriteria.value.theme
     );
   }
   // 년도 필터링
@@ -154,7 +161,7 @@ onMounted(async () => {
 
 /* 항목 목록 */
 .log-items {
-  max-height: 550px; /* 최대 높이 설정 */
+  max-height: 400px; /* 최대 높이 설정 */
   overflow-y: auto; /* 세로 스크롤 추가 */
   margin-top: 0.5rem;
 }

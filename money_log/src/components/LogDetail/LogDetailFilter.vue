@@ -16,6 +16,20 @@
         <option value="2030">2030</option>
       </select>
     </div>
+    <!-- 테마 필터 -->
+    <div class="filter-item-theme">
+      <select v-model="themeFilter" @change="updateFilter">
+        <option value="allTheme">전체</option>
+        <option value="월급">월급</option>
+        <option value="용돈">용돈</option>
+        <option value="기타">기타</option>
+        <option value="식비">식비</option>
+        <option value="교통비">교통비</option>
+        <option value="유흥">유흥</option>
+        <option value="공과금">공과금</option>
+        <option value="쇼핑">쇼핑</option>
+      </select>
+    </div>
   </div>
   <div class="filters">
     <!-- 정렬 기준 설정 -->
@@ -87,10 +101,7 @@ const selectedPeriod = ref('allmonth');
 const searchQuery = ref('');
 const selectedYear = ref(''); // 기본값 설정
 const sortOrder = ref('desc'); // 'asc'는 오름차순, 'desc'는 내림차순
-
-// 년도 목록 설정 (현재 년도 기준 ±5년)
-const years = ref([]);
-
+const themeFilter = ref('allTheme'); // 테마 필터
 // filterUpdated 이벤트 정의
 const emit = defineEmits();
 
@@ -102,6 +113,7 @@ const updateFilter = () => {
     year: selectedYear.value,
     searchQuery: searchQuery.value,
     sortOrder: sortOrder.value,
+    theme: themeFilter.value, // 테마 필터 추가
   });
 };
 
@@ -200,5 +212,13 @@ select:focus,
   height: 40px;
   color: #2e7d32;
   font-weight: 900;
+}
+.filter-item-theme {
+  display: flex;
+  align-items: center;
+  margin-left: 10.8rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #fff;
 }
 </style>

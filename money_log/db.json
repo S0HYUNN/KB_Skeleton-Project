@@ -1,7 +1,21 @@
-{
-  "user": {
-    "nickname": "옌"
-  },
+  "user": [
+    {
+      "id": "생성된 UUID",
+      "nickname": "사용자 닉네임"
+    },
+    {
+      "nickname": "dfsfd",
+      "id": "3"
+    },
+    {
+      "id": "8b74",
+      "nickname": "안녕"
+    },
+    {
+      "id": "c675",
+      "nickname": "둥"
+    }
+  ],
   "money": [
     {
       "id": 1,

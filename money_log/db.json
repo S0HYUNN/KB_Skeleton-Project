@@ -3,32 +3,6 @@
     {
       "nickname": "dfsfd",
       "id": "1"
-<<<<<<< HEAD
-    },
-    {
-      "id": "47e36409-6ed6-459a-bb85-53c593d41dc2",
-      "nickname": "안뇽"
-    },
-    {
-      "nickname": "dfsfd",
-      "id": "3"
-    },
-    {
-      "id": "8b74",
-      "nickname": "안녕"
-    },
-    {
-      "id": "c675",
-      "nickname": "둥"
-    },
-    {
-      "id": "6f74d111-0c4b-4841-9ddf-5adf677f1c3f",
-      "nickname": "hi"
-    },
-    {
-      "id": "6f74d111-0c4b-4841-9ddf-5adf677f1c3f",
-      "nickname": "so"
-=======
     },
     {
       "nickname": "dfsfd",
@@ -53,7 +27,6 @@
     {
       "id": "47e36409-6ed6-459a-bb85-53c593d41dc2",
       "nickname": "dd"
->>>>>>> 1d1a6f8 (Refactor: db,json 코드 수정)
     }
   ],
   "money": [
@@ -130,10 +103,7 @@
       "theme": "기타"
     },
     {
-<<<<<<< HEAD
-=======
       "id": "3O1hg",
->>>>>>> 1d1a6f8 (Refactor: db,json 코드 수정)
       "date": "2025-04-01T10:36:00",
       "category": "expense",
       "content": "아침",
@@ -329,8 +299,6 @@
       "amount": 5000000,
       "id": "12",
       "theme": "공과금"
-<<<<<<< HEAD
-=======
     },
     {
       "date": "2025-04-20",
@@ -339,7 +307,6 @@
       "amount": 3400,
       "id": "bcnDyV4",
       "theme": "구독"
->>>>>>> 1d1a6f8 (Refactor: db,json 코드 수정)
     },
     {
       "date": "2025-03-11",

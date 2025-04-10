@@ -77,7 +77,18 @@ ChartJS.register(ArcElement);
 
 const store = useMoneyStore();
 const { sortedByDate } = storeToRefs(store); //날짜별로 정렬
-const recentLogs = computed(() => sortedByDate.value.slice(0, 3)); //최근 지출 3개 선정
+
+const recentLogs = computed(() => {
+  const year = currentYear.value;
+  const month = months.value;
+
+  const filtered = sortedByDate.value.filter((item) => {
+    const date = new Date(item.date);
+    return date.getFullYear() === year && date.getMonth() + 1 === month;
+  });
+
+  return filtered.slice(0, 3);
+});
 
 const income = ref(0);
 const expense = ref(0);

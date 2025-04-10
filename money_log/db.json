@@ -9,13 +9,8 @@
       "id": "2"
     },
     {
-<<<<<<< Updated upstream
-      "id": "08042a5a-31d8-424d-96b5-2d012da71c98",
-      "nickname": "en"
-=======
       "nickname": "dfsfd",
       "id": "3"
->>>>>>> Stashed changes
     },
     {
       "id": "8b74",
@@ -24,13 +19,10 @@
     {
       "id": "c675",
       "nickname": "둥"
-<<<<<<< Updated upstream
-=======
     },
     {
       "id": "6f74d111-0c4b-4841-9ddf-5adf677f1c3f",
       "nickname": "so"
->>>>>>> Stashed changes
     }
   ],
   "money": [
@@ -87,24 +79,16 @@
       "category": "income",
       "content": "주움",
       "amount": 5000,
-<<<<<<< Updated upstream
-      "id": "7"
-=======
       "id": "7",
       "theme": "기타"
->>>>>>> Stashed changes
     },
     {
       "date": "2025-04-02T14:35:00",
       "category": "income",
       "content": "용돈",
       "amount": 50000,
-<<<<<<< Updated upstream
-      "id": "8"
-=======
       "id": "8",
       "theme": "용돈"
->>>>>>> Stashed changes
     },
     {
       "date": "2025-04-01T15:51:00",
@@ -120,9 +104,6 @@
       "category": "expense",
       "content": "아침",
       "amount": 12000,
-<<<<<<< Updated upstream
-      "id": "10"
-=======
       "theme": "식비"
     },
     {
@@ -132,7 +113,6 @@
       "amount": 50000,
       "id": "bWlJNAd",
       "theme": "쇼핑"
->>>>>>> Stashed changes
     }
   ],
   "incomeCategory": [
@@ -150,11 +130,7 @@
     },
     {
       "id": "4",
-<<<<<<< Updated upstream
-      "name": "기타 수입"
-=======
       "name": "기타"
->>>>>>> Stashed changes
     }
   ],
   "expenseCategory": [
@@ -217,17 +193,12 @@
       "theme": "공과금"
     },
     {
+      "date": "2025-04-13T09:00:00",
       "content": "티빙",
-      "id": "4",
-      "date": "2025-04-15T00:00:00",
       "category": "expense",
-<<<<<<< Updated upstream
-      "amount": 4000
-=======
       "amount": 4000,
       "id": "8GBUQ9m",
       "theme": "구독"
->>>>>>> Stashed changes
     },
     {
       "date": "2025-04-23T00:00:00",

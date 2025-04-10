@@ -11,6 +11,18 @@
     {
       "id": "08042a5a-31d8-424d-96b5-2d012da71c98",
       "nickname": "en"
+    },
+    {
+      "id": "8b74",
+      "nickname": "안녕"
+    },
+    {
+      "id": "c675",
+      "nickname": "둥"
+    },
+    {
+      "id": "3392",
+      "nickname": "ㅇㅇㅁㅇㅁㅇ"
     }
   ],
   "money": [
@@ -207,7 +219,7 @@
       "category": "expense",
       "amount": 4500,
       "id": "ag0E9bk"
-    },
+    }
   ],
   "summary": {
     "monthly": {

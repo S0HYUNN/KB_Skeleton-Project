@@ -11,7 +11,6 @@ const moneyStore = useMoneyStore();
 const editingItem = ref(null);
 const isEditModalOpen = ref(false);
 
-// ✅ 정렬 기준 상태 및 정렬 방향
 const sortType = ref('time');
 const sortOrder = ref('desc');
 
@@ -249,7 +248,7 @@ const closeFixedMoneyModal = () => {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  padding: 12px 20px; /* ✅ 가로 패딩 늘림 */
+  padding: 12px 20px;
   margin-bottom: 24px;
   max-height: 500px;
   overflow: hidden;

@@ -167,12 +167,47 @@
       "amount": 35000
     },
     {
-      "id": 4,
-      "date": "2025-04-15T00:00:00",
+      "date": "2025-04-13T09:00:00",
+      "content": "티빙",
       "category": "expense",
-      "content": "보험료",
-      "amount": 55000
-    }
+      "amount": 4000,
+      "id": "8GBUQ9m"
+    },
+    {
+      "date": "2025-04-23T00:00:00",
+      "content": "등록금",
+      "category": "expense",
+      "amount": 5000000,
+      "id": "doxugt6"
+    },
+    {
+      "date": "2025-04-25T00:00:00",
+      "content": "보험",
+      "category": "expense",
+      "amount": 5000000,
+      "id": "12"
+    },
+    {
+      "date": "2025-03-25T00:00:00",
+      "content": "보험",
+      "category": "expense",
+      "amount": 5000000,
+      "id": "12"
+    },
+    {
+      "date": "2025-04-20",
+      "content": "넷플릭스",
+      "category": "expense",
+      "amount": 3400,
+      "id": "bcnDyV4"
+    },
+    {
+      "date": "2025-03-11",
+      "content": "넷플",
+      "category": "expense",
+      "amount": 4500,
+      "id": "ag0E9bk"
+    },
   ],
   "summary": {
     "monthly": {

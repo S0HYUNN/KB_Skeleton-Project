@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useMoneyStore } from '@/stores/money';
 import { useDateStore } from '@/stores/date';
 import '../assets/modal.css';
@@ -7,15 +7,7 @@ import '../assets/modal.css';
 const moneyStore = useMoneyStore();
 const dateStore = useDateStore();
 
-const currentDate = ref(new Date());
-
-const formattedDate = computed(() => {
-  const date = dateStore.currentDate;
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = date.toLocaleString('en-US', { month: 'long' });
-  const year = date.getFullYear();
-  return `${day} ${month} ${year}`;
-});
+const currentDate = computed(() => dateStore.currentDate);
 
 const filteredFixedMoneyList = computed(() => {
   const currentYear = currentDate.value.getFullYear();
@@ -23,34 +15,20 @@ const filteredFixedMoneyList = computed(() => {
     2,
     '0'
   );
-  console.log('현재 날짜: ', dateStore.currentDate);
-  return moneyStore.periodicExpenseList.filter((item) => {
+
+  console.log('현재 날짜: ', currentDate.value);
+
+  const filteredList = moneyStore.periodicExpenseList.filter((item) => {
     const itemDate = new Date(item.date);
-    const itemYear = itemDate.getFullYear(); // 항목의 연도
-    const itemMonth = String(itemDate.getMonth() + 1).padStart(2, '0'); // 항목의 월
+    const itemYear = itemDate.getFullYear();
+    const itemMonth = String(itemDate.getMonth() + 1).padStart(2, '0');
 
     return itemYear === currentYear && itemMonth === currentMonth;
   });
+
+  console.log('필터링된 고정 지출 내역: ', filteredList);
+  return filteredList;
 });
-
-// const filteredFixedMoneyList = computed(() => {
-//   const currentYear = dateStore.currentDate.getFullYear();
-//   const currentMonth = String(dateStore.currentDate.getMonth() + 1).padStart(
-//     2,
-//     '0'
-//   ); // 현재 월
-//   console.log('현재 날짜: ', dateStore.currentDate);
-//   // 고정 지출 항목 필터링
-//   const filteredData = moneyStore.periodicExpenseList.filter((item) => {
-//     const itemDate = new Date(item.date);
-//     const itemYear = itemDate.getFullYear(); // 항목의 연도
-//     const itemMonth = String(itemDate.getMonth() + 1).padStart(2, '0'); // 항목의 월
-
-//     return itemYear === currentYear && itemMonth === currentMonth;
-//   });
-
-//   return filteredData;
-// });
 
 const fixedDate = ref('');
 const fixedContent = ref('');
@@ -58,7 +36,8 @@ const fixedAmount = ref('');
 
 const isFixedMoneyModalOpen = ref(false);
 
-const openFixedMoneyModal = () => {
+const openFixedMoneyModal = async () => {
+  await moneyStore.fetchPeriodicExpenses();
   isFixedMoneyModalOpen.value = true;
 };
 
@@ -96,11 +75,18 @@ const deleteItem = async (id) => {
   }
 };
 
+watch(
+  () => dateStore.currentDate,
+  async () => {
+    await moneyStore.fetchPeriodicExpenses();
+  },
+  { immediate: true }
+);
+
 onMounted(async () => {
   await moneyStore.fetchPeriodicExpenses();
 });
 </script>
-
 <template>
   <div class="period-money-box">
     <div class="box-header">
@@ -137,10 +123,6 @@ onMounted(async () => {
     </div>
 
     <button class="fixed-add-btn" @click="handleAddFixed">ADD</button>
-  </div>
-
-  <div class="current-date-display">
-    <p>현재 날짜: {{ formattedDate }}</p>
   </div>
 
   <!-- 고정 머니 Log 모달 -->
@@ -299,7 +281,7 @@ onMounted(async () => {
 }
 
 .amount {
-  flex: 0 0 90px; /* ✅ 고정 너비 */
+  flex: 0 0 90px;
   text-align: right;
   font-weight: bold;
   font-size: 14px;

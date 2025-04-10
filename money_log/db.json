@@ -201,6 +201,13 @@
       "category": "expense",
       "amount": 4500,
       "id": "ag0E9bk"
+    },
+    {
+      "date": "2025-03-27",
+      "content": "적금",
+      "category": "expense",
+      "amount": 200000,
+      "id": "IORwvVe"
     }
   ],
   "summary": {

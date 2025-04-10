@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
+import { useDateStore } from '@/stores/date';
 import axios from 'axios';
 
 export const useMoneyStore = defineStore('money', () => {
@@ -7,6 +8,7 @@ export const useMoneyStore = defineStore('money', () => {
   const isLoading = ref(false);
   const error = ref(null);
   const periodicExpenseList = ref([]);
+  const dateStore = useDateStore();
 
   // error 초기화 함수
   const resetError = () => {
@@ -27,11 +29,19 @@ export const useMoneyStore = defineStore('money', () => {
     }
   };
 
-  // 고정 지출 데이터 가져오기
   const fetchPeriodicExpenses = async () => {
+    const currentYear = dateStore.currentDate.getFullYear(); // 현재 연도
+    const currentMonth = String(dateStore.currentDate.getMonth() + 1).padStart(
+      2,
+      '0'
+    ); // 현재 월
     try {
-      const res = await axios.get('/api/periodicExpense');
-      console.log('받은 데이터:', res.data);
+      periodicExpenseList.value = [];
+      const res = await axios.get('/api/periodicExpense', {
+        params: { year: currentYear, month: currentMonth }, // 요청 시 연도, 월 파라미터 전달
+      });
+      console.log('받은 고정 지출 데이터:', res.data);
+      periodicExpenseList.value = res.data; // 해당 월의 데이터로 업데이트
     } catch (err) {
       console.error('❌ 고정 지출 데이터 불러오기 실패:', err);
     }
@@ -137,6 +147,7 @@ export const useMoneyStore = defineStore('money', () => {
     moneyList,
     isLoading,
     error,
+    periodicExpenseList,
     fetchMoneyLogs,
     fetchPeriodicExpenses,
     addMoneyLog,

@@ -26,7 +26,7 @@
     },
     {
       "id": "3",
-      "date": "2025-03-11T12:30:00",
+      "date": "2025-03-11T14:30:00",
       "category": "income",
       "content": "월급",
       "amount": 2500000
@@ -54,9 +54,9 @@
     },
     {
       "id": "7",
-      "date": "2025-04-20T10:30:00",
+      "date": "2025-04-20T13:00:00",
       "category": "expense",
-      "content": "구독",
+      "content": "편의점",
       "amount": 13000
     },
     {
@@ -67,18 +67,11 @@
       "amount": 34000
     },
     {
-      "id": "37a7",
-      "date": "2025-04-31T09:54:00",
+      "id": "9",
+      "date": "2025-04-28T20:30:00",
       "category": "expense",
-      "content": "테스트",
-      "amount": 20000
-    },
-    {
-      "id": "7b54",
-      "date": "2025-04-30T09:54:00",
-      "category": "income",
-      "content": "테스트",
-      "amount": 20000
+      "content": "편의점",
+      "amount": 21000
     }
   ],
   "periodicExpense": [
@@ -88,20 +81,6 @@
       "category": "expense",
       "content": "공과금",
       "amount": 30000
-    },
-    {
-      "id": "f8fc",
-      "date": "2025-04-30",
-      "content": "테스트",
-      "category": "expense",
-      "amount": 20000
-    },
-    {
-      "id": "53b3",
-      "date": "2025-04-29",
-      "content": "테스트",
-      "category": "expense",
-      "amount": 20000
     }
   ],
   "summary": {

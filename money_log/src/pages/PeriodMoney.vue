@@ -1,66 +1,3 @@
-<template>
-  <div class="period-money-box">
-    <div class="box-header">
-      <span class="box-title">고정 지출 추가</span>
-      <div class="pin-wrapper">
-        <img
-          src="@/assets/images/PushPin.png"
-          alt="핀"
-          class="pin-icon"
-          @click="openFixedMoneyModal"
-        />
-      </div>
-    </div>
-
-    <div class="input-row">
-      <input
-        v-model="fixedDate"
-        type="date"
-        class="fixed-input"
-        placeholder="Date"
-      />
-      <input
-        v-model="fixedContent"
-        type="text"
-        class="fixed-input"
-        placeholder="Content"
-      />
-      <input
-        v-model="fixedAmount"
-        type="number"
-        class="fixed-input"
-        placeholder="Amount"
-      />
-    </div>
-
-    <button class="fixed-add-btn" @click="handleAddFixed">ADD</button>
-  </div>
-
-  <!-- 고정 머니 Log 모달 -->
-  <div
-    v-if="isFixedMoneyModalOpen"
-    class="modal-overlay"
-    @click.self="closeFixedMoneyModal"
-  >
-    <div class="modal">
-      <h2 class="modal-title">고정 머니 Log</h2>
-      <hr />
-      <div
-        class="fixed-money-item"
-        v-for="(item, index) in fixedMoneyList"
-        :key="index.id"
-      >
-        <span class="fixed-name">{{ item.content }}</span>
-        <span class="fixed-amount">-{{ item.amount.toLocaleString() }}</span>
-        <i class="fas fa-trash icon-btn" @click="deleteItem(item.id)"></i>
-      </div>
-      <button class="modal-submit-btn" @click="closeFixedMoneyModal">
-        Close
-      </button>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useMoneyStore } from '@/stores/money';
@@ -68,7 +5,24 @@ import '../assets/modal.css';
 
 const moneyStore = useMoneyStore();
 
-const fixedMoneyList = computed(() => moneyStore.periodicExpenseList);
+const currentDate = ref(new Date()); // 현재 날짜를 ref로 설정
+
+// filteredFixedMoneyList는 currentDate를 기준으로 고정 지출 항목 필터링
+const filteredFixedMoneyList = computed(() => {
+  const currentYear = currentDate.value.getFullYear();
+  const currentMonth = String(currentDate.value.getMonth() + 1).padStart(
+    2,
+    '0'
+  ); // 현재 월
+
+  return moneyStore.periodicExpenseList.filter((item) => {
+    const itemDate = new Date(item.date);
+    const itemYear = itemDate.getFullYear(); // 항목의 연도
+    const itemMonth = String(itemDate.getMonth() + 1).padStart(2, '0'); // 항목의 월
+
+    return itemYear === currentYear && itemMonth === currentMonth;
+  });
+});
 
 const fixedDate = ref('');
 const fixedContent = ref('');
@@ -118,6 +72,72 @@ onMounted(async () => {
   await moneyStore.fetchPeriodicExpenses();
 });
 </script>
+
+<template>
+  <div class="period-money-box">
+    <div class="box-header">
+      <span class="box-title">고정 지출 추가</span>
+      <div class="pin-wrapper">
+        <img
+          src="@/assets/images/PushPin.png"
+          alt="핀"
+          class="pin-icon"
+          @click="openFixedMoneyModal"
+        />
+      </div>
+    </div>
+
+    <div class="input-row">
+      <input
+        v-model="fixedDate"
+        type="date"
+        class="fixed-input"
+        placeholder="Date"
+      />
+      <input
+        v-model="fixedContent"
+        type="text"
+        class="fixed-input"
+        placeholder="Content"
+      />
+      <input
+        v-model="fixedAmount"
+        type="number"
+        class="fixed-input"
+        placeholder="Amount"
+      />
+    </div>
+
+    <button class="fixed-add-btn" @click="handleAddFixed">ADD</button>
+  </div>
+
+  <!-- 고정 머니 Log 모달 -->
+  <div
+    v-if="isFixedMoneyModalOpen"
+    class="modal-overlay"
+    @click.self="closeFixedMoneyModal"
+  >
+    <div class="modal">
+      <h2 class="modal-title">고정 머니 Log</h2>
+      <hr />
+      <!-- 고정 지출 항목을 모달에 표시 -->
+      <div v-if="filteredFixedMoneyList.length">
+        <h3>고정 지출 항목</h3>
+        <ul>
+          <li v-for="item in filteredFixedMoneyList" :key="item.id">
+            {{ item.content }} - {{ item.amount.toLocaleString() }}원
+          </li>
+        </ul>
+      </div>
+      <div v-else>
+        <p>이 날짜에는 고정 지출이 없습니다.</p>
+      </div>
+      <button class="modal-submit-btn" @click="closeFixedMoneyModal">
+        Close
+      </button>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .fas::before {

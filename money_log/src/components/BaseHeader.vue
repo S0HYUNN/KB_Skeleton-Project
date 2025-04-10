@@ -39,7 +39,7 @@ defineProps({
 });
 
 const goBack = () => router.back();
-const goHome = () => router.push("/");
+const goHome = () => router.push("/MainPage");
 </script>
 
 <style scoped>

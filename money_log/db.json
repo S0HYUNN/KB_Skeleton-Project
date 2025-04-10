@@ -3,7 +3,6 @@
     {
       "nickname": "dfsfd",
       "id": "1"
-<<<<<<< HEAD
     },
     {
       "nickname": "dfsfd",
@@ -28,7 +27,6 @@
     {
       "id": "47e36409-6ed6-459a-bb85-53c593d41dc2",
       "nickname": "dd"
-=======
     },
     {
       "nickname": "dfsfd",
@@ -49,7 +47,6 @@
     {
       "id": "6f74d111-0c4b-4841-9ddf-5adf677f1c3f",
       "nickname": "so"
->>>>>>> 82f1f146b51c2001aa6ceaa7eb77b67cf1d8183d
     }
   ],
   "money": [
@@ -147,7 +144,7 @@
       "category": "income",
       "content": "당근",
       "amount": 8,
-      "theme": "중고 거래"
+      "theme": "기타"
     },
     {
       "id": "11",
@@ -155,7 +152,7 @@
       "category": "expense",
       "content": "친구 생일 선물",
       "amount": 5,
-      "theme": "문화 생활"
+      "theme": "쇼핑"
     },
     {
       "id": "12",
@@ -163,7 +160,7 @@
       "category": "income",
       "content": "보험",
       "amount": 6,
-      "theme": "보험"
+      "theme": "기타"
     },
     {
       "id": "13",
@@ -185,9 +182,9 @@
       "id": "14",
       "date": "2025-04-05T09:00:00",
       "category": "income",
-      "content": "당근",
+      "content": "은행 이자",
       "amount": 10,
-      "theme": "중고 거래"
+      "theme": "이자"
     },
     {
       "id": "15",

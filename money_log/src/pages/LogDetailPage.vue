@@ -1,26 +1,33 @@
 <template>
   <div class="page-wrapper">
-    <!-- BaseHeader를 다른 div로 감싸기 -->
-    <div class="header-wrapper">
-      <BaseHeader></BaseHeader>
-    </div>
-
-    <!-- 상세 내용 부분 -->
+    <BaseHeader
+      :showBack="true"
+      :showHome="true"
+      :showSettings="true"
+      @openSettings="openSettings"
+    />
     <div class="content-wrapper">
       <h2>Detail Log</h2>
       <div class="log-detail-page">
         <div class="log-group">
-          <!-- 항목 리스트 -->
-          <LogDetailList></LogDetailList>
+          <LogDetailList />
         </div>
       </div>
     </div>
+    <SettingPanel v-if="isSettingsOpen" @close="isSettingsOpen = false" />
   </div>
 </template>
 
 <script setup>
-import LogDetailList from '@/components/LogDetail/LogDetailList.vue';
-import BaseHeader from '@/components/BaseHeader.vue';
+import { ref } from "vue";
+import LogDetailList from "@/components/LogDetail/LogDetailList.vue";
+import BaseHeader from "@/components/BaseHeader.vue";
+import SettingPanel from "@/components/SettingPanel.vue";
+
+const isSettingsOpen = ref(false);
+const openSettings = () => {
+  isSettingsOpen.value = true;
+};
 </script>
 
 <style scoped>
@@ -40,11 +47,7 @@ h2 {
   min-width: 402px;
   max-width: 402px;
   min-height: 100vh;
-}
-
-.header-wrapper {
-  width: 100%; /* BaseHeader가 화면 전체 너비를 차지하도록 설정 */
-  padding: 12px 0;
+  position: relative;
 }
 
 .content-wrapper {
@@ -53,7 +56,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 20px; /* 화면 하단 여백 */
+  padding-bottom: 20px;
 }
 
 .log-detail-page {
@@ -67,5 +70,19 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+::v-deep(.nav-wrapper img[alt="뒤로가기"]) {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+::v-deep(.right-buttons) {
+  position: absolute;
+  top: 20px !important;
+  right: 20px !important;
+  display: flex;
+  gap: 12px;
 }
 </style>

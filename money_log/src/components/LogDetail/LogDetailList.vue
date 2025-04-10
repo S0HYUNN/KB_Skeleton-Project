@@ -22,9 +22,15 @@
       <img
         src="@/assets/images/plus_button.svg"
         class="plus-icon"
-        @click="handleSearch"
+        @click="openModal"
       />
     </div>
+    <!-- AddMoney 모달 -->
+    <AddMoney
+      :show="isModalVisible"
+      @close="closeModal"
+      @submit="handleSubmit"
+    />
   </div>
 </template>
 
@@ -33,6 +39,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useMoneyStore } from '@/stores/money.js';
 import LogDetailItem from './LogDetailItem.vue';
 import LogDetailFilter from './LogDetailFilter.vue';
+import AddMoney from '@/pages/AddMoney.vue';
 
 const store = useMoneyStore();
 const isLoading = computed(() => store.isLoading);
@@ -77,7 +84,6 @@ const filteredMoneyList = computed(() => {
     );
   }
   // 년도 필터링
-
   filtered = filtered.filter((item) => {
     const itemYear = new Date(item.date).getFullYear();
     return itemYear === parseInt(filterCriteria.value.year);
@@ -93,9 +99,30 @@ const filteredMoneyList = computed(() => {
   return filtered;
 });
 
+const isModalVisible = ref(false); // 모달의 표시 여부
+
 // 필터 업데이트 처리
 const applyFilter = (newFilter) => {
   filterCriteria.value = newFilter;
+};
+
+// 모달 열기
+const openModal = () => {
+  console.log('모달 열림 시도');
+  isModalVisible.value = true; // 모달 표시 상태를 true로 변경
+};
+
+// 모달 닫기
+const closeModal = () => {
+  console.log('모달 닫힘 시도');
+  isModalVisible.value = false; // 모달 표시 상태를 false로 변경
+};
+
+// 모달에서 제출된 데이터 처리
+const handleSubmit = async (newItem) => {
+  await store.addMoneyLog(newItem); // 새로운 항목을 store에 추가
+  await store.fetchMoneyLogs(); // 새로운 로그 목록을 가져오기
+  closeModal(); // 모달 닫기
 };
 
 onMounted(async () => {

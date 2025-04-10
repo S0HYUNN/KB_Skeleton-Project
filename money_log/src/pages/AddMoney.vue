@@ -1,35 +1,35 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
-import { useMoneyStore } from '../stores/money';
-import '../assets/modal.css';
+import { ref } from "vue";
+import { useMoneyStore } from "../stores/money";
+import "../assets/modal.css";
 
 const props = defineProps({
   show: Boolean,
 });
-const emit = defineEmits(['close']);
-const closeModal = () => emit('close');
+const emit = defineEmits(["close"]);
+const closeModal = () => emit("close");
 
 const moneyStore = useMoneyStore();
 const isModalOpen = ref(false);
 const openModal = () => {
   isModalOpen.value = true;
-  console.log('✅ 모달 열림!'); // 콘솔 확인용
+  console.log("✅ 모달 열림!"); // 콘솔 확인용
 };
 
 const now = new Date();
-const hh = String(now.getHours()).padStart(2, '0');
-const mm = String(now.getMinutes()).padStart(2, '0');
+const hh = String(now.getHours()).padStart(2, "0");
+const mm = String(now.getMinutes()).padStart(2, "0");
 
-const day = ref('');
-const month = ref('');
-const year = ref('2025');
-const date = `${year.value}-${String(month.value).padStart(2, '0')}-${String(
+const day = ref("");
+const month = ref("");
+const year = ref("2025");
+const date = `${year.value}-${String(month.value).padStart(2, "0")}-${String(
   day.value
-).padStart(2, '0')}T${hh}:${mm}:00`;
+).padStart(2, "0")}T${hh}:${mm}:00`;
 
-const modalCategory = ref('');
-const modalAmount = ref('');
-const modalContent = ref('');
+const modalCategory = ref("");
+const modalAmount = ref("");
+const modalContent = ref("");
 
 const submitModal = async () => {
   if (
@@ -38,18 +38,18 @@ const submitModal = async () => {
     !modalAmount.value ||
     !modalCategory.value
   ) {
-    alert('모든 값을 입력해 주세요!');
+    alert("모든 값을 입력해 주세요!");
     return;
   }
 
   // 현재 시간 반영
   const now = new Date();
-  const hh = String(now.getHours()).padStart(2, '0');
-  const mm = String(now.getMinutes()).padStart(2, '0');
+  const hh = String(now.getHours()).padStart(2, "0");
+  const mm = String(now.getMinutes()).padStart(2, "0");
 
-  const date = `${year.value}-${String(month.value).padStart(2, '0')}-${String(
+  const date = `${year.value}-${String(month.value).padStart(2, "0")}-${String(
     day.value
-  ).padStart(2, '0')}T${hh}:${mm}:00`;
+  ).padStart(2, "0")}T${hh}:${mm}:00`;
 
   const newItem = {
     date,
@@ -63,11 +63,11 @@ const submitModal = async () => {
   closeModal();
 
   // 입력 초기화
-  day.value = '';
-  month.value = '';
-  modalCategory.value = '';
-  modalAmount.value = '';
-  modalContent.value = '';
+  day.value = "";
+  month.value = "";
+  modalCategory.value = "";
+  modalAmount.value = "";
+  modalContent.value = "";
 };
 </script>
 

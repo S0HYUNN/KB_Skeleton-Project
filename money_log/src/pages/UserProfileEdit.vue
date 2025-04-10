@@ -18,15 +18,39 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router'; // ✅ 추가
+import axios from 'axios';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
     const name = ref('');
+    const router = useRouter(); // ✅ 라우터 인스턴스 생성
+    const save = async () => {
+      try {
+        // ✅ 1. API 호출하여 닉네임 업데이트
+        const userId = String(localStorage.getItem('userId')); // ✅ userId 가져오기
+        console.log('userId:', userId);
+        const response = await axios.patch(
+          `http://localhost:3000/user/${userId}`,
+          { nickname: name.value }
+        ); // ✅ PATCH 요청 사용
 
-    const save = () => {
-      // 저장 로직을 여기에 추가
-      alert(`저장된 이름: ${name.value}`);
+        if (response.status === 200) {
+          // ✅ 성공적인 응답 코드 확인
+          // ✅ 2. localStorage에 닉네임 저장 (선택 사항)
+          localStorage.setItem('nickname', name.value);
+
+          // ✅ 3. 메인 페이지로 이동
+          router.push('/');
+        } else {
+          alert('닉네임 수정 실패');
+        }
+      } catch (error) {
+        console.error('닉네임 수정 에러:', error);
+        alert('닉네임 수정 중 오류가 발생했습니다.');
+      }
     };
 
     return {
@@ -85,7 +109,7 @@ export default defineComponent({
 }
 
 .input-field {
-  border: 2px solid #0b570e;
+  border: 2px solid #0b570e !important;
   width: 100%;
   padding: 10px;
   border-radius: 5px;

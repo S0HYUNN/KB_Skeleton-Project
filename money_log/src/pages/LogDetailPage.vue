@@ -19,10 +19,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import LogDetailList from "@/components/LogDetail/LogDetailList.vue";
-import BaseHeader from "@/components/BaseHeader.vue";
-import SettingPanel from "@/components/SettingPanel.vue";
+import { ref } from 'vue';
+import LogDetailList from '@/components/LogDetail/LogDetailList.vue';
+import BaseHeader from '@/components/BaseHeader.vue';
+import SettingPanel from '@/components/SettingPanel.vue';
 
 const isSettingsOpen = ref(false);
 const openSettings = () => {
@@ -72,7 +72,7 @@ h2 {
   align-items: center;
 }
 
-::v-deep(.nav-wrapper img[alt="뒤로가기"]) {
+::v-deep(.nav-wrapper img[alt='뒤로가기']) {
   position: absolute;
   top: 20px;
   left: 20px;

@@ -1,5 +1,13 @@
 <template>
   <div class="profilEdit-page">
+    <div class="nav-wrapper">
+      <img
+        src="@/assets/images/back.png"
+        alt="뒤로가기"
+        class="nav-button"
+        @click="goBack"
+      />
+    </div>
     <div class="content-container">
       <div class="icon-container"></div>
       <img src="@/assets/images/note_icon.svg" alt="노트 아이콘" class="icon" />
@@ -19,14 +27,15 @@
 
 <script>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router'; // ✅ 추가
+import { useRouter } from 'vue-router';
 import axios from 'axios';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
     const name = ref('');
-    const router = useRouter(); // ✅ 라우터 인스턴스 생성
+    const router = useRouter();
+    const goBack = () => router.back();
     const save = async () => {
       try {
         // ✅ 1. API 호출하여 닉네임 업데이트
@@ -56,6 +65,7 @@ export default defineComponent({
     return {
       name,
       save,
+      goBack,
     };
   },
 });
@@ -72,6 +82,18 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.nav-wrapper {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  z-index: 10;
+}
+
+.nav-button {
+  width: 20px;
+  height: 20px;
 }
 
 .content-container {

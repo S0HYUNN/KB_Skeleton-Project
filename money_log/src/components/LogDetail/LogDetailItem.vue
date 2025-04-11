@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from "vue";
 
 const props = defineProps({
   log: {
@@ -39,8 +39,8 @@ const props = defineProps({
 // 금액 포맷팅 (수입은 +, 지출은 - 붙이기)
 const formattedAmount = computed(() => {
   const amount = props.log.amount;
-  const sign = props.log.category === 'income' ? '+' : '-';
-  const formatted = new Intl.NumberFormat('ko-KR').format(amount);
+  const sign = props.log.category === "income" ? "+" : "-";
+  const formatted = new Intl.NumberFormat("ko-KR").format(amount);
   return `${sign}${formatted}원`;
 });
 
@@ -53,26 +53,25 @@ const formattedDate = computed(() => {
 // 시간 포맷팅
 const formattedTime = computed(() => {
   const d = new Date(props.log.date);
-  return `${d.getHours().toString().padStart(2, '0')}:${d
+  return `${d.getHours().toString().padStart(2, "0")}:${d
     .getMinutes()
     .toString()
-    .padStart(2, '0')}`;
+    .padStart(2, "0")}`;
 });
 
 // 카테고리 포맷팅 (수입/지출)
 const formattedCategory = computed(() =>
-  props.log.category === 'income' ? '수입' : '지출'
+  props.log.category === "income" ? "수입" : "지출"
 );
 // 콘텐츠 (content)
 const formattedContent = computed(() => props.log.content);
 // 잔액 포맷팅
 const formattedBalance = computed(() => {
-  return new Intl.NumberFormat('ko-KR').format(props.balance);
+  return new Intl.NumberFormat("ko-KR").format(props.balance);
 });
 </script>
 
 <style scoped>
-/* 박스 제거 */
 .log-item {
   padding: 6px;
   border: none;
@@ -139,8 +138,8 @@ const formattedBalance = computed(() => {
 }
 
 hr {
-  margin-top: 7px;
-  border: 1px solid #ddd;
-  opacity: 0.5;
+  margin-top: 9px;
+  border: none;
+  border-top: 1.5px solid #b4b4b4;
 }
 </style>

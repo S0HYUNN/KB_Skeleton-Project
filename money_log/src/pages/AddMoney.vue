@@ -142,7 +142,7 @@ const submitModal = async () => {
             </option>
 
             <option v-if="modalCategory === 'expense'" value="food">
-              월급
+              식비
             </option>
             <option v-if="modalCategory === 'expense'" value="transportation">
               교통비
